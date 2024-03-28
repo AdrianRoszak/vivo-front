@@ -1,0 +1,25 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build output directories
+dist/
+build/
+out/
+
+# Ignore coverage reports
+coverage/
+
+# Ignore compiled files
+*.min.js
+*.min.css
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Ignore configuration files
+.eslintrc
+.prettierrc
+babel.config.js
+webpack.config.js
