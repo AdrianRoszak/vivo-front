@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { defineConfig } = require("pollen-css/utils");
+const { defineConfig } = require("pollen-css/utils")
 
-const PRECISION = 0;
+const PRECISION = 0
 const RATIO = Object.freeze({
   minorSecond: 1.067,
   majorSecond: 1.125,
@@ -12,7 +12,7 @@ const RATIO = Object.freeze({
   perfectFifth: 1.5,
   minorSixth: 1.6,
   goldenSection: 1.618,
-});
+})
 
 function calculateTypoScale(
   base = 1,
@@ -22,31 +22,31 @@ function calculateTypoScale(
   stepsUp = 11,
   stepsDown = 4,
 ) {
-  const baseLine = (lineHeight * base).toFixed(PRECISION);
+  const baseLine = (lineHeight * base).toFixed(PRECISION)
   const scaleUp = Array.from({ length: stepsUp }, (_, i) => {
-    const fs = ~~(base * Math.pow(ratio, i)).toFixed(PRECISION);
-    const lh = (lineHeight * fs).toFixed(PRECISION);
+    const fs = ~~(base * Math.pow(ratio, i)).toFixed(PRECISION)
+    const lh = (lineHeight * fs).toFixed(PRECISION)
     const tslh =
       lh % baseLine === 0
         ? lh
-        : Math.ceil(~~(lh / baseLine) * baseLine).toFixed(PRECISION);
+        : Math.ceil(~~(lh / baseLine) * baseLine).toFixed(PRECISION)
     return {
       fs: `${fs}${unit}`,
       lh: `${tslh}${unit}`,
-    };
-  });
+    }
+  })
   const scaleDown = Array.from({ length: stepsDown }, (_, i) => {
-    const fs = (base / Math.pow(ratio, i)).toFixed(PRECISION);
-    const lh = (lineHeight * ~~fs).toFixed(PRECISION);
+    const fs = (base / Math.pow(ratio, i)).toFixed(PRECISION)
+    const lh = (lineHeight * ~~fs).toFixed(PRECISION)
     const tslh =
       lh % baseLine === 0
         ? lh
-        : Math.ceil(~~(lh / baseLine) * baseLine).toFixed(PRECISION);
+        : Math.ceil(~~(lh / baseLine) * baseLine).toFixed(PRECISION)
     return {
       fs: `${fs}${unit}`,
       lh: `${tslh}${unit}`,
-    };
-  });
+    }
+  })
   return {
     up: scaleUp,
     base: {
@@ -54,7 +54,7 @@ function calculateTypoScale(
       lh: `${baseLine}${unit}`,
     },
     down: scaleDown,
-  };
+  }
 }
 
 const ts = {
@@ -62,12 +62,12 @@ const ts = {
   md: calculateTypoScale(16, RATIO.majorThird, 1.4, "px"),
   lg: calculateTypoScale(18, RATIO.perfectFourth, 1.4, "px"),
   xl: calculateTypoScale(20, RATIO.augmentedFourth, 1.4, "px"),
-};
+}
 
 module.exports = defineConfig((pollen) => ({
   output: {
-    css: "./src/theme/vars.css",
-    json: "./src/theme/vars.json",
+    css: "./src/styles/vars.css",
+    json: "./src/styles/vars.json",
   },
   modules: {
     baseline: {
@@ -75,10 +75,8 @@ module.exports = defineConfig((pollen) => ({
     },
     font: {
       ...pollen.font,
-      heading: "'League Spartan Variable', helvetica, arial, sans-serif",
-      body: "'Quicksand Variable', sans-serif",
-      serif:
-        "'Noto Serif Display Variable', 'Noto Serif Display', 'Noto Serif', georgia, times, serif",
+      heading: "'Libre Baskerville', sans",
+      body: "'Work Sans', sans-serif",
     },
     scale: {
       0: ts.sm.base.fs,
@@ -106,67 +104,47 @@ module.exports = defineConfig((pollen) => ({
       minion: "calc(var(--scale-0000) / 0.8)",
     },
     color: {
-      // primary brand colour...
-      "primary-50": "hsl(20, 6%, 40%)",
-      "primary-100": "hsl(22, 6%, 36%)",
-      "primary-200": "hsl(20, 6%, 32%)",
-      "primary-300": "hsl(20, 6%, 28%)",
-      "primary-400": "hsl(17, 6%, 24%)",
-      "primary-500": "hsl(20, 6%, 20%)",
-      "primary-600": "hsl(24, 6%, 16%)",
-      "primary-700": "hsl(20, 6%, 9%)",
-      "primary-800": "hsl(20, 7%, 8%)",
-      "primary-900": "hsl(0, 5%, 4%)",
-      primary: "var(--color-primary-700)",
-      "primary-dark": "var(--color-primary-900)",
-      "primary-light": "var(--color-primary-500)",
-      // secondary brand colour...
-      secondary: "hsl(240, 100%, 99%)",
-      "secondary-dark": "hsl(240, 100%, 96%)",
-      "secondary-darker": "hsl(240, 100%, 92%)",
-      // supplementary brand colour...
-      "supplenentary-50": `hsl(46, 37%, 72%)`,
-      "supplementary-100": `hsl(46, 37%, 68%)`,
-      "supplementary-200": `hsl(46, 37%, 64%)`,
-      "supplementary-300": `hsl(46, 37%, 60%)`,
-      "supplementary-400": `hsl(46, 37%, 56%)`,
-      "supplementary-500": `hsl(46, 37%, 49%)`,
-      "supplementary-600": `hsl(46, 37%, 48%)`,
-      "supplementary-700": `hsl(46, 37%, 44%)`,
-      "supplementary-800": `hsl(46, 37%, 40%)`,
-      "supplementary-900": `hsl(46, 37%, 36%)`,
-      supplementary: "var(--color-supplementary-500)",
-      "supplementary-dark": "var(--color-supplementary-700)",
-      "supplementary-light": "var(--color-supplementary-300)",
-      white: "hsl(0,0%,100%)",
-      black: "hsl(0,0%,0%)",
-      grey: "hsl(0,0%,50%)",
-      "grey-dark": "hsl(0,0%,25%)",
-      "grey-light": "hsl(0,0%,93%)",
-      "grey-lighter:": "hsl(0,0%,75%)",
-      "ink-light": "hsl(0,0%,40%)",
-      ink: "hsl(0,0%,24%)",
-      "ink-dark": "hsl(0,0%,16%)",
-      success: "hsl(170, 79%, 39%)",
-      "success-dark": "hsl(120, 100%, 36%)",
-      "success-light": "hsl(170, 79%, 32%)",
-      warning: "hsl(13, 94%, 63%)",
-      "warning-dark": "hsl(37, 98%, 48%)",
-      "warning-light": "hsl(13, 94%, 56%)",
-      danger: "hsl(352, 93%, 53%)",
-      "danger-dark": "hsl(352, 93%, 48%)",
-      "danger-light": "hsl(352, 93%, 64%)",
-      info: "hsl(215, 76%, 57%)",
-      "info-dark": "hsl(215, 76%, 52%)",
-      "info-light": "hsl(215, 76%, 68%)",
-
-      "paper-light": "hsl(33,38%,97%)",
-      paper: "hsl(33,38%,94%)",
-      "paper-dark": "hsl(33,38%,81%)",
-
-      headings: "var(--color-ink-dark)",
-      paragraphs: "var(--color-ink)",
-      background: "var(--color-paper)",
+      "primary-50": "hsl(143,37.9%,79.8%)",
+      "primary-100": "hsl(144,38.3%,73.9%)",
+      "primary-300": "hsl(143,37.8%,50.8%)",
+      "primary-400": "hsl(143,58.8%,39%)",
+      "primary-500": "hsl(143,100%,27.5%)",
+      "primary-600": "hsl(143,100%,23.1%)",
+      "primary-700": "hsl(143,100%,18.6%)",
+      "primary-800": "hsl(143,100%,14.3%)",
+      "primary-900": "hsl(143,100%,9.8%)",
+      primary: "var(--color-primary-500)",
+      "secondary-50": "hsl(75,56.5%,86.5%)",
+      "secondary-100": "hsl(75,55.1%,82.5%)",
+      "secondary-200": "hsl(74,55%,74.7%)",
+      "secondary-300": "hsl(75,56%,67.1%)",
+      "secondary-400": "hsl(75,55.8%,59.2%)",
+      "secondary-500": "hsl(75,55.6%,51.4%)",
+      "secondary-600": "hsl(75,52.7%,43.1%)",
+      "secondary-700": "hsl(75,52.8%,34.9%)",
+      "secondary-800": "hsl(75,52.9%,26.7%)",
+      "secondary-900": "hsl(74,53.2%,18.4%)",
+      secondary: "var(--color-secondary-500)",
+      "dark-50": "hsl(210,8.3%,81.2%)",
+      "dark-100": "hsl(210,8.1%,75.7%)",
+      "dark-200": "hsl(210,7.9%,65.1%)",
+      "dark-300": "hsl(212,8.2%,54.3%)",
+      "dark-400": "hsl(211,10.3%,43.7%)",
+      "dark-500": "hsl(212,16.7%,32.9%)",
+      "dark-600": "hsl(211,16.3%,27.6%)",
+      "dark-700": "hsl(215,16.5%,22.5%)",
+      "dark-800": "hsl(212,17.2%,17.1%)",
+      "dark-900": "hsl(210,16.7%,11.8%)",
+      "light-50": "hsl(0,20%,99%)",
+      "light-100": "hsl(0,14.3%,98.6%)",
+      "light-200": "hsl(0,20%,98%)",
+      "light-300": "hsl(20,23.1%,97.5%)",
+      "light-400": "hsl(20,17.6%,96.7%)",
+      "light-500": "hsl(15,20%,96.1%)",
+      "light-600": "hsl(20,3%,80.6%)",
+      "light-700": "hsl(20,1.7%,65.3%)",
+      "light-800": "hsl(30,0.8%,49.8%)",
+      "light-900": "hsl(30,1.1%,34.5%)",
     },
     size: {
       ...pollen.size,
@@ -294,4 +272,4 @@ module.exports = defineConfig((pollen) => ({
       },
     },
   },
-}));
+}))

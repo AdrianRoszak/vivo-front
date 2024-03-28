@@ -11,6 +11,12 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.5.12)(tailwindcss@3.4.3)
+  '@fontsource-variable/work-sans':
+    specifier: ^5.0.18
+    version: 5.0.18
+  '@fontsource/libre-baskerville':
+    specifier: ^5.0.12
+    version: 5.0.12
   '@portabletext/toolkit':
     specifier: ^2.0.13
     version: 2.0.13
@@ -560,6 +566,7 @@ packages:
   /@babel/highlight@7.24.2:
     resolution: {integrity: sha512-Yac1ao4flkTxTteCDZLEvdxg2fZfz1v8M4QpaGypq/WPDqg3ijHYbDfs+LG5hvzSoqaSZ9/Z9lKSP3CjZjv+pA==}
     engines: {node: '>=6.9.0'}
+    requiresBuild: true
     dependencies:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
@@ -2642,6 +2649,14 @@ packages:
 
   /@floating-ui/utils@0.2.1:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
+    dev: false
+
+  /@fontsource-variable/work-sans@5.0.18:
+    resolution: {integrity: sha512-g9QIvni8hnIJdS7e2/Ba1pvHBA2HlIfohhAtycV3kw8t4rj7vIu6efJz5Qvh7I+Qy5vCIfog1fylvqsFeCEx+A==}
+    dev: false
+
+  /@fontsource/libre-baskerville@5.0.12:
+    resolution: {integrity: sha512-y+3d/p8lRlwQFKcjWxnEAsk0pYDEyy4Eda2CVq3TO0gYltcr4MpZl0X4UqrX6pjsMGhCwJPUZTbM2cm04YlNUg==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:
