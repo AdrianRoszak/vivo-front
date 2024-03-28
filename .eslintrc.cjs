@@ -14,11 +14,12 @@ module.exports = {
     ecmaVersion: "latest",
   },
   rules: {
+    "prefer-const": "error",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-use-before-define": "off",
