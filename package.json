@@ -11,9 +11,16 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@portabletext/toolkit": "^2.0.13",
     "@sanity/astro": "^3.0.0",
     "@sanity/client": "^6.15.7",
     "astro": "^4.5.12",
+    "astro-portabletext": "^0.9.7",
+    "astro-sanity": "^1.1.7",
+    "pollen-css": "^4.6.2",
     "typescript": "^5.4.3"
+  },
+  "volta": {
+    "node": "21.7.1"
   }
 }
