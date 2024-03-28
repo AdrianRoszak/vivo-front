@@ -18,5 +18,16 @@
     "titleBar.inactiveBackground": "#a6c83e99",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "a6c83e"
+  "peacock.color": "a6c83e",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
