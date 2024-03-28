@@ -22,5 +22,8 @@
   },
   "volta": {
     "node": "21.7.1"
+  },
+  "devDependencies": {
+    "vite": "^5.2.6"
   }
 }
