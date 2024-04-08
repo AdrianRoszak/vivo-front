@@ -1,0 +1,19 @@
+---
+import CustomImage from "./CustomImage.astro"
+---
+
+<nav class:list={["flex", "justify-between", "items-center"]}>
+  <a href="/">
+    <CustomImage
+      src="/src/assets/vivo-logo.jpg"
+      alt="Vivo logo"
+      wrapperClasses={["w-32"]}
+      width={300}
+      height={300}
+    />
+  </a>
+  <div>
+    <a> Umów wizytę </a>
+    <a> Facebook </a>
+  </div>
+</nav>

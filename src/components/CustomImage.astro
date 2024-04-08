@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets"
+import type { ImageMetadata } from "astro"
+
+type Props = {
+  src: string
+  alt: string
+  width: number
+  height: number
+  wrapperClasses?: string[]
+}
+
+const { src, alt, width, height, wrapperClasses } = Astro.props
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{png,jpg,jpeg}",
+)
+---
+
+<div class:list={["relative", wrapperClasses]}>
+  <Image src={images[src]()} alt={alt} width={width} height={height} />
+</div>
