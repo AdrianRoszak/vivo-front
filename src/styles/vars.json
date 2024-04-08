@@ -1,19 +1,19 @@
 {
   "scale": {
-    "0": "16px",
-    "1": "19px",
-    "2": "23px",
-    "3": "28px",
-    "4": "33px",
-    "5": "40px",
-    "6": "48px",
-    "7": "57px",
-    "8": "69px",
-    "9": "83px",
-    "10": "99px",
-    "00": "13px",
-    "000": "11px",
-    "0000": "9px",
+    "0": "14px",
+    "1": "17px",
+    "2": "20px",
+    "3": "24px",
+    "4": "29px",
+    "5": "35px",
+    "6": "42px",
+    "7": "50px",
+    "8": "60px",
+    "9": "72px",
+    "10": "87px",
+    "00": "12px",
+    "000": "10px",
+    "0000": "8px",
     "canon": "var(--scale-5)",
     "trafalgar": "var(--scale-4)",
     "double-pica": "var(--scale-3)",
@@ -287,6 +287,6 @@
     "page": "minmax(var(--grid-page-gutter), 1fr) minmax(0, var(--grid-page-width)) minmax(var(--grid-page-gutter), 1fr)"
   },
   "baseline": {
-    "height": "21px"
+    "height": "18px"
   }
 }

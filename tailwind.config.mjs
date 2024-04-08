@@ -7,6 +7,17 @@ export default {
         body: "var(--font-body)",
         heading: "var(--font-heading)",
       },
+      fontSize: {
+        canon: "var(--scale-canon)",
+        trafalgar: "var(--scale-trafalgar)",
+        "double-pica": "var(--scale-double-pica)",
+        "great-primer": "var(--scale-great-primer)",
+        pica: "var(--scale-pica)",
+        "long-primer": "var(--scale-long-primer)",
+        brevier: "var(--scale-brevier)",
+        minion: "var(--scale-minion)",
+        "body-copy": "var(--scale-body-copy)",
+      },
       colors: {
         primary: "var(--color-primary)",
         "primary-50": "var(--color-primary-50)",

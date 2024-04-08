@@ -2,18 +2,17 @@
 import CustomImage from "./CustomImage.astro"
 ---
 
-<nav class:list={["flex", "justify-between", "items-center"]}>
-  <a href="/">
+<nav class:list={["flex", "justify-between", "items-center", "bg-light-50"]}>
+  <a href="/" class:list={["logo", "duration-300", "mix-blend-multiply"]}>
     <CustomImage
       src="/src/assets/vivo-logo.jpg"
       alt="Vivo logo"
-      wrapperClasses={["w-32"]}
+      wrapperClasses={["w-20", "md:w-32"]}
       width={300}
       height={300}
     />
   </a>
   <div>
-    <a> Umów wizytę </a>
-    <a> Facebook </a>
+    <a class:list={["button", "button-primary"]}>Umów wizytę</a>
   </div>
 </nav>

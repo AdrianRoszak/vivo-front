@@ -1,4 +1,8 @@
 ---
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+import Nav from "../components/Nav.astro"
+import "@/src/styles/globals.css"
 import "@/src/styles/vars.css"
 
 interface Props {
@@ -19,6 +23,14 @@ const { title } = Astro.props
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <Header>
+      <Nav />
+    </Header>
+    <main>
+      <slot />
+    </main>
+    <Footer>
+      <p>footer</p>
+    </Footer>
   </body>
 </html>

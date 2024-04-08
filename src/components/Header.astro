@@ -2,8 +2,33 @@
 import Container from "@/src/components/Container.astro"
 ---
 
-<header class:list={["py-4"]}>
+<header
+  class:list={[
+    "header",
+    "py-4",
+    "sticky",
+    "top-0",
+    "bg-light-50",
+    "duration-300",
+  ]}
+>
   <Container>
     <slot />
   </Container>
 </header>
+
+<script>
+  const header = document.querySelector("header")
+
+  function handleScroll() {
+    if (header) {
+      if (window.scrollY > 100) {
+        header.classList.add("header--scrolled")
+      } else {
+        header.classList.remove("header--scrolled")
+      }
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll)
+</script>

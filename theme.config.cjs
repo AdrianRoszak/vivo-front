@@ -58,7 +58,7 @@ function calculateTypoScale(
 }
 
 const ts = {
-  sm: calculateTypoScale(16, RATIO.minorThird, 1.3, "px"),
+  sm: calculateTypoScale(14, RATIO.minorThird, 1.3, "px"),
   md: calculateTypoScale(16, RATIO.majorThird, 1.4, "px"),
   lg: calculateTypoScale(18, RATIO.perfectFourth, 1.4, "px"),
   xl: calculateTypoScale(20, RATIO.augmentedFourth, 1.4, "px"),

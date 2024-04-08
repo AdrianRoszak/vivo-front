@@ -3,20 +3,20 @@
   * Edit Pollen config to update
   */
 :root {
-  --scale-0: 16px;
-  --scale-1: 19px;
-  --scale-2: 23px;
-  --scale-3: 28px;
-  --scale-4: 33px;
-  --scale-5: 40px;
-  --scale-6: 48px;
-  --scale-7: 57px;
-  --scale-8: 69px;
-  --scale-9: 83px;
-  --scale-10: 99px;
-  --scale-00: 13px;
-  --scale-000: 11px;
-  --scale-0000: 9px;
+  --scale-0: 14px;
+  --scale-1: 17px;
+  --scale-2: 20px;
+  --scale-3: 24px;
+  --scale-4: 29px;
+  --scale-5: 35px;
+  --scale-6: 42px;
+  --scale-7: 50px;
+  --scale-8: 60px;
+  --scale-9: 72px;
+  --scale-10: 87px;
+  --scale-00: 12px;
+  --scale-000: 10px;
+  --scale-0000: 8px;
   --scale-canon: var(--scale-5);
   --scale-trafalgar: var(--scale-4);
   --scale-double-pica: var(--scale-3);
@@ -260,7 +260,7 @@
   --grid-page-main: 2 / 3;
   --grid-page: minmax(var(--grid-page-gutter), 1fr)
     minmax(0, var(--grid-page-width)) minmax(var(--grid-page-gutter), 1fr);
-  --baseline-height: 21px;
+  --baseline-height: 18px;
 }
 
 @media (min-width: 640px) {
