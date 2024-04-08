@@ -1,0 +1,20 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types"
+import { serveFontSize } from "../helpers"
+
+type HeadingHTMLTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+
+type HeadingType<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag
+  text: string
+  size?: string
+}>
+
+type Props = HeadingType<HeadingHTMLTag>
+
+const { as: Tag = "h1", text, size = "long-primer" } = Astro.props
+---
+
+<Tag class:list={["italic", "font-heading", serveFontSize(size)]}>
+  {text}
+</Tag>

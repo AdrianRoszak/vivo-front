@@ -32,6 +32,9 @@ dependencies:
   astro:
     specifier: ^4.5.12
     version: 4.5.12(@types/node@20.11.30)(typescript@5.4.3)
+  astro-google-fonts-optimizer:
+    specifier: ^0.2.2
+    version: 0.2.2
   astro-portabletext:
     specifier: ^0.9.7
     version: 0.9.7
@@ -4103,6 +4106,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /astro-google-fonts-optimizer@0.2.2:
+    resolution: {integrity: sha512-YQxp/ExF3NzUomAGuu1VKecO7/ETRnhnE50gqwAqfpbGPZFj4MYa4XxK1ukBg3R63QmKuE5uurOiKmXiLzttuw==}
+    dev: false
 
   /astro-portabletext@0.9.7:
     resolution: {integrity: sha512-kU2C0FQ+DE2DkoTkPDNbJXH/+V/9ioDy4udQp2uT3qsGqQaKDhVBbkWcVuCVgxB006cq71SUbj6svEtiFzKLCg==}

@@ -1,7 +1,17 @@
 ---
+import Container from "../components/Container.astro"
+import DecorativeText from "../components/DecorativeText.astro"
 import Layout from "../layouts/Layout.astro"
 ---
 
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo">
-  <section>section</section>
+  <section>
+    <Container>
+      <DecorativeText
+        as="h1"
+        size="canon"
+        text="Nasza poradnia świadczy usługi terapeutyczne dla dzieci i młodzieży"
+      />
+    </Container>
+  </section>
 </Layout>

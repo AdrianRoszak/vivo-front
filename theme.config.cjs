@@ -58,10 +58,10 @@ function calculateTypoScale(
 }
 
 const ts = {
-  sm: calculateTypoScale(14, RATIO.minorThird, 1.3, "px"),
-  md: calculateTypoScale(16, RATIO.majorThird, 1.4, "px"),
-  lg: calculateTypoScale(18, RATIO.perfectFourth, 1.4, "px"),
-  xl: calculateTypoScale(20, RATIO.augmentedFourth, 1.4, "px"),
+  sm: calculateTypoScale(14, RATIO.majorThird, 1.3, "px"),
+  md: calculateTypoScale(16, RATIO.majorThird, 1.2, "px"),
+  lg: calculateTypoScale(16, RATIO.majorThird, 1.2, "px"),
+  xl: calculateTypoScale(18, RATIO.perfectFourth, 1.2, "px"),
 }
 
 module.exports = defineConfig((pollen) => ({
@@ -250,7 +250,7 @@ module.exports = defineConfig((pollen) => ({
         "0000": ts.lg.down[3].fs,
       },
     },
-    "(min-width: 1920px)": {
+    "(min-width: 1960px)": {
       baseline: {
         height: ts.xl.base.lh,
       },
