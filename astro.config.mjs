@@ -22,6 +22,14 @@ export default defineConfig({
     tailwind(),
   ],
   output: "static",
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+    devImageService: "sharp",
+    imagesConfig: {
+      sizes: [320, 640, 768, 1024, 1280, 1536, 1920],
+      formats: ["image/avif", "image/webp"],
+      domains: [],
+    },
+  }),
   prefetch: true,
 })
