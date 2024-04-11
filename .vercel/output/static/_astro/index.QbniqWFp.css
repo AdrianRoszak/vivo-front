@@ -17,14 +17,7 @@ html,
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-  font-family:
-    ui-sans-serif,
-    system-ui,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    Segoe UI Symbol,
-    "Noto Color Emoji";
+  font-family: var(--font-body);
   font-feature-settings: normal;
   font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent;
@@ -333,15 +326,14 @@ video {
 }
 .container {
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
-@media (min-width: 640px) {
+@media (min-width: 100%) {
   .container {
-    max-width: 640px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
+    max-width: 100%;
   }
 }
 @media (min-width: 1024px) {
@@ -354,11 +346,6 @@ video {
     max-width: 1280px;
   }
 }
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
 .relative {
   position: relative;
 }
@@ -368,9 +355,9 @@ video {
 .top-0 {
   top: 0;
 }
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .flex {
   display: flex;
@@ -390,20 +377,23 @@ video {
 .bg-light-50 {
   background-color: var(--color-light-50);
 }
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 .py-20 {
   padding-top: 5rem;
   padding-bottom: 5rem;
+}
+.py-36 {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
 }
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.font-heading {
+.font-deco {
   font-family: var(--font-heading);
+}
+.font-sans {
+  font-family: var(--font-body);
 }
 .text-body-copy {
   font-size: var(--scale-body-copy);
@@ -428,6 +418,12 @@ video {
 }
 .text-pica {
   font-size: var(--scale-pica);
+}
+.font-extralight {
+  font-weight: 200;
+}
+.uppercase {
+  text-transform: uppercase;
 }
 .italic {
   font-style: italic;
@@ -514,6 +510,14 @@ main {
 .button-secondary:hover {
   background-color: var(--color-secondary-200);
 }
+.header {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1680px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .header:after {
   content: "";
   position: absolute;
@@ -548,21 +552,30 @@ main {
     width: 8rem;
   }
 }
+@media (min-width: 1024px) {
+  .lg\:w-4\/5 {
+    width: 80%;
+  }
+  .lg\:py-60 {
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+  }
+}
 :root {
   --scale-0: 14px;
-  --scale-1: 18px;
-  --scale-2: 22px;
-  --scale-3: 27px;
-  --scale-4: 34px;
-  --scale-5: 43px;
-  --scale-6: 53px;
-  --scale-7: 67px;
-  --scale-8: 83px;
-  --scale-9: 104px;
-  --scale-10: 130px;
-  --scale-00: 11px;
-  --scale-000: 9px;
-  --scale-0000: 7px;
+  --scale-1: 17px;
+  --scale-2: 20px;
+  --scale-3: 24px;
+  --scale-4: 29px;
+  --scale-5: 35px;
+  --scale-6: 42px;
+  --scale-7: 50px;
+  --scale-8: 60px;
+  --scale-9: 72px;
+  --scale-10: 87px;
+  --scale-00: 12px;
+  --scale-000: 10px;
+  --scale-0000: 8px;
   --scale-canon: var(--scale-5);
   --scale-trafalgar: var(--scale-4);
   --scale-double-pica: var(--scale-3);
