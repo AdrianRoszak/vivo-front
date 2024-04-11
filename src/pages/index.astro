@@ -1,8 +1,12 @@
 ---
-import Container from "../components/Container.astro"
-import DecorativeText from "../components/DecorativeText.astro"
-import HeadingText from "../components/HeadingText.astro"
-import Layout from "../layouts/Layout.astro"
+import { getHomePage } from "@/src/data"
+
+import Container from "@/src/components/Container.astro"
+import DecorativeText from "@/src/components/DecorativeText.astro"
+import HeadingText from "@/src/components/HeadingText.astro"
+import Layout from "@/src/layouts/Layout.astro"
+
+const data = await getHomePage()
 ---
 
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo">
@@ -13,12 +17,9 @@ import Layout from "../layouts/Layout.astro"
           <HeadingText
             as="h1"
             size="great-primer"
-            text="Poradnia psychologiczno-pedagogiczna"
+            text={data.sectionHero.headline}
           />
-          <DecorativeText
-            size="canon"
-            text="Nasza poradnia świadczy usługi terapeutyczne dla dzieci i młodzieży"
-          />
+          <DecorativeText size="canon" text={data.sectionHero.tagline} />
         </div>
       </div>
     </Container>
