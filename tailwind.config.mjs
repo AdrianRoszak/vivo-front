@@ -2,10 +2,20 @@
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
+    container: {
+      center: true,
+      padding: "1rem",
+      screens: {
+        sm: "100%",
+        md: "100%",
+        lg: "1024px",
+        xl: "1280px",
+      },
+    },
     extend: {
       fontFamily: {
-        body: "var(--font-body)",
-        heading: "var(--font-heading)",
+        sans: "var(--font-body)",
+        deco: "var(--font-heading)",
       },
       fontSize: {
         canon: "var(--scale-canon)",

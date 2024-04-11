@@ -1,17 +1,26 @@
 ---
 import Container from "../components/Container.astro"
 import DecorativeText from "../components/DecorativeText.astro"
+import HeadingText from "../components/HeadingText.astro"
 import Layout from "../layouts/Layout.astro"
 ---
 
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo">
   <section>
     <Container>
-      <DecorativeText
-        as="h1"
-        size="canon"
-        text="Nasza poradnia świadczy usługi terapeutyczne dla dzieci i młodzieży"
-      />
+      <div class:list={["py-36", "lg:py-60", "flex", "items-center"]}>
+        <div class:list={["lg:w-4/5"]}>
+          <HeadingText
+            as="h1"
+            size="great-primer"
+            text="Poradnia psychologiczno-pedagogiczna"
+          />
+          <DecorativeText
+            size="canon"
+            text="Nasza poradnia świadczy usługi terapeutyczne dla dzieci i młodzieży"
+          />
+        </div>
+      </div>
     </Container>
   </section>
 </Layout>

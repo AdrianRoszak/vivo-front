@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 body {
-  @apply flex min-h-screen flex-col bg-light-50 font-body text-body-copy text-dark-500;
+  @apply flex min-h-screen flex-col bg-light-50 font-sans text-body-copy text-dark-500;
 }
 
 main {
@@ -21,6 +21,10 @@ main {
 
 .button-secondary {
   @apply bg-secondary-500 text-light-50 hover:bg-secondary-200;
+}
+
+.header {
+  @apply mx-auto w-full max-w-[1680px] px-4;
 }
 
 .header::after {

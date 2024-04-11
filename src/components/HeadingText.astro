@@ -1,7 +1,7 @@
 ---
 import { serveFontSize } from "../helpers"
 import type { HTMLTag, Polymorphic } from "astro/types"
-import type { TypographyVariant } from "../types"
+import type { HeadingVariant } from "../types"
 
 type DecorativeTexrProps<Tag extends HTMLTag> = Polymorphic<{
   as: Tag
@@ -9,11 +9,18 @@ type DecorativeTexrProps<Tag extends HTMLTag> = Polymorphic<{
   size?: string
 }>
 
-type Props = DecorativeTexrProps<TypographyVariant>
+type Props = DecorativeTexrProps<HeadingVariant>
 
 const { as: Tag = "p", text, size = "long-primer" } = Astro.props
 ---
 
-<Tag class:list={["italic", "font-deco", "my-2", serveFontSize(size)]}>
+<Tag
+  class:list={[
+    "uppercase",
+    "font-extralight",
+    "font-sans",
+    serveFontSize(size),
+  ]}
+>
   {text}
 </Tag>

@@ -4,19 +4,19 @@
   */
 :root {
   --scale-0: 14px;
-  --scale-1: 18px;
-  --scale-2: 22px;
-  --scale-3: 27px;
-  --scale-4: 34px;
-  --scale-5: 43px;
-  --scale-6: 53px;
-  --scale-7: 67px;
-  --scale-8: 83px;
-  --scale-9: 104px;
-  --scale-10: 130px;
-  --scale-00: 11px;
-  --scale-000: 9px;
-  --scale-0000: 7px;
+  --scale-1: 17px;
+  --scale-2: 20px;
+  --scale-3: 24px;
+  --scale-4: 29px;
+  --scale-5: 35px;
+  --scale-6: 42px;
+  --scale-7: 50px;
+  --scale-8: 60px;
+  --scale-9: 72px;
+  --scale-10: 87px;
+  --scale-00: 12px;
+  --scale-000: 10px;
+  --scale-0000: 8px;
   --scale-canon: var(--scale-5);
   --scale-trafalgar: var(--scale-4);
   --scale-double-pica: var(--scale-3);
