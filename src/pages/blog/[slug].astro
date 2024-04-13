@@ -1,12 +1,29 @@
 ---
+import { getBlogArticlesSlugs } from "@/src/data/get-blog-articles-slugs"
 import Layout from "@/src/layouts/Layout.astro"
 
-export function getStaticPaths() {
-  return [
-    { params: { slug: "jak-zrobic-zeby-artykul-sie-wyswietlal" } },
-    { params: { slug: "rover" } },
-    { params: { slug: "spot" } },
-  ]
+export async function getStaticPaths() {
+  async function obtainBlogArticlesSlugs() {
+    const slugs = await getBlogArticlesSlugs()
+
+    type Slug = {
+      slug: {
+        current: string
+      }
+    }
+
+    return slugs.map((slug: Slug) => {
+      return {
+        params: {
+          slug: slug.slug.current,
+        },
+      }
+    })
+  }
+
+  const slugs = await obtainBlogArticlesSlugs()
+
+  return [...slugs]
 }
 
 const { slug } = Astro.params

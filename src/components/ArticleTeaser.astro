@@ -1,9 +1,10 @@
 ---
 import Card from "./Card.astro"
 
-const slug = "jak-zrobic-zeby-artykul-sie-wyswietlal"
+const { title, slug } = Astro.props.data
+
 ---
 
-<a href={`blog/${slug}`}>
-  <Card> artykuł </Card>
+<a href={`blog/${slug.current}`}>
+  <Card>{title}</Card>
 </a>
