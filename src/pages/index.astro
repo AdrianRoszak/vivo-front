@@ -5,6 +5,7 @@ import Container from "@/src/components/Container.astro"
 import DecorativeText from "@/src/components/DecorativeText.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
 import Layout from "@/src/layouts/Layout.astro"
+import ArticleTeaser from "../components/ArticleTeaser.astro"
 
 const data = await getHomePage()
 ---
@@ -14,14 +15,24 @@ const data = await getHomePage()
     <Container>
       <div class:list={["py-36", "lg:py-60", "flex", "items-center"]}>
         <div class:list={["lg:w-4/5"]}>
-          <HeadingText
-            as="h1"
-            size="great-primer"
-            text={data.sectionHero.headline}
-          />
-          <DecorativeText size="canon" text={data.sectionHero.tagline} />
+          <HeadingText as="h1" text={data.sectionHero.headline} />
+          <DecorativeText text={data.sectionHero.tagline} />
         </div>
       </div>
+    </Container>
+  </section>
+  <section>
+    <Container>
+      <div class:list={["text-center"]}>
+        <HeadingText as="h1" text={"Artykuły"} />
+        <DecorativeText text={"Nasze artykuł"} />
+      </div>
+      <div>
+        <ArticleTeaser />
+      </div>
+      <a href="/blog" class:list={["button", "button-primary"]}>
+        Czytaj pozostałe
+      </a>
     </Container>
   </section>
 </Layout>

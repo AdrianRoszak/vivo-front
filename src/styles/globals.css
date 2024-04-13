@@ -8,11 +8,10 @@ body {
 
 main {
   @apply flex-grow;
-  height: 2000px;
 }
 
 .button {
-  @apply rounded-md px-8 py-4 duration-200 hover:cursor-pointer md:px-11;
+  @apply inline-block rounded-md px-8 py-4 duration-200 hover:cursor-pointer md:px-11;
 }
 
 .button-primary {
@@ -33,7 +32,7 @@ main {
 }
 
 .header--scrolled {
-  @apply p-0;
+  @apply py-0;
 }
 
 .header--scrolled::after {

@@ -11,7 +11,7 @@ type DecorativeTexrProps<Tag extends HTMLTag> = Polymorphic<{
 
 type Props = DecorativeTexrProps<TypographyVariant>
 
-const { as: Tag = "p", text, size = "long-primer" } = Astro.props
+const { as: Tag = "p", text, size = "canon" } = Astro.props
 ---
 
 <Tag class:list={["italic", "font-deco", "my-2", serveFontSize(size)]}>

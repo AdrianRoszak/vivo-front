@@ -1,0 +1,17 @@
+---
+import Layout from "@/src/layouts/Layout.astro"
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "jak-zrobic-zeby-artykul-sie-wyswietlal" } },
+    { params: { slug: "rover" } },
+    { params: { slug: "spot" } },
+  ]
+}
+
+const { slug } = Astro.params
+---
+
+<Layout title={slug}>
+  <section>strona pojedynczego artykułu</section>
+</Layout>
