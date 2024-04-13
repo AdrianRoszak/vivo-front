@@ -1,15 +1,36 @@
 ---
+import type { BlogArticleType } from "../types"
 import Card from "./Card.astro"
 
-const { title, slug } = Astro.props.data
+const { title, slug, published, author } = Astro.props.data as BlogArticleType
+const formatedDate = formatDateString(published)
+
+type DateTimeFormatOptions = {
+  year: "numeric" | "2-digit"
+  month: "numeric" | "2-digit" | "long" | "short" | "narrow"
+  day: "numeric" | "2-digit"
+}
+
+function formatDateString(dateString: string) {
+  const date = new Date(dateString)
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }
+
+  return date.toLocaleDateString("pl-PL", options as DateTimeFormatOptions)
+}
 ---
 
-<a href={`blog/${slug.current}`}>
+<a href={`blog/${slug}`}>
   <article>
     <Card>
-      card image categories
+      image categories
       {title}
-      description author date
+      description
+      {author.name}
+      {formatedDate}
     </Card>
   </article>
 </a>

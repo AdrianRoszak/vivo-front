@@ -26,6 +26,10 @@ function digestHomePageData(data): HomePageData {
 function digestBlogArticle(article): BlogArticleType {
   return {
     title: article.title,
-    slug: article.slug,
+    slug: article.slug.current,
+    published: article.publishedAt,
+    author: {
+      name: article.author.name,
+    },
   }
 }
