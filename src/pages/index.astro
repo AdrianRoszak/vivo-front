@@ -7,8 +7,6 @@ import HeadingText from "@/src/components/HeadingText.astro"
 import Layout from "@/src/layouts/Layout.astro"
 import ArticleTeaser from "../components/ArticleTeaser.astro"
 
-
-
 const { sectionHero, blogArticles } = await getHomePage()
 ---
 
@@ -29,7 +27,7 @@ const { sectionHero, blogArticles } = await getHomePage()
         <HeadingText as="h1" text={"Artykuły"} />
         <DecorativeText text={"Nasze artykuł"} />
       </div>
-      <div>
+      <div class:list={["grid", "grid-cols-3", "gap-4"]}>
         {blogArticles.map((article) => <ArticleTeaser data={article} />)}
       </div>
       <a href="/blog" class:list={["button", "button-primary"]}>

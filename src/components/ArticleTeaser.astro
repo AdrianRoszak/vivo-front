@@ -2,9 +2,14 @@
 import Card from "./Card.astro"
 
 const { title, slug } = Astro.props.data
-
 ---
 
 <a href={`blog/${slug.current}`}>
-  <Card>{title}</Card>
+  <article>
+    <Card>
+      card image categories
+      {title}
+      description author date
+    </Card>
+  </article>
 </a>
