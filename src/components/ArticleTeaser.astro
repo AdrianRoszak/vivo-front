@@ -7,6 +7,7 @@ import imageUrlBuilder from "@sanity/image-url"
 import { sanityClient } from "sanity:client"
 import { PortableText } from "astro-portabletext"
 import Pill from "./Pill.astro"
+import ArticleTeaserBody from "./ArticleTeaserBody.astro"
 
 const { title, slug, published, author, mainImage, description, categories } =
   Astro.props.data as BlogArticleType
@@ -43,24 +44,38 @@ function urlForImage(source: string) {
     <Card>
       <div class:list={["w-full", "image-75", "relative"]}>
         {
-          mainImage && (
+          mainImage ? (
             <Image
               src={urlForImage(mainImage.source).url()}
               alt={mainImage.alt}
               width={400}
               height={400}
-              class:list={["rounded-md"]}
+              class:list={["rounded-md", "object-cover"]}
+            />
+          ) : (
+            <Image
+              src="/src/assets/vivo-logo.jpg"
+              alt="Logo Vivo"
+              width={400}
+              height={400}
+              class:list={[
+                "rounded-md",
+                "object-contain",
+                "mix-blend-multiply",
+              ]}
             />
           )
         }
       </div>
-      <div class:list={["p-4", "flex", "flex-col", "gap-4"]}>
+      <div class:list={["p-4", "flex", "flex-col", "gap-4", "flex-grow"]}>
         <div class:list={["text-pica", "text-dark-200"]}>{formatedDate}</div>
         <div class:list={["flex", "gap-2", "flex-wrap", "mb-4"]}>
           {categories.map((category) => <Pill>{category}</Pill>)}
         </div>
-        <h2 class:list={["text-great-primer", "leading-6"]}>{title}</h2>
-        <PortableText value={description} />
+        <ArticleTeaserBody>
+          <h2 class:list={["text-great-primer", "leading-6", "line-clamp-3"]}>{title}</h2>
+          <PortableText value={description} />
+        </ArticleTeaserBody>
         <div class:list={["flex", "items-center", "gap-4"]}>
           {
             author.image && (
