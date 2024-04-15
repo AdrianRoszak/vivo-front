@@ -20,13 +20,14 @@ export default {
       fontSize: {
         canon: "var(--scale-canon)",
         trafalgar: "var(--scale-trafalgar)",
+        paragon: "var(--scale-paragon)",
         "double-pica": "var(--scale-double-pica)",
         "great-primer": "var(--scale-great-primer)",
+        "body-copy": "var(--scale-body-copy)",
         pica: "var(--scale-pica)",
         "long-primer": "var(--scale-long-primer)",
         brevier: "var(--scale-brevier)",
         minion: "var(--scale-minion)",
-        "body-copy": "var(--scale-body-copy)",
       },
       colors: {
         primary: "var(--color-primary)",

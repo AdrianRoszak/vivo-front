@@ -5,10 +5,14 @@ import Card from "./Card.astro"
 
 import imageUrlBuilder from "@sanity/image-url"
 import { sanityClient } from "sanity:client"
+import { PortableText } from "astro-portabletext"
+import type { TypedObject } from "astro-portabletext/types"
 
-const { title, slug, published, author, mainImage } = Astro.props
+const { title, slug, published, author, mainImage, description } = Astro.props
   .data as BlogArticleType
 const formatedDate = formatDateString(published)
+
+
 
 type DateTimeFormatOptions = {
   year: "numeric" | "2-digit"
@@ -44,15 +48,23 @@ function urlForImage(source: string) {
               alt={mainImage.alt}
               width={200}
               height={200}
-              class:list={["absolute", "w-full", "h-full", "object-cover"]}
+              class:list={[
+                "absolute",
+                "w-full",
+                "h-full",
+                "object-cover",
+                "rounded-md",
+              ]}
             />
           </div>
         )
       }
-      {formatedDate}
-      image categories
-      {title}
-      description
+      <div class:list={["p-4", "flex", "flex-col", "gap-4"]}>
+        <div class:list={["text-pica", "text-dark-200"]}>{formatedDate}</div>
+        <h2 class:list={["text-great-primer", "leading-6"]}>{title}</h2>
+        <PortableText value={description} />
+      </div>
+      image categories description
       <div class:list={["flex", "items-center", "gap-4"]}>
         {
           author.image && (

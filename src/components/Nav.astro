@@ -2,7 +2,16 @@
 import CustomImage from "./CustomImage.astro"
 ---
 
-<nav class:list={["flex", "justify-between", "items-center", "bg-light-50"]}>
+<nav
+  class:list={[
+    "flex",
+    "justify-between",
+    "items-center",
+    "bg-light-50",
+    "max-w-[1680px]",
+    "mx-auto",
+  ]}
+>
   <a href="/" class:list={["logo", "duration-300", "mix-blend-multiply"]}>
     <CustomImage
       src="/src/assets/vivo-logo.jpg"

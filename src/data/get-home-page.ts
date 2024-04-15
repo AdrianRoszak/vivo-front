@@ -24,7 +24,7 @@ function digestHomePageData(data): HomePageData {
 
 //@ts-ignore
 function digestBlogArticle(article): BlogArticleType {
-  const { title, mainImage, slug, publishedAt, author } = article
+  const { title, mainImage, slug, publishedAt, author, articleTeaser } = article
 
   //@ts-ignore
   function secureImage(image) {
@@ -39,6 +39,7 @@ function digestBlogArticle(article): BlogArticleType {
 
   return {
     title,
+    description: articleTeaser,
     mainImage: secureImage(mainImage),
     slug: slug.current,
     published: publishedAt,

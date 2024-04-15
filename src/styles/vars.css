@@ -19,8 +19,9 @@
   --scale-0000: 8px;
   --scale-canon: var(--scale-5);
   --scale-trafalgar: var(--scale-4);
-  --scale-double-pica: var(--scale-3);
-  --scale-great-primer: var(--scale-2);
+  --scale-paragon: var(--scale-3);
+  --scale-double-pica: var(--scale-2);
+  --scale-great-primer: var(--scale-1);
   --scale-body-copy: var(--scale-0);
   --scale-pica: var(--scale-00);
   --scale-long-primer: var(--scale-000);
