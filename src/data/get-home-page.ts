@@ -24,12 +24,27 @@ function digestHomePageData(data): HomePageData {
 
 //@ts-ignore
 function digestBlogArticle(article): BlogArticleType {
+  const { title, mainImage, slug, publishedAt, author } = article
+
+  //@ts-ignore
+  function secureImage(image) {
+    if (image.hasOwnProperty("image")) {
+      return {
+        alt: image.alt,
+        source: image.image.asset._ref,
+      }
+    }
+    return null
+  }
+
   return {
-    title: article.title,
-    slug: article.slug.current,
-    published: article.publishedAt,
+    title,
+    mainImage: secureImage(mainImage),
+    slug: slug.current,
+    published: publishedAt,
     author: {
-      name: article.author.name,
+      name: author.name,
+      image: secureImage(author.image),
     },
   }
 }

@@ -3,11 +3,13 @@ export const queryHomePageData = `{
   sectionHero
 },
   "blogArticles": *[_type == "blogArticle"] {
+    mainImage,
     title,
     slug,
     publishedAt,
     author->{
       name,
+      image,
       slug
     }
   }

@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config"
 import sanity from "@sanity/astro"
 import { loadEnv } from "vite"
 import tailwind from "@astrojs/tailwind"
-import vercel from "@astrojs/vercel/static"
 
 const {
   PUBLIC_SANITY_PROJECT_ID,
@@ -22,14 +21,5 @@ export default defineConfig({
     tailwind(),
   ],
   output: "static",
-  adapter: vercel({
-    imageService: true,
-    devImageService: "sharp",
-    imagesConfig: {
-      sizes: [320, 640, 768, 1024, 1280, 1536, 1920],
-      formats: ["image/avif", "image/webp"],
-      domains: [],
-    },
-  }),
   prefetch: true,
 })
