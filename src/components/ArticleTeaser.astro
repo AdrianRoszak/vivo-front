@@ -38,7 +38,7 @@ function urlForImage(source: string) {
 
 <a
   href={`blog/${slug}`}
-  class:list={["hover:bg-light-500", "flex", "transition-colors"]}
+  class:list={["hover:bg-light-500", "flex", "transition-colors", "rounded-md"]}
 >
   <article class="flex-grow">
     <Card>
@@ -73,10 +73,32 @@ function urlForImage(source: string) {
           {categories.map((category) => <Pill>{category}</Pill>)}
         </div>
         <ArticleTeaserBody>
-          <h2 class:list={["text-great-primer", "leading-6", "line-clamp-3"]}>{title}</h2>
-          <PortableText value={description} />
+          <h2
+            class:list={[
+              "text-great-primer",
+              "leading-6",
+              "line-clamp-3",
+              "text-balance",
+            ]}
+          >
+            {title}
+          </h2>
+          <PortableText
+            value={description}
+            class:list={["line-clamp-5", "text-balance"]}
+          />
         </ArticleTeaserBody>
-        <div class:list={["flex", "items-center", "gap-4"]}>
+        <div
+          class:list={[
+            "flex",
+            "items-center",
+            "gap-4",
+            "border-t",
+            "border-secondary-100",
+            "pt-4",
+            "mt-4",
+          ]}
+        >
           {
             author.image && (
               <div class:list={["w-16", "h-16", "relative"]}>
@@ -103,3 +125,13 @@ function urlForImage(source: string) {
     </Card>
   </article>
 </a>
+
+<style>
+  .image-75 img {
+    transition: transform 0.15s;
+  }
+
+  a:hover .image-75 img {
+    transform: scale(1.05);
+  }
+</style>
