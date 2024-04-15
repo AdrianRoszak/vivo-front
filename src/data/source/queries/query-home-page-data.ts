@@ -12,6 +12,9 @@ export const queryHomePageData = `{
       image,
       slug
     },
-    articleTeaser
+    articleTeaser,
+    categories[]->{
+      title
+    }
   }
 }`

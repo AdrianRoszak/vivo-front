@@ -19,6 +19,7 @@ export type BlogArticleType = {
   }
   mainImage: ImageType | null
   description: TypedObject
+  categories: string[]
 }
 
 export type BlogArticleList = BlogArticleType[]

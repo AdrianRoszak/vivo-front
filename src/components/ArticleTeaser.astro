@@ -6,13 +6,11 @@ import Card from "./Card.astro"
 import imageUrlBuilder from "@sanity/image-url"
 import { sanityClient } from "sanity:client"
 import { PortableText } from "astro-portabletext"
-import type { TypedObject } from "astro-portabletext/types"
+import Pill from "./Pill.astro"
 
-const { title, slug, published, author, mainImage, description } = Astro.props
-  .data as BlogArticleType
+const { title, slug, published, author, mainImage, description, categories } =
+  Astro.props.data as BlogArticleType
 const formatedDate = formatDateString(published)
-
-
 
 type DateTimeFormatOptions = {
   year: "numeric" | "2-digit"
@@ -37,49 +35,55 @@ function urlForImage(source: string) {
 }
 ---
 
-<a href={`blog/${slug}`}>
-  <article>
+<a
+  href={`blog/${slug}`}
+  class:list={["hover:bg-light-500", "flex", "transition-colors"]}
+>
+  <article class="flex-grow">
     <Card>
-      {
-        mainImage && (
-          <div class:list={["w-full", "h-40", "relative"]}>
+      <div class:list={["w-full", "image-75", "relative"]}>
+        {
+          mainImage && (
             <Image
               src={urlForImage(mainImage.source).url()}
               alt={mainImage.alt}
-              width={200}
-              height={200}
-              class:list={[
-                "absolute",
-                "w-full",
-                "h-full",
-                "object-cover",
-                "rounded-md",
-              ]}
+              width={400}
+              height={400}
+              class:list={["rounded-md"]}
             />
-          </div>
-        )
-      }
-      <div class:list={["p-4", "flex", "flex-col", "gap-4"]}>
-        <div class:list={["text-pica", "text-dark-200"]}>{formatedDate}</div>
-        <h2 class:list={["text-great-primer", "leading-6"]}>{title}</h2>
-        <PortableText value={description} />
-      </div>
-      image categories description
-      <div class:list={["flex", "items-center", "gap-4"]}>
-        {
-          author.image && (
-            <div class:list={["w-12", "h-12", "relative"]}>
-              <Image
-                src={urlForImage(author.image.source).url()}
-                alt={author.image.alt}
-                width={200}
-                height={200}
-                class:list={["absolute", "w-full", "h-full", "object-cover"]}
-              />
-            </div>
           )
         }
-        {author.name}
+      </div>
+      <div class:list={["p-4", "flex", "flex-col", "gap-4"]}>
+        <div class:list={["text-pica", "text-dark-200"]}>{formatedDate}</div>
+        <div class:list={["flex", "gap-2", "flex-wrap", "mb-4"]}>
+          {categories.map((category) => <Pill>{category}</Pill>)}
+        </div>
+        <h2 class:list={["text-great-primer", "leading-6"]}>{title}</h2>
+        <PortableText value={description} />
+        <div class:list={["flex", "items-center", "gap-4"]}>
+          {
+            author.image && (
+              <div class:list={["w-16", "h-16", "relative"]}>
+                <Image
+                  src={urlForImage(author.image.source).url()}
+                  alt={author.image.alt}
+                  width={300}
+                  height={300}
+                  class:list={[
+                    "absolute",
+                    "w-full",
+                    "h-full",
+                    "object-cover",
+                    "rounded-full",
+                    "object-top",
+                  ]}
+                />
+              </div>
+            )
+          }
+          {author.name}
+        </div>
       </div>
     </Card>
   </article>

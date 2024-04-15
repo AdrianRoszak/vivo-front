@@ -23,8 +23,18 @@ function digestHomePageData(data): HomePageData {
 }
 
 //@ts-ignore
-function digestBlogArticle(article): BlogArticleType {
-  const { title, mainImage, slug, publishedAt, author, articleTeaser } = article
+function digestBlogArticle(article): BlogArticleType | null {
+  if (!article) return null
+
+  const {
+    title,
+    mainImage,
+    slug,
+    publishedAt,
+    author,
+    articleTeaser,
+    categories,
+  } = article
 
   //@ts-ignore
   function secureImage(image) {
@@ -47,5 +57,6 @@ function digestBlogArticle(article): BlogArticleType {
       name: author.name,
       image: secureImage(author.image),
     },
+    categories: categories.map((category: { title: string }) => category.title),
   }
 }
