@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config"
 import sanity from "@sanity/astro"
 import { loadEnv } from "vite"
 import tailwind from "@astrojs/tailwind"
-import vercelServerless from "@astrojs/vercel/serverless"
+import vercelStatic from "@astrojs/vercel/serverless"
 
 
 const {
@@ -22,7 +22,7 @@ export default defineConfig({
     }),
     tailwind(),
   ],
-  output: "server",
-  adapter: vercelServerless(),
+  output: "static",
+  adapter: vercelStatic(),
   prefetch: true,
 })
