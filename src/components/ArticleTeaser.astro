@@ -42,7 +42,7 @@ function urlForImage(source: string) {
 >
   <article class="flex-grow">
     <Card>
-      <div class:list={["w-full", "image-75", "relative"]}>
+      <div class:list={["w-full", "image-75", "relative", "rounded-md"]}>
         {
           mainImage ? (
             <Image
@@ -79,6 +79,7 @@ function urlForImage(source: string) {
               "leading-6",
               "line-clamp-3",
               "text-balance",
+              "flex-grow"
             ]}
           >
             {title}
@@ -127,11 +128,15 @@ function urlForImage(source: string) {
 </a>
 
 <style>
+  .image-75 {
+    overflow: hidden;
+  }
+
   .image-75 img {
     transition: transform 0.15s;
   }
 
   a:hover .image-75 img {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 </style>

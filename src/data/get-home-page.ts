@@ -1,5 +1,6 @@
+import { digestBlogArticle } from "@/src/data/source/digests"
 import { fetchHomePageData } from "@/src/data/source"
-import type { BlogArticleList, BlogArticleType } from "../types"
+import type { BlogArticleList } from "../types"
 
 type HomePageData = {
   sectionHero: {
@@ -19,44 +20,5 @@ function digestHomePageData(data): HomePageData {
   return {
     sectionHero: data.singletonHome.sectionHero,
     blogArticles: data.blogArticles.map(digestBlogArticle),
-  }
-}
-
-//@ts-ignore
-function digestBlogArticle(article): BlogArticleType | null {
-  if (!article) return null
-
-  const {
-    title,
-    mainImage,
-    slug,
-    publishedAt,
-    author,
-    articleTeaser,
-    categories,
-  } = article
-
-  //@ts-ignore
-  function secureImage(image) {
-    if (image.hasOwnProperty("image")) {
-      return {
-        alt: image.alt,
-        source: image.image.asset._ref,
-      }
-    }
-    return null
-  }
-
-  return {
-    title,
-    description: articleTeaser,
-    mainImage: secureImage(mainImage),
-    slug: slug.current,
-    published: publishedAt,
-    author: {
-      name: author.name,
-      image: secureImage(author.image),
-    },
-    categories: categories.map((category: { title: string }) => category.title),
   }
 }

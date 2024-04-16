@@ -1,7 +1,25 @@
 ---
+import ArticleTeaser from "@/src/components/ArticleTeaser.astro"
+import Container from "@/src/components/Container.astro"
+import TripleGrid from "@/src/components/TripleGrid.astro"
+import { getBlogPage } from "@/src/data"
 import Layout from "@/src/layouts/Layout.astro"
+
+const { blogArticles } = await getBlogPage()
 ---
 
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo">
-  <section>strona artykułów</section>
+  <section>
+    <Container>
+      {
+        blogArticles && (
+          <TripleGrid>
+            {blogArticles.map((article) => (
+              <ArticleTeaser data={article} />
+            ))}
+          </TripleGrid>
+        )
+      }
+    </Container>
+  </section>
 </Layout>
