@@ -31,10 +31,15 @@ export function digestBlogArticle(article): BlogArticleType | null {
     mainImage: secureImage(mainImage),
     slug: slug.current,
     published: publishedAt,
-    author: {
-      name: author.name,
-      image: secureImage(author.image),
-    },
+    author: author
+      ? {
+          name: author.name,
+          image: secureImage(author.image),
+        }
+      : {
+          name: "Redakcja Vivo",
+          image: null,
+        },
     categories: categories.map((category: { title: string }) => category.title),
   }
 }
