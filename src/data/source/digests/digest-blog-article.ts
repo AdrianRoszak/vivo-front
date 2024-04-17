@@ -29,7 +29,7 @@ export function digestBlogArticle(article): BlogArticleType | null {
   return {
     title,
     description: articleTeaser,
-    mainImage: secureImage(mainImage),
+    mainImage: mainImage ? secureImage(mainImage) : null,
     slug: slug.current,
     published: publishedAt,
     author: author
