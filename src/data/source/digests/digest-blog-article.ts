@@ -16,6 +16,7 @@ export function digestBlogArticle(article): BlogArticleType | null {
 
   //@ts-ignore
   function secureImage(image) {
+    if (!image) return null
     if (image.hasOwnProperty("image")) {
       return {
         alt: image.alt,
