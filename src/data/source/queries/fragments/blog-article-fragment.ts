@@ -14,11 +14,11 @@ export const blogArticleFragment = `
   `
 
 export const fullBlogArticleFragment = `
-  ${blogArticleFragment},
-  articleBody
+  articleBody,
+  ${blogArticleFragment}
 `
 
 export const teaserBlogArticleFragment = `
-  ${blogArticleFragment},
-  articleTeaser
+  articleTeaser,
+  ${blogArticleFragment}
 `

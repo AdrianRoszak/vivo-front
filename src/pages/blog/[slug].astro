@@ -1,8 +1,10 @@
 ---
 import Container from "@/src/components/Container.astro"
+import Date from "@/src/components/Date.astro"
 import { getSingleBlogArticle } from "@/src/data"
 import { getBlogArticlesSlugs } from "@/src/data/get-blog-articles-slugs"
 import Layout from "@/src/layouts/Layout.astro"
+import type { BlogArticleType } from "@/src/types"
 
 export async function getStaticPaths() {
   async function obtainBlogArticlesSlugs() {
@@ -29,13 +31,13 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params
-const data = await getSingleBlogArticle(slug)
+const { published } = (await getSingleBlogArticle(slug)) as BlogArticleType
 ---
 
 <Layout title={slug}>
   <section>
     <Container>
-      {data.title}
+      <Date published={published} />
     </Container>
   </section>
 </Layout>

@@ -1,0 +1,9 @@
+---
+import { formatDateString } from "@/src/utils"
+import type { BlogArticleType } from "../types"
+
+const published = Astro.props.published as BlogArticleType["published"]
+const formatedDate = formatDateString(published)
+---
+
+<div class:list={["text-pica", "text-dark-200"]}>{formatedDate}</div>
