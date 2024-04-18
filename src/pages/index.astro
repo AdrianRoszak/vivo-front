@@ -24,7 +24,7 @@ const { sectionHero, sectionBlog, blogArticles } = await getHomePage()
   </section>
   <section>
     <Container>
-      <div class:list={["text-center"]}>
+      <div class:list={["text-center", "mb-12"]}>
         <HeadingText as="h1" text={sectionBlog.headline} />
         <DecorativeText text={sectionBlog.tagline} />
       </div>

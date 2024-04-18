@@ -9,6 +9,7 @@ import ArticleTeaserBody from "@/src/components/article-bones/ArticleTeaserBody.
 import { urlForImage } from "@/src/utils"
 import type { BlogArticleType } from "@/src/types"
 import Date from "../Date.astro"
+import CustomImage from "../CustomImage.astro"
 
 const { title, slug, published, author, mainImage, description, categories } =
   Astro.props.data as BlogArticleType
@@ -111,7 +112,7 @@ const { title, slug, published, author, mainImage, description, categories } =
               </div>
             ) : (
               <div class:list={["w-16", "h-16", "relative"]}>
-                <Image
+                <CustomImage
                   src="/src/assets/vivo-logo.jpg"
                   alt="Vivo Logo"
                   width={300}

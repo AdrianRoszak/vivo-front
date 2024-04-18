@@ -18,5 +18,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 ---
 
 <div class:list={["relative", wrapperClasses]}>
-  <Image src={images[src]()} alt={alt} width={width} height={height} />
+  <Image
+    src={images[src]()}
+    alt={alt}
+    width={width}
+    height={height}
+    class={"mix-blend-multiply"}
+  />
 </div>
