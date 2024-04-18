@@ -5,7 +5,7 @@ export const queryHomePageData = `{
   "singletonHome": *[_type == "singletonHome"][0] {
   sectionHero
 },
-  "blogArticles": *[_type == "blogArticle" && publishedAt < "${getCurrentDate()}"][0..2] {
+  "blogArticles": *[_type == "blogArticle" && publishedAt < "${getCurrentDate()}"] | order(publishedAt desc) [0..2]{
     ${blogArticleFragment}
   }
 }`

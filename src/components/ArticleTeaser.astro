@@ -79,7 +79,7 @@ function urlForImage(source: string) {
               "leading-6",
               "line-clamp-3",
               "text-balance",
-              "flex-grow"
+              "flex-grow",
             ]}
           >
             {title}
@@ -101,7 +101,7 @@ function urlForImage(source: string) {
           ]}
         >
           {
-            author.image && (
+            author.image ? (
               <div class:list={["w-16", "h-16", "relative"]}>
                 <Image
                   src={urlForImage(author.image.source).url()}
@@ -115,6 +115,23 @@ function urlForImage(source: string) {
                     "object-cover",
                     "rounded-full",
                     "object-top",
+                  ]}
+                />
+              </div>
+            ) : (
+              <div class:list={["w-16", "h-16", "relative"]}>
+                <Image
+                  src="/src/assets/vivo-logo.jpg"
+                  alt="Vivo Logo"
+                  width={300}
+                  height={300}
+                  class:list={[
+                    "absolute",
+                    "w-full",
+                    "h-full",
+                    "object-contain",
+                    "rounded-full",
+                    "mix-blend-multiply",
                   ]}
                 />
               </div>

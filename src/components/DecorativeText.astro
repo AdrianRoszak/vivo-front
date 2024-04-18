@@ -2,18 +2,30 @@
 import { serveFontSize } from "../helpers"
 import type { HTMLTag, Polymorphic } from "astro/types"
 import type { TypographyVariant } from "../types"
+import { PortableText } from "astro-portabletext"
+import type { TypedObject } from "astro-portabletext/types"
 
-type DecorativeTexrProps<Tag extends HTMLTag> = Polymorphic<{
+type DecorativeTextProps<Tag extends HTMLTag> = Polymorphic<{
   as: Tag
-  text: string
+  text: TypedObject | string
   size?: string
 }>
 
-type Props = DecorativeTexrProps<TypographyVariant>
+type Props = DecorativeTextProps<TypographyVariant>
 
 const { as: Tag = "p", text, size = "canon" } = Astro.props
 ---
 
 <Tag class:list={["italic", "font-deco", "my-2", serveFontSize(size)]}>
-  {text}
+  <PortableText
+    value={text as TypedObject}
+    class:list={[
+      "line-clamp-5",
+      "text-balance",
+      "font-deco",
+      "italic",
+      "text-deco",
+      serveFontSize(size),
+    ]}
+  />
 </Tag>
