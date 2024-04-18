@@ -64,3 +64,36 @@ a {
   display: block;
   padding-top: 75%;
 }
+
+p.portable-text,
+ul.portable-text {
+  margin-bottom: 1rem;
+}
+
+p.portable-text strong,
+ul.portable-text strong {
+  font-weight: 700;
+}
+
+ul.portable-text {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+h2.portable-text,
+h3.portable-text {
+  margin-bottom: 1em;
+}
+
+h2.portable-text {
+  margin-bottom: 1em;
+  font-size: var(--scale-double-pica);
+}
+
+h3.portable-text {
+  font-size: var(--scale-great-primer);
+}
+
+p.portable-text + h3.portable-text {
+  margin-top: 2em;
+}

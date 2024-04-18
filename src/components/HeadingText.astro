@@ -3,10 +3,22 @@ import { serveFontSize } from "../helpers"
 import type { HTMLTag, Polymorphic } from "astro/types"
 import type { HeadingVariant } from "../types"
 
+type HeadingSize =
+  | "canon"
+  | "trafalgar"
+  | "great-primer"
+  | "long-primer"
+  | "body-copy"
+  | "double-pica"
+  | "pica"
+  | "paragon"
+  | "brevier"
+  | "minion"
+
 type DecorativeTexrProps<Tag extends HTMLTag> = Polymorphic<{
   as: Tag
   text: string
-  size?: string
+  size?: HeadingSize
 }>
 
 type Props = DecorativeTexrProps<HeadingVariant>
@@ -19,6 +31,7 @@ const { as: Tag = "p", text, size = "great-primer" } = Astro.props
     "uppercase",
     "font-extralight",
     "font-sans",
+    "text-balance",
     serveFontSize(size),
   ]}
 >

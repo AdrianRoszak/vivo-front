@@ -1,5 +1,5 @@
 ---
-import ArticleTeaser from "@/src/components/ArticleTeaser.astro"
+import ArticleTeaser from "@/src/components/article-bones/ArticleTeaser.astro"
 import Container from "@/src/components/Container.astro"
 import TripleGrid from "@/src/components/TripleGrid.astro"
 import { getBlogPage } from "@/src/data"
@@ -8,7 +8,7 @@ import Layout from "@/src/layouts/Layout.astro"
 const { blogArticles } = await getBlogPage()
 ---
 
-<Layout title="Poradnia psychologiczno-pedagogiczna Vivo">
+<Layout title="Poradnia psychologiczno-pedagogiczna Vivo" description="">
   <section>
     <Container>
       {

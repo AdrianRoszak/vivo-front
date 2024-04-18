@@ -4,15 +4,14 @@ import { PortableText } from "astro-portabletext"
 
 import Card from "@/src/components/Card.astro"
 import Pill from "@/src/components/Pill.astro"
-import ArticleTeaserBody from "@/src/components/ArticleTeaserBody.astro"
+import ArticleTeaserBody from "@/src/components/article-bones/ArticleTeaserBody.astro"
 
-import { formatDateString, urlForImage } from "@/src/utils"
+import { urlForImage } from "@/src/utils"
 import type { BlogArticleType } from "@/src/types"
-import Date from "./Date.astro"
+import Date from "../Date.astro"
 
 const { title, slug, published, author, mainImage, description, categories } =
   Astro.props.data as BlogArticleType
-const formatedDate = formatDateString(published)
 ---
 
 <a
@@ -52,7 +51,6 @@ const formatedDate = formatDateString(published)
       </div>
       <div class:list={["p-4", "flex", "flex-col", "gap-4", "flex-grow"]}>
         <Date published={published} />
-        <div class:list={["text-pica", "text-dark-200"]}>{formatedDate}</div>
         <div class:list={["flex", "gap-2", "flex-wrap", "mb-4"]}>
           {categories.map((category) => <Pill>{category}</Pill>)}
         </div>
@@ -68,10 +66,14 @@ const formatedDate = formatDateString(published)
           >
             {title}
           </h2>
-          <PortableText
-            value={description}
-            class:list={["line-clamp-5", "text-balance"]}
-          />
+          {
+            description && (
+              <PortableText
+                value={description}
+                class:list={["line-clamp-5", "text-balance"]}
+              />
+            )
+          }
         </ArticleTeaserBody>
         <div
           class:list={[

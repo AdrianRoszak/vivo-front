@@ -11,7 +11,9 @@ export function digestBlogArticle(article): BlogArticleType | null {
     publishedAt,
     author,
     articleTeaser,
+    articleBody,
     categories,
+    seoTitle,
   } = article
 
   //@ts-ignore
@@ -29,9 +31,19 @@ export function digestBlogArticle(article): BlogArticleType | null {
   return {
     title,
     description: articleTeaser,
+    body: articleBody,
     mainImage: mainImage ? secureImage(mainImage) : null,
     slug: slug.current,
     published: publishedAt,
+    seoTitle: seoTitle
+      ? {
+          title: seoTitle.title,
+          description: seoTitle.description,
+        }
+      : {
+          title: "",
+          description: "",
+        },
     author: author
       ? {
           name: author.name,

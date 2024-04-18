@@ -15,6 +15,7 @@ export const blogArticleFragment = `
 
 export const fullBlogArticleFragment = `
   articleBody,
+  seoTitle,
   ${blogArticleFragment}
 `
 
