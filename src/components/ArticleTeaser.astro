@@ -1,39 +1,17 @@
 ---
 import { Image } from "astro:assets"
-import type { BlogArticleType } from "../types"
-import Card from "./Card.astro"
-
-import imageUrlBuilder from "@sanity/image-url"
-import { sanityClient } from "sanity:client"
 import { PortableText } from "astro-portabletext"
-import Pill from "./Pill.astro"
-import ArticleTeaserBody from "./ArticleTeaserBody.astro"
+
+import Card from "@/src/components/Card.astro"
+import Pill from "@/src/components/Pill.astro"
+import ArticleTeaserBody from "@/src/components/ArticleTeaserBody.astro"
+
+import { formatDateString, urlForImage } from "@/src/utils"
+import type { BlogArticleType } from "@/src/types"
 
 const { title, slug, published, author, mainImage, description, categories } =
   Astro.props.data as BlogArticleType
 const formatedDate = formatDateString(published)
-
-type DateTimeFormatOptions = {
-  year: "numeric" | "2-digit"
-  month: "numeric" | "2-digit" | "long" | "short" | "narrow"
-  day: "numeric" | "2-digit"
-}
-
-function formatDateString(dateString: string) {
-  const date = new Date(dateString)
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }
-
-  return date.toLocaleDateString("pl-PL", options as DateTimeFormatOptions)
-}
-
-function urlForImage(source: string) {
-  const builder = imageUrlBuilder(sanityClient)
-  return builder.image(source)
-}
 ---
 
 <a
@@ -46,7 +24,11 @@ function urlForImage(source: string) {
         {
           mainImage ? (
             <Image
-              src={urlForImage(mainImage.source).url()}
+              src={urlForImage(mainImage.source)
+                .width(400)
+                .format("webp")
+                .quality(80)
+                .url()}
               alt={mainImage.alt}
               width={400}
               height={400}
@@ -104,10 +86,14 @@ function urlForImage(source: string) {
             author.image ? (
               <div class:list={["w-16", "h-16", "relative"]}>
                 <Image
-                  src={urlForImage(author.image.source).url()}
+                  src={urlForImage(author.image.source)
+                    .width(100)
+                    .format("webp")
+                    .quality(80)
+                    .url()}
                   alt={author.image.alt}
-                  width={300}
-                  height={300}
+                  width={100}
+                  height={100}
                   class:list={[
                     "absolute",
                     "w-full",
@@ -115,6 +101,7 @@ function urlForImage(source: string) {
                     "object-cover",
                     "rounded-full",
                     "object-top",
+                    "mix-blend-multiply",
                   ]}
                 />
               </div>
