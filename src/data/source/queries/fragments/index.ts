@@ -1,1 +1,4 @@
-export { blogArticleFragment } from "./blog-article-fragment"
+export {
+  fullBlogArticleFragment,
+  teaserBlogArticleFragment,
+} from "./blog-article-fragment"

@@ -8,8 +8,17 @@ export const blogArticleFragment = `
       image,
       slug
     },
-    articleTeaser,
     categories[]->{
       title
     }
   `
+
+export const fullBlogArticleFragment = `
+  ${blogArticleFragment},
+  articleBody
+`
+
+export const teaserBlogArticleFragment = `
+  ${blogArticleFragment},
+  articleTeaser
+`

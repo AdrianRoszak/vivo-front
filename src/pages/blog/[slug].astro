@@ -1,4 +1,6 @@
 ---
+import Container from "@/src/components/Container.astro"
+import { getSingleBlogArticle } from "@/src/data"
 import { getBlogArticlesSlugs } from "@/src/data/get-blog-articles-slugs"
 import Layout from "@/src/layouts/Layout.astro"
 
@@ -27,8 +29,13 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params
+const data = await getSingleBlogArticle(slug)
 ---
 
 <Layout title={slug}>
-  <section>strona pojedynczego artykułu</section>
+  <section>
+    <Container>
+      {data.title}
+    </Container>
+  </section>
 </Layout>
