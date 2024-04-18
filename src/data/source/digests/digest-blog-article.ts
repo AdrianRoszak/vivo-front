@@ -48,6 +48,8 @@ export function digestBlogArticle(article): BlogArticleType | null {
       ? {
           name: author.name,
           image: secureImage(author.image),
+          slug: author.slug.current,
+          description: author.shortDescription,
         }
       : {
           name: "Redakcja Vivo",

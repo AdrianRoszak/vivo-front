@@ -6,7 +6,8 @@ export const blogArticleFragment = `
     author->{
       name,
       image,
-      slug
+      slug,
+      shortDescription
     },
     categories[]->{
       title

@@ -16,6 +16,8 @@ export type BlogArticleType = {
   author: {
     name: string
     image: ImageType | null
+    slug?: string
+    description?: string
   }
   mainImage: ImageType | null
   categories: string[]

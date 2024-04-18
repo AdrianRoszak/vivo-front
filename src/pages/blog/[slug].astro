@@ -14,6 +14,7 @@ import Layout from "@/src/layouts/Layout.astro"
 
 import type { BlogArticleType } from "@/src/types"
 import { urlForImage } from "@/src/utils"
+import ArticleFooter from "@/src/components/article-bones/ArticleFooter.astro"
 
 export async function getStaticPaths() {
   async function obtainBlogArticlesSlugs() {
@@ -82,13 +83,49 @@ const { published, title, body, mainImage, author, seoTitle } =
           }
           {body && <PortableText value={body} class:list={["portable-text"]} />}
         </div>
-        {
-          author && (
-            <div>
-              <p>Written by {author.name}</p>
-            </div>
-          )
-        }
+        <ArticleFooter>
+          {
+            author.image && (
+              <div
+                class:list={[
+                  "w-24",
+                  "image-75",
+                  "relative",
+                  "rounded-md",
+                  "float-left",
+                  "mr-12",
+                  "mb-4",
+                ]}
+              >
+                <Image
+                  src={urlForImage(author.image.source)
+                    .width(200)
+                    .format("webp")
+                    .quality(80)
+                    .url()}
+                  alt={author.image.alt}
+                  width={200}
+                  height={200}
+                  class:list={[
+                    "rounded-md",
+                    "object-cover",
+                    "mix-blend-multiply",
+                  ]}
+                />
+              </div>
+            )
+          }
+          {
+            author && (
+              <a href={`/o-nas/${author.slug}`} class:list={["group"]}>
+                <h2 class:list={["text-double-pica", "text-dark-900"]}>
+                  Written by {author.name}
+                </h2>
+                <p class:list={["text-dark-300"]}>{author.description}</p>
+              </a>
+            )
+          }
+        </ArticleFooter>
       </Article>
     </Container>
   </section>
