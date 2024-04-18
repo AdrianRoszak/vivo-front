@@ -1,5 +1,8 @@
 ---
 import CustomImage from "./CustomImage.astro"
+import Link from "./Link.astro"
+
+const { contact } = Astro.props
 ---
 
 <nav
@@ -21,7 +24,34 @@ import CustomImage from "./CustomImage.astro"
       height={300}
     />
   </a>
+  <div class:list={["flex-grow", "px-20", "flex", "gap-4", "items-center"]}>
+    <Link href="/blog">
+      <span
+        class:list={[
+          "inline-block",
+          "relative",
+          "uppercase",
+          "text-great-primer",
+          "after:content-['']",
+          "after:absolute",
+          "after:bottom-[-5px]",
+          "after:left-0",
+          "after:w-full",
+          "after:h-[2px]",
+          "after:bg-secondary",
+          "after:scale-x-0",
+          "after:transition-transform",
+          "after:duration-800",
+          "group-hover:after:scale-x-100",
+        ]}
+      >
+        Blog
+      </span>
+    </Link>
+  </div>
   <div>
-    <a class:list={["button", "button-primary"]}>Umów wizytę</a>
+    <a href={`tel:${contact}`} class:list={["button", "button-primary"]}
+      >Umów wizytę</a
+    >
   </div>
 </nav>

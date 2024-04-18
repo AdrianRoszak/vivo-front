@@ -3,8 +3,11 @@ import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
 import Nav from "../components/Nav.astro"
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer"
+import { getGlobalData } from "../data"
+
 import "@/src/styles/globals.css"
 import "@/src/styles/vars.css"
+import Link from "../components/Link.astro"
 
 interface Props {
   title: string
@@ -12,6 +15,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props
+const { address, contact, name } = await getGlobalData()
 ---
 
 <!doctype html>
@@ -32,13 +36,32 @@ const { title, description } = Astro.props
   </head>
   <body>
     <Header>
-      <Nav />
+      <Nav contact={contact.phone} />
     </Header>
     <main>
       <slot />
     </main>
     <Footer>
-      <p>futro</p>
+      <div class="text-great-primer">
+        <h1 class:list={["uppercase"]}>{name}</h1>
+        <address class:list={["not-italic", "my-4"]}>
+          <div>
+            {address.street}
+            {address.number}
+          </div>
+          <div>
+            {address.zip}, {address.city}
+          </div>
+        </address>
+        <div class:list={["flex", "flex-col", "my-4"]}>
+          <Link href={`tel:${contact.phone}`}>
+            {contact.phone}
+          </Link>
+          <Link href={`mailto:${contact.email}`}>
+            {contact.email}
+          </Link>
+        </div>
+      </div>
     </Footer>
   </body>
 </html>
