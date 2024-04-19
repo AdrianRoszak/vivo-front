@@ -8,8 +8,15 @@ type SectionIntro = {
   tagline: TypedObject | string
 }
 
+type ValueTeaser = {
+  title: string
+}
+
+type ValueTeaserList = ValueTeaser[]
+
 type HomePageData = {
   sectionHero: SectionIntro
+  sectionValues: ValueTeaserList
   sectionOffer: SectionIntro
   sectionBlog: SectionIntro
   blogArticles: BlogArticleList
@@ -24,6 +31,8 @@ export async function getHomePage(): Promise<HomePageData> {
 function digestHomePageData(data): HomePageData {
   return {
     sectionHero: digestSectionIntro(data.singletonHome.sectionHero),
+    sectionValues:
+      data.singletonHome.sectionValues.values.map(digestValueTeaser),
     sectionOffer: digestSectionIntro(data.singletonHome.sectionOffer),
     sectionBlog: digestSectionIntro(data.singletonHome.sectionBlog),
     blogArticles: data.blogArticles.map(digestBlogArticle),
@@ -34,5 +43,12 @@ function digestSectionIntro(source): SectionIntro {
   return {
     headline: source.headline,
     tagline: source.tagline,
+  }
+}
+
+//@ts-ignore
+function digestValueTeaser(source): ValueTeaser {
+  return {
+    title: source.title,
   }
 }

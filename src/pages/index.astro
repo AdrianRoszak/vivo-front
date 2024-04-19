@@ -8,7 +8,7 @@ import Layout from "@/src/layouts/Layout.astro"
 import ArticleTeaser from "../components/article-bones/ArticleTeaser.astro"
 import TripleGrid from "../components/TripleGrid.astro"
 
-const { sectionHero, sectionBlog, sectionOffer, blogArticles } =
+const { sectionHero, sectionBlog, sectionOffer, blogArticles, sectionValues } =
   await getHomePage()
 ---
 
@@ -23,6 +23,7 @@ const { sectionHero, sectionBlog, sectionOffer, blogArticles } =
       </div>
     </Container>
   </section>
+  {sectionValues.map((value) => <p>{value.title}</p>)}
   <section>
     <Container>
       <div class:list={["text-center", "mb-12"]}>
