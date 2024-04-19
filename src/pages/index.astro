@@ -8,7 +8,8 @@ import Layout from "@/src/layouts/Layout.astro"
 import ArticleTeaser from "../components/article-bones/ArticleTeaser.astro"
 import TripleGrid from "../components/TripleGrid.astro"
 
-const { sectionHero, sectionBlog, blogArticles } = await getHomePage()
+const { sectionHero, sectionBlog, sectionOffer, blogArticles } =
+  await getHomePage()
 ---
 
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo" description="">
@@ -19,6 +20,14 @@ const { sectionHero, sectionBlog, blogArticles } = await getHomePage()
           <HeadingText as="h1" text={sectionHero.headline} />
           <DecorativeText text={sectionHero.tagline} />
         </div>
+      </div>
+    </Container>
+  </section>
+  <section>
+    <Container>
+      <div class:list={["text-center", "mb-12"]}>
+        <HeadingText as="h1" text={sectionOffer.headline} />
+        <DecorativeText text={sectionOffer.tagline} />
       </div>
     </Container>
   </section>

@@ -3,15 +3,15 @@ import { fetchHomePageData } from "@/src/data/source"
 import type { BlogArticleList } from "../types"
 import type { TypedObject } from "astro-portabletext/types"
 
+type SectionIntro = {
+  headline: string
+  tagline: TypedObject | string
+}
+
 type HomePageData = {
-  sectionHero: {
-    headline: string
-    tagline: TypedObject | string
-  }
-  sectionBlog: {
-    headline: string
-    tagline: TypedObject | string
-  }
+  sectionHero: SectionIntro
+  sectionOffer: SectionIntro
+  sectionBlog: SectionIntro
   blogArticles: BlogArticleList
 }
 
@@ -23,8 +23,16 @@ export async function getHomePage(): Promise<HomePageData> {
 //@ts-ignore
 function digestHomePageData(data): HomePageData {
   return {
-    sectionHero: data.singletonHome.sectionHero,
-    sectionBlog: data.singletonHome.sectionBlog,
+    sectionHero: digestSectionIntro(data.singletonHome.sectionHero),
+    sectionOffer: digestSectionIntro(data.singletonHome.sectionOffer),
+    sectionBlog: digestSectionIntro(data.singletonHome.sectionBlog),
     blogArticles: data.blogArticles.map(digestBlogArticle),
+  }
+}
+//@ts-ignore
+function digestSectionIntro(source): SectionIntro {
+  return {
+    headline: source.headline,
+    tagline: source.tagline,
   }
 }
