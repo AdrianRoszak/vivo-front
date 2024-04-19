@@ -8,13 +8,17 @@ type SectionIntro = {
   tagline: TypedObject | string
 }
 
-type ValueTeaser = {
+export type ValueTeaser = {
   title: string
+  icon: {
+    alt: string
+    source: string
+  }
 }
 
 type ValueTeaserList = ValueTeaser[]
 
-type HomePageData = {
+export type HomePageData = {
   sectionHero: SectionIntro
   sectionValues: ValueTeaserList
   sectionOffer: SectionIntro
@@ -50,5 +54,6 @@ function digestSectionIntro(source): SectionIntro {
 function digestValueTeaser(source): ValueTeaser {
   return {
     title: source.title,
+    icon: source.icon ? source.icon : "",
   }
 }

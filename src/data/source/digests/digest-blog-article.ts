@@ -16,18 +16,6 @@ export function digestBlogArticle(article): BlogArticleType | null {
     seoTitle,
   } = article
 
-  //@ts-ignore
-  function secureImage(image) {
-    if (!image) return null
-    if (image.hasOwnProperty("image")) {
-      return {
-        alt: image.alt,
-        source: image.image.asset._ref,
-      }
-    }
-    return null
-  }
-
   return {
     title,
     description: articleTeaser,
@@ -57,4 +45,16 @@ export function digestBlogArticle(article): BlogArticleType | null {
         },
     categories: categories.map((category: { title: string }) => category.title),
   }
+}
+
+//@ts-ignore
+export function secureImage(image) {
+  if (!image) return null
+  if (image.hasOwnProperty("image")) {
+    return {
+      alt: image.alt,
+      source: image.image.asset._ref,
+    }
+  }
+  return null
 }

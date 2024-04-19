@@ -1,0 +1,46 @@
+---
+import type { ValueTeaser } from "@/src/data/get-home-page"
+
+const { title, icon } = Astro.props as ValueTeaser
+const htmString = `${icon}`
+---
+
+<div
+  class:list={[
+    "relative",
+    "bg-secondary",
+    "flex",
+    "items-center",
+    "justify-center",
+    "after:content-['']",
+    "after:w-full",
+    "after:pt-[100%]",
+  ]}
+>
+  <div
+    class:list={[
+      "flex",
+      "flex-col",
+      "justify-center",
+      "items-center",
+      "absolute",
+      "top-0",
+      "left-0",
+      "w-full",
+      "h-full",
+    ]}
+  >
+    <div class="value-tile-icon" set:html={htmString} />
+    <h2
+      class:list={[
+        "text-center",
+        "text-double-pica",
+        "text-light-50",
+        "w-3/4",
+        "text-balance",
+      ]}
+    >
+      {title}
+    </h2>
+  </div>
+</div>

@@ -5,8 +5,9 @@ import Container from "@/src/components/Container.astro"
 import DecorativeText from "@/src/components/DecorativeText.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
 import Layout from "@/src/layouts/Layout.astro"
-import ArticleTeaser from "../components/article-bones/ArticleTeaser.astro"
-import TripleGrid from "../components/TripleGrid.astro"
+import ArticleTeaser from "@/src/components/article/ArticleTeaser.astro"
+import TripleGrid from "@/src/components/TripleGrid.astro"
+import ValuesGrid from "@/src/components/values/ValuesGrid.astro"
 
 const { sectionHero, sectionBlog, sectionOffer, blogArticles, sectionValues } =
   await getHomePage()
@@ -23,7 +24,13 @@ const { sectionHero, sectionBlog, sectionOffer, blogArticles, sectionValues } =
       </div>
     </Container>
   </section>
-  {sectionValues.map((value) => <p>{value.title}</p>)}
+  {
+    sectionValues && (
+      <section>
+        <ValuesGrid valuesData={sectionValues} />
+      </section>
+    )
+  }
   <section>
     <Container>
       <div class:list={["text-center", "mb-12"]}>

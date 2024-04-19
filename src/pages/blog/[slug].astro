@@ -5,8 +5,8 @@ import { Image } from "astro:assets"
 import { getSingleBlogArticle } from "@/src/data"
 import { getBlogArticlesSlugs } from "@/src/data/get-blog-articles-slugs"
 
-import Article from "@/src/components/article-bones/Article.astro"
-import ArticleHeader from "@/src/components/article-bones/ArticleHeader.astro"
+import Article from "@/src/components/article/Article.astro"
+import ArticleHeader from "@/src/components/article/ArticleHeader.astro"
 import Container from "@/src/components/Container.astro"
 import Date from "@/src/components/Date.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
@@ -14,7 +14,7 @@ import Layout from "@/src/layouts/Layout.astro"
 
 import type { BlogArticleType } from "@/src/types"
 import { urlForImage } from "@/src/utils"
-import ArticleFooter from "@/src/components/article-bones/ArticleFooter.astro"
+import ArticleFooter from "@/src/components/article/ArticleFooter.astro"
 
 export async function getStaticPaths() {
   async function obtainBlogArticlesSlugs() {

@@ -1,0 +1,15 @@
+---
+import type { HomePageData } from "../../data/get-home-page"
+import ValueTile from "./ValueTile.astro"
+
+const values = Astro.props.valuesData as HomePageData["sectionValues"]
+---
+
+<div class:list={["grid", "grid-cols-3", "gap-1"]}>
+  <div>tu będzie zdjęcie</div>
+  <div
+    class:list={["col-span-2", "grid", "grid-cols-4", "gap-1", "grid-rows-2"]}
+  >
+    {Array.isArray(values) && values.map((value) => <ValueTile {...value} />)}
+  </div>
+</div>

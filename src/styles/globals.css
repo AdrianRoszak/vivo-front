@@ -97,3 +97,12 @@ h3.portable-text {
 p.portable-text + h3.portable-text {
   margin-top: 2em;
 }
+
+/* -------------- */
+.value-tile-icon {
+  @apply h-24 w-24;
+}
+
+.value-tile-icon svg {
+  @apply fill-light-50;
+}
