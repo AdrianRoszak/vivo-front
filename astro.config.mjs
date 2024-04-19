@@ -3,6 +3,8 @@ import sanity from "@sanity/astro"
 import { loadEnv } from "vite"
 import tailwind from "@astrojs/tailwind"
 import vercel from "@astrojs/vercel/serverless"
+import icon from "astro-icon"
+
 const {
   PUBLIC_SANITY_PROJECT_ID,
   PUBLIC_SANITY_API_VERSION,
@@ -19,6 +21,7 @@ export default defineConfig({
       useCdn: true,
     }),
     tailwind(),
+    icon(),
   ],
   prefetch: true,
   output: "server",

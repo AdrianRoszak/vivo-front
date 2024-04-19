@@ -4,6 +4,7 @@ import Header from "../components/Header.astro"
 import Nav from "../components/Nav.astro"
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer"
 import { getGlobalData } from "../data"
+import { Icon } from "astro-icon/components"
 
 import "@/src/styles/globals.css"
 import "@/src/styles/vars.css"
@@ -44,7 +45,9 @@ const { address, contact, name } = await getGlobalData()
     <Footer>
       <div class="text-great-primer">
         <h1 class:list={["uppercase"]}>{name}</h1>
-        <address class:list={["not-italic", "my-4"]}>
+        <address
+          class:list={["not-italic", "my-8", "flex", "flex-col", "gap-2"]}
+        >
           <div>
             {address.street}
             {address.number}
@@ -53,12 +56,18 @@ const { address, contact, name } = await getGlobalData()
             {address.zip}, {address.city}
           </div>
         </address>
-        <div class:list={["flex", "flex-col", "my-4"]}>
+        <div class:list={["flex", "flex-col", "my-4", "gap-2"]}>
           <Link href={`tel:${contact.phone}`}>
-            {contact.phone}
+            <div class:list={["flex", "gap-4", "items-center"]}>
+              <Icon size={30} name="mdi:phone" />
+              {contact.phone}
+            </div>
           </Link>
           <Link href={`mailto:${contact.email}`}>
-            {contact.email}
+            <div class:list={["flex", "gap-4", "items-center"]}>
+              <Icon size={30} name="mdi:email" />
+              {contact.email}
+            </div>
           </Link>
         </div>
       </div>

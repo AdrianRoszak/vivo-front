@@ -24,7 +24,16 @@ const { contact } = Astro.props
       height={300}
     />
   </a>
-  <div class:list={["flex-grow", "px-20", "flex", "gap-4", "items-center"]}>
+  <div
+    class:list={[
+      "flex-grow",
+      "hidden",
+      "md:flex",
+      "px-20",
+      "gap-4",
+      "items-center",
+    ]}
+  >
     <Link href="/blog">
       <span
         class:list={[
