@@ -3,12 +3,19 @@ import type { ValueTeaser } from "@/src/data/get-home-page"
 
 const { title, icon } = Astro.props as ValueTeaser
 const htmString = `${icon}`
+
+function toNormalCase(inputString: string) {
+  return (
+    inputString.charAt(0).toUpperCase() + inputString.slice(1).toLowerCase()
+  )
+}
 ---
 
 <div
   class:list={[
     "relative",
-    "bg-secondary",
+    "border",
+    "border-primary",
     "flex",
     "items-center",
     "justify-center",
@@ -21,26 +28,27 @@ const htmString = `${icon}`
     class:list={[
       "flex",
       "flex-col",
-      "justify-center",
-      "items-center",
+      "justify-between",
       "absolute",
       "top-0",
       "left-0",
       "w-full",
       "h-full",
+      "p-4",
     ]}
   >
-    <div class="value-tile-icon" set:html={htmString} />
+    <div class:list={["value-tile-icon", "self-end"]} set:html={htmString} />
     <h2
       class:list={[
-        "text-center",
         "text-double-pica",
-        "text-light-50",
-        "w-3/4",
+        "md:text-great-primer",
+        "lg:text-body-copy",
+        "xl:text-great-primer",
+
         "text-balance",
       ]}
     >
-      {title}
+      {toNormalCase(title)}
     </h2>
   </div>
 </div>
