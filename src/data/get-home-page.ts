@@ -2,6 +2,8 @@ import { digestBlogArticle } from "@/src/data/source/digests"
 import { fetchHomePageData } from "@/src/data/source"
 import type { BlogArticleList } from "../types"
 import type { TypedObject } from "astro-portabletext/types"
+import type { ImageType } from "../types"
+import { secureImage } from "./source/digests/digest-blog-article"
 
 type SectionIntro = {
   headline: string
@@ -17,10 +19,14 @@ export type ValueTeaser = {
 }
 
 type ValueTeaserList = ValueTeaser[]
+type SectionValues = {
+  decoImage: ImageType | null
+  values: ValueTeaserList
+}
 
 export type HomePageData = {
   sectionHero: SectionIntro
-  sectionValues: ValueTeaserList
+  sectionValues: SectionValues
   sectionOffer: SectionIntro
   sectionBlog: SectionIntro
   blogArticles: BlogArticleList
@@ -35,8 +41,7 @@ export async function getHomePage(): Promise<HomePageData> {
 function digestHomePageData(data): HomePageData {
   return {
     sectionHero: digestSectionIntro(data.singletonHome.sectionHero),
-    sectionValues:
-      data.singletonHome.sectionValues.values.map(digestValueTeaser),
+    sectionValues: digestSectionValues(data.singletonHome.sectionHomeValues),
     sectionOffer: digestSectionIntro(data.singletonHome.sectionOffer),
     sectionBlog: digestSectionIntro(data.singletonHome.sectionBlog),
     blogArticles: data.blogArticles.map(digestBlogArticle),
@@ -55,5 +60,13 @@ function digestValueTeaser(source): ValueTeaser {
   return {
     title: source.title,
     icon: source.icon ? source.icon : "",
+  }
+}
+//@ts-ignore
+
+function digestSectionValues(source): SectionValues {
+  return {
+    decoImage: source.decoImage ? secureImage(source.decoImage) : null,
+    values: source.sectionValues.values.map(digestValueTeaser),
   }
 }

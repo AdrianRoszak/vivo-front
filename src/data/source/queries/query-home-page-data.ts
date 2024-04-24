@@ -6,10 +6,13 @@ export const queryHomePageData = `{
   sectionHero,
   sectionOffer,
   sectionBlog,
-  sectionValues {
-    values[]->{
-      title,
-      icon
+  sectionHomeValues {
+    decoImage,
+    sectionValues {
+      values[]->{
+        title,
+        icon
+      }
     }
   }
 },

@@ -1,12 +1,31 @@
 ---
+import { Image } from "astro:assets"
 import type { HomePageData } from "../../data/get-home-page"
 import ValueTile from "./ValueTile.astro"
+import { urlForImage } from "@/src/utils"
 
-const values = Astro.props.valuesData as HomePageData["sectionValues"]
+const { values, decoImage } = Astro.props
+  .valuesData as HomePageData["sectionValues"]
 ---
 
 <div class:list={["grid", "grid-cols-3", "gap-1", "mb-64"]}>
-  <div class:list={["hidden", "lg:block"]}>tu będzie zdjęcie</div>
+  {
+    decoImage && (
+      <div class:list={["relative", "hidden", "lg:block"]}>
+        <Image
+          src={urlForImage(decoImage.source)
+            .width(900)
+            .format("webp")
+            .quality(80)
+            .url()}
+          alt={decoImage.alt}
+          width={900}
+          height={900}
+          class:list={["rounded-md", "object-cover"]}
+        />
+      </div>
+    )
+  }
   <div
     class:list={[
       "col-span-3",
@@ -16,6 +35,8 @@ const values = Astro.props.valuesData as HomePageData["sectionValues"]
       "sm:grid-cols-4",
       "gap-1",
       "grid-rows-2",
+      "p-1",
+      "md:p-0",
     ]}
   >
     {Array.isArray(values) && values.map((value) => <ValueTile {...value} />)}

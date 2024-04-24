@@ -1,6 +1,6 @@
 import type { TypedObject } from "astro-portabletext/types"
 
-type ImageType = {
+export type ImageType = {
   alt: string
   source: string
 }
