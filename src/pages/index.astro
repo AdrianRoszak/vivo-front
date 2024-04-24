@@ -9,15 +9,15 @@ import ArticleTeaser from "@/src/components/article/ArticleTeaser.astro"
 import TripleGrid from "@/src/components/TripleGrid.astro"
 import ValuesGrid from "@/src/components/values/ValuesGrid.astro"
 
-const { sectionHero, sectionBlog, sectionOffer, blogArticles, sectionValues } =
+const { sectionHero, sectionBlog, blogArticles, sectionValues } =
   await getHomePage()
 ---
 
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo" description="">
   <section>
     <Container>
-      <div class:list={["py-36", "lg:py-60", "flex", "items-center"]}>
-        <div class:list={["lg:w-4/5"]}>
+      <div class:list={["h-[80vh]", "max-h-[750px]", "flex", "items-center"]}>
+        <div class:list={["lg:w-4/5", "-mt-32"]}>
           <HeadingText as="h1" text={sectionHero.headline} />
           <DecorativeText text={sectionHero.tagline} />
         </div>
