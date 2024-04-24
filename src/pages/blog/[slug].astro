@@ -50,19 +50,26 @@ const { published, title, body, mainImage, author, seoTitle } =
     <Container>
       <Article>
         <ArticleHeader>
-          <Date published={published} />
-          <HeadingText as="h1" size="canon" text={title} />
+          <div class="mb-4">
+            <Date published={published} />
+          </div>
+          <HeadingText
+            as="h1"
+            size={["text-trafalgar", "md:text-canon"]}
+            text={title}
+          />
         </ArticleHeader>
         <div>
           {
             mainImage && (
               <div
                 class:list={[
-                  "w-1/2",
+                  "w-full",
+                  "md:w-1/2",
                   "image-75",
                   "relative",
                   "rounded-md",
-                  "float-left",
+                  "md:float-left",
                   "mr-12",
                   "mb-4",
                 ]}
