@@ -2,7 +2,7 @@
 import type { ValueTeaser } from "@/src/data/get-home-page"
 
 const { title, icon } = Astro.props as ValueTeaser
-const htmString = `${icon}`
+const htmlString = `${icon}`
 
 function toNormalCase(inputString: string) {
   return (
@@ -37,7 +37,7 @@ function toNormalCase(inputString: string) {
       "p-4",
     ]}
   >
-    <div class:list={["value-tile-icon", "self-end"]} set:html={htmString} />
+    <div class:list={["value-tile-icon", "self-end"]} set:html={htmlString} />
     <h2
       class:list={[
         "text-double-pica",
