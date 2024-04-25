@@ -12,9 +12,14 @@ import ValuesGrid from "@/src/components/values/ValuesGrid.astro"
 import leafIcon from "@/src/assets/leaf-1.svg?raw"
 import leafIcon2 from "@/src/assets/leaf-2.svg?raw"
 
-const { sectionHero, sectionBlog, blogArticles, sectionValues, metaData } =
-  await getHomePage()
-
+const {
+  sectionHero,
+  sectionBlog,
+  blogArticles,
+  sectionValues,
+  sectionOffer,
+  metaData,
+} = await getHomePage()
 ---
 
 <Layout
@@ -48,14 +53,46 @@ const { sectionHero, sectionBlog, blogArticles, sectionValues, metaData } =
       </section>
     )
   }
-  <!-- <section>
+  <section class:list={["h-screen"]}>
     <Container>
-      <div class:list={["text-center", "mb-12"]}>
-        <HeadingText as="h1" text={sectionOffer.headline} />
-        <DecorativeText text={sectionOffer.tagline} />
+      <div class="grid grid-cols-5">
+        <div class:list={["text-balance", "mb-12", "col-span-2"]}>
+          <HeadingText as="h1" text={sectionOffer.headline} />
+          <DecorativeText text={sectionOffer.tagline} />
+        </div>
+        <div class:list={["col-span-3", "pl-20"]}>
+          <div class="mb-12">
+            <h2 class:list={["text-paragon"]}>Oferta dla dzieci</h2>
+            <p>
+              Kompleksowa terapia indywidualna, m. in. fizjoterapeutyczna,
+              pedagogiczna, psychologiczna, terapia zajęciowa, integracja
+              sensoryczna (IS), trening umiejętności społecznych (TUS), oraz
+              terapia słuchowa.
+            </p>
+          </div>
+          <div class="mb-12">
+            <h2 class:list={["text-paragon"]}>Oferta dla dzieci</h2>
+            <p>
+              Kompleksowa terapia indywidualna, m. in. fizjoterapeutyczna,
+              pedagogiczna, psychologiczna, terapia zajęciowa, integracja
+              sensoryczna (IS), trening umiejętności społecznych (TUS), oraz
+              terapia słuchowa.
+            </p>
+          </div>
+          <div class="mb-12">
+            <h2 class:list={["text-paragon"]}>Oferta dla dzieci</h2>
+            <p>
+              Kompleksowa terapia indywidualna, m. in. fizjoterapeutyczna,
+              pedagogiczna, psychologiczna, terapia zajęciowa, integracja
+              sensoryczna (IS), trening umiejętności społecznych (TUS), oraz
+              terapia słuchowa.
+            </p>
+          </div>
+          <div></div>
+        </div>
       </div>
     </Container>
-  </section> -->
+  </section>
   <section>
     <Container>
       <div class:list={["text-center", "mb-12"]}>
