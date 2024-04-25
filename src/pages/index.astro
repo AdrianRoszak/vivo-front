@@ -26,18 +26,19 @@ const { sectionHero, sectionBlog, blogArticles, sectionValues } =
         </div>
       </div>
     </Container>
-    <div class:list={["absolute", "bottom-0", "left-0"]}>
-      <div class:list={["absolute"]} set:html={leafIcon} />
-      <div class:list={["absolute"]} set:html={leafIcon2} />
+    <div class:list={["absolute", "top-0", "w-full", "h-full"]}>
+      <div class:list={["absolute", "right-72"]} set:html={leafIcon} />
+      <div class:list={["absolute", "-right-60"]} set:html={leafIcon2} />
     </div>
-    {
-      sectionValues && (
-        <section>
-          <ValuesGrid valuesData={sectionValues} />
-        </section>
-      )
-    }
-    <!-- <section>
+  </section>
+  {
+    sectionValues && (
+      <section>
+        <ValuesGrid valuesData={sectionValues} />
+      </section>
+    )
+  }
+  <!-- <section>
     <Container>
       <div class:list={["text-center", "mb-12"]}>
         <HeadingText as="h1" text={sectionOffer.headline} />
@@ -45,25 +46,24 @@ const { sectionHero, sectionBlog, blogArticles, sectionValues } =
       </div>
     </Container>
   </section> -->
-    <section>
-      <Container>
-        <div class:list={["text-center", "mb-12"]}>
-          <HeadingText as="h1" text={sectionBlog.headline} />
-          <DecorativeText text={sectionBlog.tagline} />
-        </div>
-        {
-          blogArticles && (
-            <TripleGrid>
-              {blogArticles.map((article) => (
-                <ArticleTeaser data={article} />
-              ))}
-            </TripleGrid>
-          )
-        }
-        <div class:list={["text-center", "mb-12"]}>
-          <a href="/blog" class:list={["button", "button-primary"]}> Więcej </a>
-        </div>
-      </Container>
-    </section>
+  <section>
+    <Container>
+      <div class:list={["text-center", "mb-12"]}>
+        <HeadingText as="h1" text={sectionBlog.headline} />
+        <DecorativeText text={sectionBlog.tagline} />
+      </div>
+      {
+        blogArticles && (
+          <TripleGrid>
+            {blogArticles.map((article) => (
+              <ArticleTeaser data={article} />
+            ))}
+          </TripleGrid>
+        )
+      }
+      <div class:list={["text-center", "mb-12"]}>
+        <a href="/blog" class:list={["button", "button-primary"]}> Więcej </a>
+      </div>
+    </Container>
   </section>
 </Layout>
