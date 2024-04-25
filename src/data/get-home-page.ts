@@ -2,14 +2,14 @@ import { fetchHomePageData } from "@/src/data/source"
 
 import {
   digestBlogArticle,
+  digestMetaData,
   digestSectionIntro,
-  digestSeo,
 } from "@/src/data/source/digests"
 
 import { secureImage } from "./source/digests/digest-blog-article"
 
 import type { ImageType } from "../types"
-import type { MetaDataType } from "./source/digests/digest-seo"
+import type { MetaDataType } from "./source/digests/digest-meta-data"
 import type { SectionIntro } from "./source/digests/digest-section-intro"
 import type { BlogArticleList } from "../types"
 
@@ -49,7 +49,7 @@ function digestHomePageData(source): HomePageData {
     sectionOffer: digestSectionIntro(source.singletonHome.sectionOffer),
     sectionBlog: digestSectionIntro(source.singletonHome.sectionBlog),
     blogArticles: source.blogArticles.map(digestBlogArticle),
-    metaData: digestSeo(source.singletonHome.seoTitle),
+    metaData: digestMetaData(source.singletonHome.seoTitle),
   }
 }
 

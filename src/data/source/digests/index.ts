@@ -1,3 +1,3 @@
 export { digestBlogArticle } from "./digest-blog-article"
-export { digestSeo } from "./digest-seo"
+export { digestMetaData } from "./digest-meta-data"
 export { digestSectionIntro } from "./digest-section-intro"

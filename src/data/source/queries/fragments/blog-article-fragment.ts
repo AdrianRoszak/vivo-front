@@ -1,3 +1,5 @@
+import { seoFragment } from "./seo-fragment"
+
 export const blogArticleFragment = `
     mainImage,
     title,
@@ -16,7 +18,7 @@ export const blogArticleFragment = `
 
 export const fullBlogArticleFragment = `
   articleBody,
-  seoTitle,
+  ${seoFragment}
   ${blogArticleFragment}
 `
 

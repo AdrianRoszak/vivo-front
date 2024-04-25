@@ -11,10 +11,10 @@ import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
 
 const path = Astro.url.pathname
 
-const { blogArticles, sectionIntro } = await getBlogPage()
+const { blogArticles, sectionIntro, metaData } = await getBlogPage()
 ---
 
-<Layout title="Poradnia psychologiczno-pedagogiczna Vivo" description="">
+<Layout title={metaData.seoTitle} description={metaData.seoDescription}>
   <section>
     <Container>
       <Breadcrumbs path={path} />

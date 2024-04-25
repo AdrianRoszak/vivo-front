@@ -4,7 +4,7 @@ export type MetaDataType = {
 }
 
 //@ts-ignore
-export function digestSeo(source): MetaDataType {
+export function digestMetaData(source): MetaDataType {
   return {
     seoTitle: source.title,
     seoDescription: source.description,
