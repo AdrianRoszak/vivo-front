@@ -12,11 +12,15 @@ import ValuesGrid from "@/src/components/values/ValuesGrid.astro"
 import leafIcon from "@/src/assets/leaf-1.svg?raw"
 import leafIcon2 from "@/src/assets/leaf-2.svg?raw"
 
-const { sectionHero, sectionBlog, blogArticles, sectionValues } =
+const { sectionHero, sectionBlog, blogArticles, sectionValues, metaData } =
   await getHomePage()
+
 ---
 
-<Layout title="Poradnia psychologiczno-pedagogiczna Vivo" description="">
+<Layout
+  title={metaData.seoTitle || "Poradnia Vivo"}
+  description={metaData.seoDescription}
+>
   <section class:list={["relative"]}>
     <Container>
       <div class:list={["h-[80vh]", "max-h-[750px]", "flex", "items-center"]}>

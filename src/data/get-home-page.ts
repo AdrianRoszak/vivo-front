@@ -1,9 +1,10 @@
-import { digestBlogArticle } from "@/src/data/source/digests"
+import { digestBlogArticle, digestSeo } from "@/src/data/source/digests"
 import { fetchHomePageData } from "@/src/data/source"
 import type { BlogArticleList } from "../types"
 import type { TypedObject } from "astro-portabletext/types"
 import type { ImageType } from "../types"
 import { secureImage } from "./source/digests/digest-blog-article"
+import type { MetaDataType } from "./source/digests/digest-seo"
 
 type SectionIntro = {
   headline: string
@@ -30,6 +31,7 @@ export type HomePageData = {
   sectionOffer: SectionIntro
   sectionBlog: SectionIntro
   blogArticles: BlogArticleList
+  metaData: MetaDataType
 }
 
 export async function getHomePage(): Promise<HomePageData> {
@@ -38,13 +40,14 @@ export async function getHomePage(): Promise<HomePageData> {
 }
 
 //@ts-ignore
-function digestHomePageData(data): HomePageData {
+function digestHomePageData(source): HomePageData {
   return {
-    sectionHero: digestSectionIntro(data.singletonHome.sectionHero),
-    sectionValues: digestSectionValues(data.singletonHome.sectionHomeValues),
-    sectionOffer: digestSectionIntro(data.singletonHome.sectionOffer),
-    sectionBlog: digestSectionIntro(data.singletonHome.sectionBlog),
-    blogArticles: data.blogArticles.map(digestBlogArticle),
+    sectionHero: digestSectionIntro(source.singletonHome.sectionHero),
+    sectionValues: digestSectionValues(source.singletonHome.sectionHomeValues),
+    sectionOffer: digestSectionIntro(source.singletonHome.sectionOffer),
+    sectionBlog: digestSectionIntro(source.singletonHome.sectionBlog),
+    blogArticles: source.blogArticles.map(digestBlogArticle),
+    metaData: digestSeo(source.singletonHome.seoTitle),
   }
 }
 //@ts-ignore

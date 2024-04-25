@@ -4,3 +4,4 @@ export {
 } from "./blog-article-fragment"
 
 export { valueFragment } from "./values-fragment"
+export { seoFragment } from "./seo-fragment"

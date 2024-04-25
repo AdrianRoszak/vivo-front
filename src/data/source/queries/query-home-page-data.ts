@@ -1,5 +1,8 @@
 import { getCurrentDate } from "@/src/utils"
-import { teaserBlogArticleFragment } from "@/src/data/source/queries/fragments"
+import {
+  seoFragment,
+  teaserBlogArticleFragment,
+} from "@/src/data/source/queries/fragments"
 
 export const queryHomePageData = `{
   "singletonHome": *[_type == "singletonHome"][0] {
@@ -14,7 +17,8 @@ export const queryHomePageData = `{
         icon
       }
     }
-  }
+  },
+  ${seoFragment}
 },
   "blogArticles": *[_type == "blogArticle" && publishedAt < "${getCurrentDate()}"] | order(publishedAt desc) [0..2]{
     ${teaserBlogArticleFragment}
