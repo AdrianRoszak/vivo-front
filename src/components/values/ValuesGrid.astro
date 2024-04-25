@@ -8,10 +8,10 @@ const { values, decoImage } = Astro.props
   .valuesData as HomePageData["sectionValues"]
 ---
 
-<div class:list={["grid", "grid-cols-3", "gap-1", "mb-64"]}>
+<div class:list={["grid", "grid-cols-5", "gap-1", "mb-64"]}>
   {
     decoImage && (
-      <div class:list={["relative", "hidden", "lg:block"]}>
+      <div class:list={["relative", "hidden", "sm:block", "col-span-2"]}>
         <Image
           src={urlForImage(decoImage.source)
             .width(900)
@@ -28,11 +28,11 @@ const { values, decoImage } = Astro.props
   }
   <div
     class:list={[
-      "col-span-3",
-      "lg:col-span-2",
+      "col-span-5",
+      "sm:col-span-3",
       "grid",
       "grid-cols-2",
-      "sm:grid-cols-4",
+      "sm:grid-cols-3",
       "gap-1",
       "grid-rows-2",
       "p-1",

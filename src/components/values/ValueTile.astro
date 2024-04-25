@@ -21,14 +21,16 @@ function toNormalCase(inputString: string) {
     "after:content-['']",
     "after:w-full",
     "after:pt-[100%]",
-    "rounded-md"
+    "rounded-md",
   ]}
 >
   <div
     class:list={[
       "flex",
       "flex-col",
-      "justify-between",
+      "justify-center",
+      "items-center",
+      "gap-8",
       "absolute",
       "top-0",
       "left-0",
@@ -37,15 +39,17 @@ function toNormalCase(inputString: string) {
       "p-4",
     ]}
   >
-    <div class:list={["value-tile-icon", "self-end"]} set:html={htmlString} />
+    <div class:list={["value-tile-icon", "stroke-0"]} set:html={htmlString} />
     <h2
       class:list={[
         "text-double-pica",
         "md:text-great-primer",
         "lg:text-body-copy",
-        "xl:text-great-primer",
+        "xl:text-paragon",
         "text-light-50",
         "text-balance",
+        "text-center",
+        "h-[2.5em]",
       ]}
     >
       {toNormalCase(title)}
