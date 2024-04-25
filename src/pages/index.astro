@@ -9,12 +9,15 @@ import ArticleTeaser from "@/src/components/article/ArticleTeaser.astro"
 import TripleGrid from "@/src/components/TripleGrid.astro"
 import ValuesGrid from "@/src/components/values/ValuesGrid.astro"
 
+import leafIcon from "@/src/assets/leaf-1.svg?raw"
+import leafIcon2 from "@/src/assets/leaf-2.svg?raw"
+
 const { sectionHero, sectionBlog, blogArticles, sectionValues } =
   await getHomePage()
 ---
 
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo" description="">
-  <section>
+  <section class:list={["relative"]}>
     <Container>
       <div class:list={["h-[80vh]", "max-h-[750px]", "flex", "items-center"]}>
         <div class:list={["lg:w-4/5", "-mt-32"]}>
@@ -23,15 +26,18 @@ const { sectionHero, sectionBlog, blogArticles, sectionValues } =
         </div>
       </div>
     </Container>
-  </section>
-  {
-    sectionValues && (
-      <section>
-        <ValuesGrid valuesData={sectionValues} />
-      </section>
-    )
-  }
-  <!-- <section>
+    <div class:list={["absolute", "bottom-0", "left-0"]}>
+      <div class:list={["absolute"]} set:html={leafIcon} />
+      <div class:list={["absolute"]} set:html={leafIcon2} />
+    </div>
+    {
+      sectionValues && (
+        <section>
+          <ValuesGrid valuesData={sectionValues} />
+        </section>
+      )
+    }
+    <!-- <section>
     <Container>
       <div class:list={["text-center", "mb-12"]}>
         <HeadingText as="h1" text={sectionOffer.headline} />
@@ -39,24 +45,25 @@ const { sectionHero, sectionBlog, blogArticles, sectionValues } =
       </div>
     </Container>
   </section> -->
-  <section>
-    <Container>
-      <div class:list={["text-center", "mb-12"]}>
-        <HeadingText as="h1" text={sectionBlog.headline} />
-        <DecorativeText text={sectionBlog.tagline} />
-      </div>
-      {
-        blogArticles && (
-          <TripleGrid>
-            {blogArticles.map((article) => (
-              <ArticleTeaser data={article} />
-            ))}
-          </TripleGrid>
-        )
-      }
-      <div class:list={["text-center", "mb-12"]}>
-        <a href="/blog" class:list={["button", "button-primary"]}> Więcej </a>
-      </div>
-    </Container>
+    <section>
+      <Container>
+        <div class:list={["text-center", "mb-12"]}>
+          <HeadingText as="h1" text={sectionBlog.headline} />
+          <DecorativeText text={sectionBlog.tagline} />
+        </div>
+        {
+          blogArticles && (
+            <TripleGrid>
+              {blogArticles.map((article) => (
+                <ArticleTeaser data={article} />
+              ))}
+            </TripleGrid>
+          )
+        }
+        <div class:list={["text-center", "mb-12"]}>
+          <a href="/blog" class:list={["button", "button-primary"]}> Więcej </a>
+        </div>
+      </Container>
+    </section>
   </section>
 </Layout>
