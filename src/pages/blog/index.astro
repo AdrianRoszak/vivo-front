@@ -1,11 +1,15 @@
 ---
+import { getBlogPage } from "@/src/data"
+
+import Layout from "@/src/layouts/Layout.astro"
 import ArticleTeaser from "@/src/components/article/ArticleTeaser.astro"
 import Container from "@/src/components/Container.astro"
 import DecorativeText from "@/src/components/DecorativeText.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
 import TripleGrid from "@/src/components/TripleGrid.astro"
-import { getBlogPage } from "@/src/data"
-import Layout from "@/src/layouts/Layout.astro"
+import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
+
+const path = Astro.url.pathname
 
 const { blogArticles, sectionIntro } = await getBlogPage()
 ---
@@ -13,6 +17,7 @@ const { blogArticles, sectionIntro } = await getBlogPage()
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo" description="">
   <section>
     <Container>
+      <Breadcrumbs path={path} />
       <div class:list={["text-center", "my-32"]}>
         <HeadingText as="h1" text={sectionIntro.headline} />
         <DecorativeText as="h2" text={sectionIntro.tagline} />

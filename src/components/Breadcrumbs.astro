@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components"
+import Link from "./Link.astro"
+
+const { path } = Astro.props
+const segments = path.split("/").filter((segment: string) => segment !== "")
+---
+
+<ul class:list={["flex", "items-center", "gap-4", "py-8"]}>
+  <li>
+    <Link href="/">
+      <div class:list={["flex", "gap-2", "items-center"]}>
+        <Icon size={30} name="mdi:house" color={"#3300ad"} />
+        HOME
+      </div>
+    </Link>
+  </li>
+  {
+    segments.map((segment: string, index: number) => {
+      if (index === segments.length - 1) {
+        return <li>{segment.toUpperCase()}</li>
+      } else {
+        return (
+          <li>
+            <Link href={`/${segments.slice(0, index + 1).join("/")}`}>
+              {segment.toUpperCase()}
+            </Link>
+          </li>
+        )
+      }
+    })
+  }
+</ul>
