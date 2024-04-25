@@ -53,15 +53,17 @@ const {
       </section>
     )
   }
-  <section class:list={["h-screen", "flex", "items-center"]}>
+  <section
+    class:list={["sm:h-screen", "flex", "items-center", "mb-20", "sm:mb-0"]}
+  >
     <Container>
-      <div class:list={["grid", "grid-cols-5", "-mt-32"]}>
-        <div class:list={["text-balance", "col-span-2"]}>
+      <div class:list={["sm:grid", "grid-cols-5", "-mt-32"]}>
+        <div class:list={["text-balance", "col-span-2", "mb-12", "sm:mb-0"]}>
           <HeadingText as="h1" text={sectionOffer.headline} />
           <DecorativeText text={sectionOffer.tagline} />
         </div>
-        <div class:list={["col-span-3", "pl-32"]}>
-          <div class="mb-20">
+        <div class:list={["col-span-3", "sm:pl-32"]}>
+          <div class:list={["mb-12", "sm:mb-20"]}>
             <h2 class:list={["text-paragon"]}>Oferta dla dzieci</h2>
             <p>
               Kompleksowa terapia indywidualna, m. in. fizjoterapeutyczna,
@@ -70,14 +72,14 @@ const {
               terapia słuchowa.
             </p>
           </div>
-          <div class="mb-20">
+          <div class:list={["mb-12", "sm:mb-20"]}>
             <h2 class:list={["text-paragon"]}>Oferta dla dorosłych</h2>
             <p>
               Oferujemy warsztaty dla rodziców, poradnictwo rodzinne. Wspieramy
               również kobiety poprzez terapię uroginekologiczną i rehabilitację.
             </p>
           </div>
-          <div class="mb-20">
+          <div class:list={["mb-12", "sm:mb-20"]}>
             <h2 class:list={["text-paragon"]}>Oferta dla oświaty</h2>
             <p>
               Realizujemy pełen zakres zajęć terapeutycznych dla uczniów z
