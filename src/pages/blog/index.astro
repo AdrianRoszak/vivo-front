@@ -1,16 +1,22 @@
 ---
 import ArticleTeaser from "@/src/components/article/ArticleTeaser.astro"
 import Container from "@/src/components/Container.astro"
+import DecorativeText from "@/src/components/DecorativeText.astro"
+import HeadingText from "@/src/components/HeadingText.astro"
 import TripleGrid from "@/src/components/TripleGrid.astro"
 import { getBlogPage } from "@/src/data"
 import Layout from "@/src/layouts/Layout.astro"
 
-const { blogArticles } = await getBlogPage()
+const { blogArticles, sectionIntro } = await getBlogPage()
 ---
 
 <Layout title="Poradnia psychologiczno-pedagogiczna Vivo" description="">
   <section>
     <Container>
+      <div class:list={["text-center", "my-32"]}>
+        <HeadingText as="h1" text={sectionIntro.headline} />
+        <DecorativeText as="h2" text={sectionIntro.tagline} />
+      </div>
       {
         blogArticles && (
           <TripleGrid>

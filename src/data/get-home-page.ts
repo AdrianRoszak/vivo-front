@@ -1,15 +1,17 @@
-import { digestBlogArticle, digestSeo } from "@/src/data/source/digests"
 import { fetchHomePageData } from "@/src/data/source"
-import type { BlogArticleList } from "../types"
-import type { TypedObject } from "astro-portabletext/types"
-import type { ImageType } from "../types"
-import { secureImage } from "./source/digests/digest-blog-article"
-import type { MetaDataType } from "./source/digests/digest-seo"
 
-type SectionIntro = {
-  headline: string
-  tagline: TypedObject | string
-}
+import {
+  digestBlogArticle,
+  digestSectionIntro,
+  digestSeo,
+} from "@/src/data/source/digests"
+
+import { secureImage } from "./source/digests/digest-blog-article"
+
+import type { ImageType } from "../types"
+import type { MetaDataType } from "./source/digests/digest-seo"
+import type { SectionIntro } from "./source/digests/digest-section-intro"
+import type { BlogArticleList } from "../types"
 
 export type ValueTeaser = {
   title: string
@@ -48,13 +50,6 @@ function digestHomePageData(source): HomePageData {
     sectionBlog: digestSectionIntro(source.singletonHome.sectionBlog),
     blogArticles: source.blogArticles.map(digestBlogArticle),
     metaData: digestSeo(source.singletonHome.seoTitle),
-  }
-}
-//@ts-ignore
-function digestSectionIntro(source): SectionIntro {
-  return {
-    headline: source.headline,
-    tagline: source.tagline,
   }
 }
 
