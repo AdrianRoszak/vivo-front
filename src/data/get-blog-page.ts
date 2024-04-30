@@ -6,8 +6,7 @@ import {
   digestSectionIntro,
 } from "@/src/data/source/digests"
 
-import type { BlogArticleList } from "@/src/types"
-import type { SectionIntro } from "./source/digests/digest-section-intro"
+import type { BlogArticleList, SectionIntro } from "@/src/types"
 import type { MetaDataType } from "./source/digests/digest-meta-data"
 
 type BlogPageData = {
