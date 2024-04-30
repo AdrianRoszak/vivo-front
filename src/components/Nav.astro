@@ -30,7 +30,7 @@ const { contact } = Astro.props
       "hidden",
       "md:flex",
       "px-20",
-      "gap-4",
+      "gap-12",
       "items-center",
     ]}
   >
@@ -55,6 +55,29 @@ const { contact } = Astro.props
         ]}
       >
         Blog
+      </span>
+    </Link>
+    <Link href="/blog">
+      <span
+        class:list={[
+          "inline-block",
+          "relative",
+          "uppercase",
+          "text-great-primer",
+          "after:content-['']",
+          "after:absolute",
+          "after:bottom-[-5px]",
+          "after:left-0",
+          "after:w-full",
+          "after:h-[2px]",
+          "after:bg-secondary",
+          "after:scale-x-0",
+          "after:transition-transform",
+          "after:duration-800",
+          "group-hover:after:scale-x-100",
+        ]}
+      >
+        Oferta
       </span>
     </Link>
   </div>
