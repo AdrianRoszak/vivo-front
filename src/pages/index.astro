@@ -74,7 +74,13 @@ const {
                 {Array.isArray(sectionOffer.offerGroups) &&
                   sectionOffer.offerGroups.map((group) => (
                     <div
-                      class:list={["mb-16", "sm:mb-12", "relative", "sm:p-8"]}
+                      class:list={[
+                        "mb-16",
+                        "sm:mb-12",
+                        "relative",
+                        "sm:p-8",
+                        "last:mb-0",
+                      ]}
                     >
                       <a href="/" class:list={["group"]}>
                         <div
