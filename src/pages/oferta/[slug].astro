@@ -34,10 +34,9 @@ export async function getStaticPaths() {
 
 const currentSlug = Astro.params.slug
 const offerGroup = await getOfferGroup(currentSlug)
-console.log(offerGroup)
 ---
 
-<Layout title={"Poradnia Vivo"} description={""}>
+<Layout title={offerGroup.title} description={offerGroup.description}>
   <section class:list={["relative"]}>
     <Container>
       <div class:list={["h-[80vh]", "max-h-[750px]", "flex", "items-center"]}>

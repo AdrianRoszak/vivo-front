@@ -1,6 +1,6 @@
 import type { SectionIntro } from "./common-types"
 
-type OfferGroup = {
+export type OfferGroup = {
   title: string
   description: string
   slug: string
