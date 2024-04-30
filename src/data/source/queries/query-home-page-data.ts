@@ -7,7 +7,16 @@ import {
 export const queryHomePageData = `{
   "singletonHome": *[_type == "singletonHome"][0] {
   sectionHero,
-  secOffer,
+  secOffer {
+    offerIntroField,
+    offerGroupSelectorField {
+      sectionOfferGroup[]->{
+        offerGroupName,
+        offerGroupDescription,
+        offerGroupSlug
+      }
+    }
+  },
   sectionBlog,
   sectionHomeValues {
     decoImage,

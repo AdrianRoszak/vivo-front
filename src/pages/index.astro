@@ -20,6 +20,7 @@ const {
   sectionOffer,
   metaData,
 } = await getHomePage()
+
 ---
 
 <Layout
@@ -53,45 +54,40 @@ const {
       </section>
     )
   }
-  <section
-    class:list={["sm:h-screen", "flex", "items-center", "mb-20", "sm:mb-0"]}
-  >
-    <Container>
-      <div class:list={["sm:grid", "grid-cols-5", "-mt-32"]}>
-        <div class:list={["text-balance", "col-span-2", "mb-12", "sm:mb-0"]}>
-          <HeadingText as="h1" text={sectionOffer.headline} />
-          <DecorativeText text={sectionOffer.tagline} />
-        </div>
-        <div class:list={["col-span-3", "sm:pl-32"]}>
-          <div class:list={["mb-12", "sm:mb-20"]}>
-            <h2 class:list={["text-paragon"]}>Oferta dla dzieci</h2>
-            <p>
-              Kompleksowa terapia indywidualna, m. in. fizjoterapeutyczna,
-              pedagogiczna, psychologiczna, terapia zajęciowa, integracja
-              sensoryczna (IS), trening umiejętności społecznych (TUS), oraz
-              terapia słuchowa.
-            </p>
+  {
+    sectionOffer && (
+      <section
+        class:list={["sm:h-screen", "flex", "items-center", "mb-20", "sm:mb-0"]}
+      >
+        <Container>
+          <div class:list={["sm:grid", "grid-cols-5", "-mt-32"]}>
+            {sectionOffer.intro && (
+              <div
+                class:list={["text-balance", "col-span-2", "mb-12", "sm:mb-0"]}
+              >
+                <HeadingText as="h1" text={sectionOffer.intro.headline} />
+                <DecorativeText text={sectionOffer.intro.tagline} />
+              </div>
+            )}
+            {sectionOffer.offerGroups && (
+              <div class:list={["col-span-3", "sm:pl-32"]}>
+                {Array.isArray(sectionOffer.offerGroups) &&
+                  sectionOffer.offerGroups.map((group) => (
+                    <div class:list={["mb-12", "sm:mb-20"]}>
+                      <a href="/">
+                        <h2 class:list={["text-paragon"]}>{group.title}</h2>
+                        <p>{group.description}</p>
+                      </a>
+                    </div>
+                  ))}
+                <div />
+              </div>
+            )}
           </div>
-          <div class:list={["mb-12", "sm:mb-20"]}>
-            <h2 class:list={["text-paragon"]}>Oferta dla dorosłych</h2>
-            <p>
-              Oferujemy warsztaty dla rodziców, poradnictwo rodzinne. Wspieramy
-              również kobiety poprzez terapię uroginekologiczną i rehabilitację.
-            </p>
-          </div>
-          <div class:list={["mb-12", "sm:mb-20"]}>
-            <h2 class:list={["text-paragon"]}>Oferta dla oświaty</h2>
-            <p>
-              Realizujemy pełen zakres zajęć terapeutycznych dla uczniów z
-              orzeczeniem o potrzebie kształcenia specjalnego, oraz prowadzimy
-              warsztaty dla pracowników oświaty.
-            </p>
-          </div>
-          <div></div>
-        </div>
-      </div>
-    </Container>
-  </section>
+        </Container>
+      </section>
+    )
+  }
   <section>
     <Container>
       <div class:list={["text-center", "mb-12"]}>

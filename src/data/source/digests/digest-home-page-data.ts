@@ -12,7 +12,7 @@ export function digestHomePageData(source): HomePageData {
   return {
     sectionHero: digestSectionIntro(source.singletonHome.sectionHero),
     sectionValues: digestSectionValues(source.singletonHome.sectionHomeValues),
-    sectionOffer: digestSectionIntro(source.singletonHome.secOffer),
+    sectionOffer: digestSectionOffer(source.singletonHome.secOffer),
     sectionBlog: digestSectionIntro(source.singletonHome.sectionBlog),
     blogArticles: source.blogArticles.map(digestBlogArticle),
     metaData: digestMetaData(source.singletonHome.seoTitle),
@@ -24,16 +24,17 @@ export function digestSectionOffer(source): SectionHomeOffer | null {
   if (!source) return null
 
   return {
-    intro: {
-      headline: "headline",
-      tagline: "tagline",
-    },
-    offerGroups: [
-      {
-        title: "headline",
-        description: "tagline",
-        slug: "string",
-      },
-    ],
+    intro: digestSectionIntro(source.offerIntroField),
+    offerGroups:
+      source.offerGroupSelectorField.sectionOfferGroup.map(digestOfferGroup),
+  }
+}
+
+//@ts-ignore
+export function digestOfferGroup(source) {
+  return {
+    title: source.offerGroupName,
+    description: source.offerGroupDescription,
+    slug: source.offerGroupSlug,
   }
 }
