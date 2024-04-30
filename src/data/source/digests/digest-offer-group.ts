@@ -13,5 +13,16 @@ export function digestOfferGroupBase(source): OfferGroupBase {
 export function digestOfferGroupData(source): OfferGroupData {
   const data = digestOfferGroupBase(source)
   //@ts-ignore
-  return data
+  return {
+    ...data,
+    services: source.serviceGroupSelector.map(digestService),
+  }
+}
+
+//@ts-ignore
+export function digestService(source) {
+  return {
+    name: source.serviceName,
+    description: source.serviceDescription,
+  }
 }
