@@ -7,7 +7,7 @@ import {
 export const queryHomePageData = `{
   "singletonHome": *[_type == "singletonHome"][0] {
   sectionHero,
-  sectionOffer,
+  secOffer,
   sectionBlog,
   sectionHomeValues {
     decoImage,
