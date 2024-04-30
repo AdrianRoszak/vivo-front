@@ -76,6 +76,9 @@ export default {
         "light-800": "var(--color-light-800)",
         "light-900": "var(--color-light-900)",
       },
+      boxShadow: {
+        "custom-sm": "0 0 30px -15px rgba(0, 0, 0, 0.3)",
+      },
     },
   },
   plugins: [
