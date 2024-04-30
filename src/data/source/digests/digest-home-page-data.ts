@@ -1,6 +1,7 @@
 import {
   digestBlogArticle,
   digestMetaData,
+  digestOfferGroupBase,
   digestSectionIntro,
   digestSectionValues,
 } from "@/src/data/source/digests"
@@ -26,15 +27,8 @@ export function digestSectionOffer(source): SectionHomeOffer | null {
   return {
     intro: digestSectionIntro(source.offerIntroField),
     offerGroups:
-      source.offerGroupSelectorField.sectionOfferGroup.map(digestOfferGroup),
-  }
-}
-
-//@ts-ignore
-export function digestOfferGroup(source) {
-  return {
-    title: source.offerGroupName,
-    description: source.offerGroupDescription,
-    slug: source.slug.current,
+      source.offerGroupSelectorField.sectionOfferGroup.map(
+        digestOfferGroupBase,
+      ),
   }
 }

@@ -1,12 +1,16 @@
 import type { SectionIntro } from "./common-types"
 
-export type OfferGroup = {
+export type OfferGroupBase = {
   title: string
   description: string
   slug: string
 }
 
-type OfferGroups = OfferGroup[]
+export type OfferGroupData = OfferGroupBase & {
+  services: string[]
+}
+
+type OfferGroups = OfferGroupBase[]
 
 export type SectionHomeOffer = {
   intro: SectionIntro
