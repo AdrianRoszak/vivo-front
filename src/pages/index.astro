@@ -73,53 +73,46 @@ const {
               <div class:list={["col-span-3", "sm:pl-32"]}>
                 {Array.isArray(sectionOffer.offerGroups) &&
                   sectionOffer.offerGroups.map((group) => (
-                    <div
-                      class:list={[
-                        "mb-16",
-                        "sm:mb-12",
-                        "relative",
-                        "sm:p-8",
-                        "last:mb-0",
-                      ]}
+                    <a
+                      href={`/oferta/${group.slug}`}
+                      class:list={["group", "relative", "block", "sm:p-12"]}
                     >
-                      <a href="/" class:list={["group"]}>
-                        <div
-                          class:list={[
-                            "after:content-['']",
-                            "after:block",
-                            "after:absolute",
-                            "after:shadow-custom-sm",
-                            "after:w-[calc(100%+2rem)]",
-                            "after:sm:w-full",
-                            "after:h-[calc(100%+2rem)]",
-                            "after:-translate-x-1/2",
-                            "after:-translate-y-1/2",
-                            "after:sm:h-full",
-                            "after:top-1/2",
-                            "after:left-1/2",
-                            "after:z-[-1]",
-                            "after:rounded-md",
-                            "after:opacity-0",
-                            "after:transition-all",
-                            "after:group-hover:opacity-100",
-                          ]}
-                        >
-                          <div class:list={["flex", "gap-4", "items-center"]}>
-                            <h2 class:list={["text-paragon"]}>{group.title}</h2>
-                            <Icon
-                              size={30}
-                              name="mdi:share"
-                              class:list={[
-                                "group-hover:text-primary",
-                                "group-hover:scale-110",
-                                "transition-all",
-                              ]}
-                            />
-                          </div>
-                          <p>{group.description}</p>
+                      <div
+                        class:list={[
+                          "after:content-['']",
+                          "after:block",
+                          "after:absolute",
+                          "after:shadow-custom-sm",
+                          "after:w-[calc(100%+2rem)]",
+                          "after:sm:w-full",
+                          "after:h-[calc(100%+2rem)]",
+                          "after:-translate-x-1/2",
+                          "after:-translate-y-1/2",
+                          "after:sm:h-full",
+                          "after:top-1/2",
+                          "after:left-1/2",
+                          "after:z-[-1]",
+                          "after:rounded-md",
+                          "after:opacity-0",
+                          "after:transition-all",
+                          "after:group-hover:opacity-100",
+                        ]}
+                      >
+                        <div class:list={["flex", "gap-4", "items-center"]}>
+                          <h2 class:list={["text-paragon"]}>{group.title}</h2>
+                          <Icon
+                            size={30}
+                            name="mdi:share"
+                            class:list={[
+                              "group-hover:text-primary",
+                              "group-hover:scale-110",
+                              "transition-all",
+                            ]}
+                          />
                         </div>
-                      </a>
-                    </div>
+                        <p>{group.description}</p>
+                      </div>
+                    </a>
                   ))}
                 <div />
               </div>

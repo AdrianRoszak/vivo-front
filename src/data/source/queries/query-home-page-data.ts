@@ -13,7 +13,9 @@ export const queryHomePageData = `{
       sectionOfferGroup[]->{
         offerGroupName,
         offerGroupDescription,
-        offerGroupSlug
+        slug {
+          current
+        }
       }
     }
   },

@@ -35,6 +35,6 @@ export function digestOfferGroup(source) {
   return {
     title: source.offerGroupName,
     description: source.offerGroupDescription,
-    slug: source.offerGroupSlug,
+    slug: source.slug.current,
   }
 }
