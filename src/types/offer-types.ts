@@ -1,3 +1,4 @@
+import type { TypedObject } from "astro-portabletext/types"
 import type { SectionIntro } from "./common-types"
 
 export type OfferGroupBase = {
@@ -6,8 +7,13 @@ export type OfferGroupBase = {
   slug: string
 }
 
+type Service = {
+  name: string
+  description: TypedObject
+}
+
 export type OfferGroupData = OfferGroupBase & {
-  services: string[]
+  services: Service[]
 }
 
 type OfferGroups = OfferGroupBase[]

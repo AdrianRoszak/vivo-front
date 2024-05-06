@@ -8,6 +8,7 @@ import leafIcon from "@/src/assets/leaf-1.svg?raw"
 import leafIcon2 from "@/src/assets/leaf-2.svg?raw"
 import { getOfferGroup, getOfferGroupsSlugs } from "@/src/data"
 import { PortableText } from "astro-portabletext"
+import { Icon } from "astro-icon/components"
 
 export async function getStaticPaths() {
   async function obtainOfferGroupsSlugs() {
@@ -46,7 +47,7 @@ const offerGroup = await getOfferGroup(currentSlug)
           <DecorativeText text={offerGroup.description} />
         </div>
       </div> -->
-      {
+      <!-- {
         offerGroup.services.map((service) => {
           return (
             <>
@@ -55,16 +56,37 @@ const offerGroup = await getOfferGroup(currentSlug)
             </>
           )
         })
-      }
+      } -->
       <div class="accordion accordion--radio">
         {
           offerGroup.services.map((service, index: number) => {
             return (
               <>
                 <div class="tab">
-                  <input type="radio" name="accordion-2" id={`rd${index}`} />
-                  <label for={`rd${index}`} class="tab__label">
-                    <h2>{service.name}</h2>
+                  <input
+                    type="radio"
+                    name="accordion-2"
+                    id={`rd${index}`}
+                    data-checked={false}
+                  />
+                  <label
+                    for={`rd${index}`}
+                    class:list={["tab__label", "group", "relative"]}
+                  >
+                    <div class="offer-tab">
+                      <div class="flex items-center gap-4">
+                        <h2 class="text-paragon">{service.name}</h2>
+                        <Icon
+                          size={30}
+                          name="mdi:share"
+                          class:list={[
+                            "group-hover:text-primary",
+                            "group-hover:scale-110",
+                            "transition-all",
+                          ]}
+                        />
+                      </div>
+                    </div>
                   </label>
                   <div class="tab__content">
                     <PortableText value={service.description} />
@@ -94,20 +116,45 @@ const offerGroup = await getOfferGroup(currentSlug)
   </section>
 </Layout>
 
+<script is:inline>
+  const radioInputs = document.querySelectorAll("input[type=radio]")
+
+  function handleClick(element) {
+    const elementChecked = element.getAttribute("data-checked")
+
+    if (elementChecked === "true") {
+      element.checked = false
+      element.setAttribute("data-checked", "false")
+    } else {
+      element.setAttribute("data-checked", "true")
+      radioInputs.forEach((input) => {
+        if (input !== element) {
+          input.checked = false
+          input.setAttribute("data-checked", "false")
+        }
+      })
+    }
+  }
+
+  radioInputs.forEach((input) => {
+    input.addEventListener("click", () => handleClick(input))
+  })
+</script>
+
 <style>
-  :root {
+  /* :root {
     --primary: #227093;
     --secondary: #ff5252;
     --background: #eee;
-    --highlight: #ffda79;
-    /* Theme color */
-    --theme: var(--primary);
-  }
-  *,
+    --highlight: #ffda79; */
+  /* Theme color */
+  /* --theme: var(--primary); */
+  /* } */
+  /* *,
   *::before,
   *::after {
     box-sizing: border-box;
-  }
+  } */
 
   /* Core styles/functionality */
   .tab input {
@@ -121,41 +168,45 @@ const offerGroup = await getOfferGroup(currentSlug)
     transition: all 0.35s;
   }
   .tab input:checked ~ .tab__content {
-    max-height: 10rem;
+    max-height: 30rem;
   }
 
   /* Visual styles */
   .accordion {
-    color: var(--theme);
-    border: 2px solid;
-    border-radius: 0.5rem;
+    /* color: var(--theme); */
+    /* border: 2px solid;
+    border-radius: 0.5rem; */
     overflow: hidden;
+    padding: 0 2rem;
   }
   .tab__label,
   .tab__close {
     display: flex;
-    color: white;
-    background: var(--theme);
+    /* color: white; */
+    /* background: var(--theme); */
     cursor: pointer;
   }
   .tab__label {
-    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    /* justify-content: space-between; */
     padding: 1rem;
+    margin: 0.5rem 0;
   }
-  .tab__label::after {
+  /* .tab__label::after {
     content: "\276F";
     width: 1em;
     height: 1em;
     text-align: center;
     transform: rotate(90deg);
     transition: all 0.35s;
-  }
+  } */
   .tab input:checked + .tab__label::after {
     transform: rotate(270deg);
   }
-  .tab__content p {
+  .tab__content {
     margin: 0;
-    padding: 1rem;
+    padding: 0 3rem;
   }
   .tab__close {
     justify-content: flex-end;
@@ -163,13 +214,14 @@ const offerGroup = await getOfferGroup(currentSlug)
     font-size: 0.75rem;
   }
   .accordion--radio {
-    --theme: var(--secondary);
+    /* --theme: var(--secondary); */
   }
 
   /* Arrow animation */
   .tab input:not(:checked) + .tab__label:hover::after {
     animation: bounce 0.5s infinite;
   }
+
   @keyframes bounce {
     25% {
       transform: rotate(90deg) translate(0.25rem);

@@ -110,3 +110,8 @@ p.portable-text + h3.portable-text {
 .value-tile-icon path {
   @apply stroke-light-50;
 }
+
+/* -------------- */
+.offer-tab::after {
+  @apply absolute left-1/2 top-1/2 -z-10 block h-[calc(100%+2rem)] w-[calc(100%+2rem)] -translate-x-1/2 -translate-y-1/2 rounded-md opacity-0 shadow-custom-sm transition-all content-[''] group-hover:opacity-100 sm:h-full sm:w-full;
+}
