@@ -3,12 +3,13 @@ import type { SectionIntro } from "./common-types"
 
 export type OfferGroupBase = {
   title: string
-  description: string
+  description: TypedObject
   slug: string
 }
 
-type Service = {
+export type Service = {
   name: string
+  shortDescription: string
   description: TypedObject
 }
 

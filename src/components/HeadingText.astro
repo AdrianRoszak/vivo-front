@@ -6,20 +6,26 @@ type DecorativeTexrProps<Tag extends HTMLTag> = Polymorphic<{
   as: Tag
   text: string
   size?: string | string[]
+  uppercase?: boolean
 }>
 
 type Props = DecorativeTexrProps<HeadingVariant>
 
-const { as: Tag = "p", text, size = "great-primer" } = Astro.props
+const {
+  as: Tag = "p",
+  text,
+  size = "great-primer",
+  uppercase = true,
+} = Astro.props
 ---
 
 <Tag
   class:list={[
-    "uppercase",
+    uppercase && "uppercase",
     "font-light",
     "font-sans",
     "text-balance",
-    [...size],
+    Array.isArray(size) ? [...size] : size,
   ]}
 >
   {text}

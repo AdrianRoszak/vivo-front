@@ -1,10 +1,10 @@
-import type { OfferGroupBase, OfferGroupData } from "@/src/types"
+import type { OfferGroupBase, OfferGroupData, Service } from "@/src/types"
 
 //@ts-ignore
 export function digestOfferGroupBase(source): OfferGroupBase {
   return {
     title: source.offerGroupName,
-    description: source.offerGroupDescription,
+    description: source.offerGroupDesc,
     slug: source.slug.current,
   }
 }
@@ -20,9 +20,10 @@ export function digestOfferGroupData(source): OfferGroupData {
 }
 
 //@ts-ignore
-export function digestService(source) {
+export function digestService(source): Service {
   return {
     name: source.serviceName,
+    shortDescription: source.serviceShortDescription,
     description: source.serviceDescription,
   }
 }

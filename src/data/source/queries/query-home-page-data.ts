@@ -12,7 +12,7 @@ export const queryHomePageData = `{
     offerGroupSelectorField {
       sectionOfferGroup[]->{
         offerGroupName,
-        offerGroupDescription,
+        offerGroupDesc,
         slug {
           current
         }

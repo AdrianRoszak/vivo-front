@@ -88,6 +88,12 @@ export default {
           display: "inline",
           color: "var(--color-primary)",
         },
+        ".line-clamp-8": {
+          display: "-webkit-box",
+          "-webkit-line-clamp": "8",
+          "-webkit-box-orient": "vertical",
+          overflow: "hidden",
+        },
       })
     }),
   ],

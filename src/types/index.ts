@@ -16,6 +16,7 @@ export type {
   SectionHomeOffer,
   OfferGroupBase,
   OfferGroupData,
+  Service,
 } from "./offer-types"
 export type { HomePageData } from "./home-page-types"
 

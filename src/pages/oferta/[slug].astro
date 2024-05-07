@@ -1,14 +1,12 @@
 ---
 import Container from "@/src/components/Container.astro"
-// import DecorativeText from "@/src/components/DecorativeText.astro"
-// import HeadingText from "@/src/components/HeadingText.astro"
+import HeadingText from "@/src/components/HeadingText.astro"
 import Layout from "@/src/layouts/Layout.astro"
 
 import leafIcon from "@/src/assets/leaf-1.svg?raw"
 import leafIcon2 from "@/src/assets/leaf-2.svg?raw"
 import { getOfferGroup, getOfferGroupsSlugs } from "@/src/data"
 import { PortableText } from "astro-portabletext"
-import { Icon } from "astro-icon/components"
 
 export async function getStaticPaths() {
   async function obtainOfferGroupsSlugs() {
@@ -38,45 +36,81 @@ const currentSlug = Astro.params.slug
 const offerGroup = await getOfferGroup(currentSlug)
 ---
 
-<Layout title={offerGroup.title} description={offerGroup.description}>
+<Layout title={offerGroup.title} description={offerGroup.title}>
   <section class:list={["relative"]}>
     <Container>
-      <!-- <div class:list={["h-[80vh]", "max-h-[750px]", "flex", "items-center"]}>
-        <div class:list={["lg:w-4/5", "-mt-32"]}>
-          <HeadingText as="h1" text={offerGroup.title} />
-          <DecorativeText text={offerGroup.description} />
-        </div>
-      </div> -->
-      <!-- {
+      <div
+        class:list={[
+          "lg:w-4/5",
+          "mx-auto",
+          "text-center",
+          "mb-16",
+          "relative",
+          "after:content-['']",
+          "after:absolute",
+          "after:top-[120%]",
+          "after:left-1/2",
+          "after:-translate-x-1/2",
+          "after:h-[2px]",
+          "after:w-1/4",
+          "after:bg-primary",
+        ]}
+      >
+        <HeadingText
+          as="h1"
+          text={offerGroup.title}
+          size={["text-trafalgar", "md:text-canon"]}
+        />
+        <PortableText
+          class="text-great-primer"
+          value={offerGroup.description}
+        />
+      </div>
+    </Container>
+    <!-- <div class="grid grid-cols-2 gap-20 px-20">
+      {
         offerGroup.services.map((service) => {
           return (
-            <>
-              <h2>{service.name}</h2>
-              <PortableText value={service.description} />
-            </>
+            <div class:list={["bg-white", "p-4", "rounded-md", "shadow-md"]}>
+              <HeadingText
+                as="h2"
+                size="text-paragon"
+                text={service.name}
+                uppercase={false}
+              />
+              <div class="line-clamp-8">
+                <PortableText value={service.description} />
+              </div>
+            </div>
           )
         })
-      } -->
-      <div class="accordion accordion--radio">
-        {
-          offerGroup.services.map((service, index: number) => {
-            return (
-              <>
-                <div class="tab">
-                  <input
-                    type="radio"
-                    name="accordion-2"
-                    id={`rd${index}`}
-                    data-checked={false}
-                  />
-                  <label
-                    for={`rd${index}`}
-                    class:list={["tab__label", "group", "relative"]}
-                  >
-                    <div class="offer-tab">
-                      <div class="flex items-center gap-4">
-                        <h2 class="text-paragon">{service.name}</h2>
-                        <Icon
+      }
+    </div> -->
+    <div class="accordion accordion--radio">
+      {
+        offerGroup.services.map((service, index: number) => {
+          return (
+            <>
+              <div class="tab">
+                <input
+                  type="radio"
+                  name="accordion-2"
+                  id={`rd${index}`}
+                  data-checked={false}
+                />
+                <label
+                  for={`rd${index}`}
+                  class:list={["tab__label", "group", "relative"]}
+                >
+                  <div class="offer-tab flex">
+                    <div class="">
+                      <HeadingText
+                        as="h2"
+                        size="text-paragon"
+                        text={service.name}
+                        uppercase={false}
+                      />
+                      {/* <Icon
                           size={30}
                           name="mdi:share"
                           class:list={[
@@ -84,25 +118,25 @@ const offerGroup = await getOfferGroup(currentSlug)
                             "group-hover:scale-110",
                             "transition-all",
                           ]}
-                        />
-                      </div>
+                        /> */}
                     </div>
-                  </label>
+                    <h2>{service.shortDescription}</h2>
+                  </div>
+                </label>
                   <div class="tab__content">
                     <PortableText value={service.description} />
                   </div>
-                </div>
-              </>
-            )
-          })
-        }
-        <!-- TODO: uncomment if you need it -->
-        <div class="tab">
+              </div>
+            </>
+          )
+        })
+      }
+      <!-- TODO: uncomment if you need it -->
+      <!-- <div class="tab">
           <input type="radio" name="accordion-2" id="rdClose" />
           <label for="rdClose" class="tab__close">Close open tab &times;</label>
-        </div>
-      </div>
-    </Container>
+        </div> -->
+    </div>
     <div class:list={["absolute", "top-0", "w-full", "h-full", "-z-10"]}>
       <div
         class:list={["absolute", "-left-52", "lg:left-[unset]", "lg:right-72"]}
@@ -177,20 +211,21 @@ const offerGroup = await getOfferGroup(currentSlug)
     /* border: 2px solid;
     border-radius: 0.5rem; */
     overflow: hidden;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
   }
   .tab__label,
   .tab__close {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     /* color: white; */
     /* background: var(--theme); */
     cursor: pointer;
   }
   .tab__label {
-    gap: 1rem;
-    align-items: center;
+    gap: 5rem;
+    /* align-items: center; */
     /* justify-content: space-between; */
-    padding: 1rem;
+    padding: 1rem 2rem;
     margin: 0.5rem 0;
   }
   /* .tab__label::after {

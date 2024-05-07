@@ -12,6 +12,7 @@ import ValuesGrid from "@/src/components/values/ValuesGrid.astro"
 import leafIcon from "@/src/assets/leaf-1.svg?raw"
 import leafIcon2 from "@/src/assets/leaf-2.svg?raw"
 import { Icon } from "astro-icon/components"
+import { PortableText } from "astro-portabletext"
 
 const {
   sectionHero,
@@ -90,7 +91,7 @@ const {
                             ]}
                           />
                         </div>
-                        <p>{group.description}</p>
+                        <PortableText value={group.description} />
                       </div>
                     </a>
                   ))}
