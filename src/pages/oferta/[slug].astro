@@ -44,16 +44,7 @@ const offerGroup = await getOfferGroup(currentSlug)
           "lg:w-4/5",
           "mx-auto",
           "text-center",
-          "mb-16",
-          "relative",
-          "after:content-['']",
-          "after:absolute",
-          "after:top-[120%]",
-          "after:left-1/2",
-          "after:-translate-x-1/2",
-          "after:h-[2px]",
-          "after:w-1/4",
-          "after:bg-primary",
+          "m-32",
         ]}
       >
         <HeadingText
@@ -81,6 +72,19 @@ const offerGroup = await getOfferGroup(currentSlug)
                   for={`rd${index}`}
                   class:list={["tab__label", "group", "relative"]}
                 >
+                  <span
+                    class:list={[
+                      "absolute",
+                      "text-4xl",
+                      "font-deco",
+                      "right-0",
+                      "top-2",
+                      "text-primary",
+                      "-z-10",                      
+                    ]}
+                  >
+                    {index < 9 ? `0${index + 1}` : index + 1}
+                  </span>
                   <div class:list={["offer-tab", "flex", "py-12"]}>
                     <div class="flex items-center">
                       <HeadingText
@@ -156,14 +160,14 @@ const offerGroup = await getOfferGroup(currentSlug)
   .tab__content {
     max-height: 0;
     overflow: hidden;
-    transition: all 0.35s;
+    transition: all 0.7s;
     grid-column-start: 2;
     margin: 0;
     padding: 0;
   }
 
   .tab input:checked ~ label .tab__content {
-    max-height: 30rem;
+    max-height: 1000px;
   }
 
   .accordion {

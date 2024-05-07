@@ -124,6 +124,10 @@ p.portable-text + h3.portable-text {
   @apply transition-all;
 }
 
+.tab__content {
+  @apply pb-4;
+}
+
 .tab:last-child .tab__label {
   @apply border-b;
 }
