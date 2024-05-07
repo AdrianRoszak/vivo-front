@@ -115,3 +115,40 @@ p.portable-text + h3.portable-text {
 .offer-tab::after {
   @apply absolute left-1/2 top-1/2 -z-10 block h-[calc(100%+2rem)] w-[calc(100%+2rem)] -translate-x-1/2 -translate-y-1/2 rounded-md opacity-0 shadow-custom-sm transition-all content-[''] group-hover:opacity-100 sm:h-full sm:w-full;
 }
+
+.tab__label {
+  @apply border-t transition-all;
+}
+
+.tab {
+  @apply transition-all;
+}
+
+.tab:last-child .tab__label {
+  @apply border-b;
+}
+
+.tab__label:hover {
+  @apply border-transparent;
+}
+
+.tab:has(.tab__label:hover) .tab__label,
+.tab:has(.tab__label:hover) + .tab .tab__label {
+  @apply border-transparent;
+}
+
+/** this complicated selector allows to add hover effect for previous and next siblings */
+.tab:has(.tab__label:hover) ~ .tab,
+.tab:has(~ .tab .tab__label:hover) {
+  @apply opacity-35;
+}
+
+.tab__content p,
+.tab__content ul {
+  margin: 0.5rem 0;
+}
+
+.tab__content h3 {
+  @apply text-great-primer;
+  margin-top: 1rem;
+}

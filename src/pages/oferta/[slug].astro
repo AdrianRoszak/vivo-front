@@ -66,31 +66,10 @@ const offerGroup = await getOfferGroup(currentSlug)
           value={offerGroup.description}
         />
       </div>
-    </Container>
-    <!-- <div class="grid grid-cols-2 gap-20 px-20">
-      {
-        offerGroup.services.map((service) => {
-          return (
-            <div class:list={["bg-white", "p-4", "rounded-md", "shadow-md"]}>
-              <HeadingText
-                as="h2"
-                size="text-paragon"
-                text={service.name}
-                uppercase={false}
-              />
-              <div class="line-clamp-8">
-                <PortableText value={service.description} />
-              </div>
-            </div>
-          )
-        })
-      }
-    </div> -->
-    <div class="accordion accordion--radio">
-      {
-        offerGroup.services.map((service, index: number) => {
-          return (
-            <>
+      <div class="accordion accordion--radio">
+        {
+          offerGroup.services.map((service, index: number) => {
+            return (
               <div class="tab">
                 <input
                   type="radio"
@@ -102,41 +81,33 @@ const offerGroup = await getOfferGroup(currentSlug)
                   for={`rd${index}`}
                   class:list={["tab__label", "group", "relative"]}
                 >
-                  <div class="offer-tab flex">
-                    <div class="">
+                  <div class:list={["offer-tab", "flex", "py-12"]}>
+                    <div class="flex items-center">
                       <HeadingText
                         as="h2"
                         size="text-paragon"
                         text={service.name}
                         uppercase={false}
                       />
-                      {/* <Icon
-                          size={30}
-                          name="mdi:share"
-                          class:list={[
-                            "group-hover:text-primary",
-                            "group-hover:scale-110",
-                            "transition-all",
-                          ]}
-                        /> */}
                     </div>
-                    <h2>{service.shortDescription}</h2>
+                  </div>
+                  <div class="flex items-center">
+                    <HeadingText
+                      as="h3"
+                      text={service.shortDescription}
+                      uppercase={false}
+                    />
+                  </div>
+                  <div class="tab__content">
+                    <PortableText value={service.description} class="content" />
                   </div>
                 </label>
-                  <div class="tab__content">
-                    <PortableText value={service.description} />
-                  </div>
               </div>
-            </>
-          )
-        })
-      }
-      <!-- TODO: uncomment if you need it -->
-      <!-- <div class="tab">
-          <input type="radio" name="accordion-2" id="rdClose" />
-          <label for="rdClose" class="tab__close">Close open tab &times;</label>
-        </div> -->
-    </div>
+            )
+          })
+        }
+      </div>
+    </Container>
     <div class:list={["absolute", "top-0", "w-full", "h-full", "-z-10"]}>
       <div
         class:list={["absolute", "-left-52", "lg:left-[unset]", "lg:right-72"]}
@@ -176,23 +147,9 @@ const offerGroup = await getOfferGroup(currentSlug)
 </script>
 
 <style>
-  /* :root {
-    --primary: #227093;
-    --secondary: #ff5252;
-    --background: #eee;
-    --highlight: #ffda79; */
-  /* Theme color */
-  /* --theme: var(--primary); */
-  /* } */
-  /* *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  } */
-
-  /* Core styles/functionality */
   .tab input {
     position: absolute;
+    visibility: hidden;
     opacity: 0;
     z-index: -1;
   }
@@ -200,69 +157,39 @@ const offerGroup = await getOfferGroup(currentSlug)
     max-height: 0;
     overflow: hidden;
     transition: all 0.35s;
+    grid-column-start: 2;
+    margin: 0;
+    padding: 0;
   }
-  .tab input:checked ~ .tab__content {
+
+  .tab input:checked ~ label .tab__content {
     max-height: 30rem;
   }
 
-  /* Visual styles */
   .accordion {
-    /* color: var(--theme); */
-    /* border: 2px solid;
-    border-radius: 0.5rem; */
     overflow: hidden;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
   }
+
   .tab__label,
   .tab__close {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    /* color: white; */
-    /* background: var(--theme); */
+    grid-template-columns: 4fr 6fr;
     cursor: pointer;
   }
   .tab__label {
-    gap: 5rem;
-    /* align-items: center; */
-    /* justify-content: space-between; */
+    gap: 0 5rem;
     padding: 1rem 2rem;
-    margin: 0.5rem 0;
   }
-  /* .tab__label::after {
-    content: "\276F";
-    width: 1em;
-    height: 1em;
-    text-align: center;
-    transform: rotate(90deg);
-    transition: all 0.35s;
-  } */
+
   .tab input:checked + .tab__label::after {
     transform: rotate(270deg);
   }
   .tab__content {
-    margin: 0;
-    padding: 0 3rem;
   }
   .tab__close {
     justify-content: flex-end;
     padding: 0.5rem 1rem;
     font-size: 0.75rem;
-  }
-  .accordion--radio {
-    /* --theme: var(--secondary); */
-  }
-
-  /* Arrow animation */
-  .tab input:not(:checked) + .tab__label:hover::after {
-    animation: bounce 0.5s infinite;
-  }
-
-  @keyframes bounce {
-    25% {
-      transform: rotate(90deg) translate(0.25rem);
-    }
-    75% {
-      transform: rotate(90deg) translate(-0.25rem);
-    }
   }
 </style>
