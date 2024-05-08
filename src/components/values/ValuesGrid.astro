@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets"
-import type { HomePageData } from "../../data/get-home-page"
 import ValueTile from "./ValueTile.astro"
 import { urlForImage } from "@/src/utils"
+import type { HomePageData } from "@/src/types"
 
 const { values, decoImage } = Astro.props
   .valuesData as HomePageData["sectionValues"]
