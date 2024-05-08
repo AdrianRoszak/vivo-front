@@ -10,3 +10,4 @@ export {
 } from "./digest-offer-group"
 
 export { digestOfferPageData } from "./digest-offer-page-data"
+export { digestGlobalData } from "./digest-global-data"

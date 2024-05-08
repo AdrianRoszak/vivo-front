@@ -39,14 +39,7 @@ const offerGroup = await getOfferGroup(currentSlug)
 <Layout title={offerGroup.title} description={offerGroup.title}>
   <section class:list={["relative"]}>
     <Container>
-      <div
-        class:list={[
-          "lg:w-4/5",
-          "mx-auto",
-          "text-center",
-          "m-32",
-        ]}
-      >
+      <div class:list={["lg:w-4/5", "mx-auto", "text-center", "m-32"]}>
         <HeadingText
           as="h1"
           text={offerGroup.title}
@@ -80,7 +73,7 @@ const offerGroup = await getOfferGroup(currentSlug)
                       "right-0",
                       "top-2",
                       "text-primary",
-                      "-z-10",                      
+                      "-z-10",
                     ]}
                   >
                     {index < 9 ? `0${index + 1}` : index + 1}

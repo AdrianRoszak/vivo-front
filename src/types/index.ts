@@ -25,3 +25,5 @@ export type {
   ValueTeaser,
   ValueTeaserList,
 } from "./values-types"
+
+export type { GlobalData } from "./global-data-types"

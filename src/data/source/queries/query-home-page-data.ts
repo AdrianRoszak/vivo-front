@@ -1,3 +1,4 @@
+import { offerGroupSelectorFragment } from "./fragments/offer-group-selector-fragment"
 import { getCurrentDate } from "@/src/utils"
 import {
   seoFragment,
@@ -9,15 +10,7 @@ export const queryHomePageData = `{
   sectionHero,
   secOffer {
     offerIntroField,
-    offerGroupSelectorField {
-      sectionOfferGroup[]->{
-        offerGroupName,
-        offerGroupDesc,
-        slug {
-          current
-        }
-      }
-    }
+    ${offerGroupSelectorFragment}
   },
   sectionBlog,
   sectionHomeValues {
