@@ -12,3 +12,8 @@ export type HomePageData = {
   blogArticles: BlogArticleList
   metaData: MetaDataType
 }
+
+export type OfferPageData = {
+  offerGroups: SectionHomeOffer["offerGroups"]
+  metaData: MetaDataType
+}
