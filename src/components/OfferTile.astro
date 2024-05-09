@@ -1,0 +1,17 @@
+---
+const { as: Tag = "a", href = "" } = Astro.props
+---
+
+<Tag
+  href={href}
+  class:list={[
+    "relative",
+    "group",
+    "offer-tile",
+    "h-full",
+    "transition-all",
+    "block",
+  ]}
+>
+  <slot />
+</Tag>

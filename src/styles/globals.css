@@ -156,3 +156,30 @@ p.portable-text + h3.portable-text {
   @apply text-great-primer;
   margin-top: 1rem;
 }
+
+/*  */
+.offer-tile {
+  @apply relative border-l p-8;
+}
+
+.offer-tile:last-child {
+  @apply border-r;
+}
+
+.offer-tile::after {
+  @apply absolute left-1/2 top-1/2 -z-10 block h-[calc(100%+2rem)] w-[calc(100%+2rem)] -translate-x-1/2 -translate-y-1/2 rounded-md opacity-0 shadow-custom-sm transition-all content-[''] group-hover:opacity-100 sm:h-full sm:w-full;
+}
+
+.offer-tile:hover,
+.offer-tile:hover + .offer-tile {
+  @apply border-transparent;
+}
+
+.offer-tile:hover::after {
+  @apply opacity-100;
+}
+
+.offer-tile:hover ~ .offer-tile,
+.offer-tile:has(~ .offer-tile:hover) {
+  @apply opacity-35;
+}
