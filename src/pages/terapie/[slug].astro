@@ -68,7 +68,8 @@ const offerGroup = await getOfferGroup(currentSlug)
                   <span
                     class:list={[
                       "absolute",
-                      "text-4xl",
+                      "text-2xl",
+                      "sm:text-4xl",
                       "font-deco",
                       "right-0",
                       "top-2",
@@ -78,8 +79,8 @@ const offerGroup = await getOfferGroup(currentSlug)
                   >
                     {index < 9 ? `0${index + 1}` : index + 1}
                   </span>
-                  <div class:list={["offer-tab", "flex", "py-12"]}>
-                    <div class="flex items-center">
+                  <div class:list={["offer-tab", "flex", "py-6", "sm:py-12"]}>
+                    <div class:list={["flex", "items-center"]}>
                       <HeadingText
                         as="h2"
                         size="text-paragon"
@@ -88,7 +89,7 @@ const offerGroup = await getOfferGroup(currentSlug)
                       />
                     </div>
                   </div>
-                  <div class="flex items-center">
+                  <div class:list={["flex", "items-center"]}>
                     <HeadingText
                       as="h3"
                       text={service.shortDescription}
@@ -168,25 +169,23 @@ const offerGroup = await getOfferGroup(currentSlug)
     padding: 1rem 0;
   }
 
-  .tab__label,
-  .tab__close {
-    display: grid;
-    grid-template-columns: 4fr 6fr;
-    cursor: pointer;
-  }
   .tab__label {
+    display: block;
+    cursor: pointer;
     gap: 0 5rem;
-    padding: 1rem 2rem;
+    padding: 1rem;
   }
 
   .tab input:checked + .tab__label::after {
     transform: rotate(270deg);
   }
-  .tab__content {
-  }
-  .tab__close {
-    justify-content: flex-end;
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
+
+  @media (min-width: 768px) {
+    .tab__label {
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      cursor: pointer;
+      padding: 1rem 2rem;
+    }
   }
 </style>

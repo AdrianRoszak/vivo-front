@@ -16,13 +16,13 @@ const { metaData, offerGroups } = (await getOfferPage()) as OfferPageData
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
   <section class:list={["relative", "py-40"]}>
     <Container>
-      <div class:list={["grid", "w-full", "grid-cols-3"]}>
+      <div class:list={["sm:grid", "w-full", "grid-cols-3"]}>
         {
           offerGroups.map((group) => {
             return (
               <>
                 <OfferTile as="a" href={`/terapie/${group.slug}`}>
-                  <div class:list={["flex", "flex-col", "h-full"]}>
+                  <div class:list={["flex", "flex-col", "h-full", "gap-4"]}>
                     <div
                       class:list={[
                         "flex",
@@ -34,7 +34,8 @@ const { metaData, offerGroups } = (await getOfferPage()) as OfferPageData
                       <h2
                         class:list={[
                           "text-paragon",
-                          "h-[calc(3*1.5em)]",
+                          "h-[calc(2*1.5em)]",
+                          "sm:h-[calc(3*1.5em)]",
                           "overflow-hidden",
                         ]}
                       >

@@ -76,7 +76,13 @@ const {
                   sectionOffer.offerGroups.map((group) => (
                     <a
                       href={`/terapie/${group.slug}`}
-                      class:list={["group", "relative", "block", "sm:p-12"]}
+                      class:list={[
+                        "group",
+                        "relative",
+                        "block",
+                        "py-6",
+                        "sm:p-12",
+                      ]}
                     >
                       <div class="offer-tab">
                         <div class:list={["flex", "gap-4", "items-center"]}>

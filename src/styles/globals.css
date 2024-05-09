@@ -159,11 +159,11 @@ p.portable-text + h3.portable-text {
 
 /*  */
 .offer-tile {
-  @apply relative border-l p-8;
+  @apply relative border-t p-8 sm:border-l sm:border-t-0;
 }
 
 .offer-tile:last-child {
-  @apply border-r;
+  @apply border-b sm:border-b-0 sm:border-r;
 }
 
 .offer-tile::after {
