@@ -34,6 +34,29 @@ const { contact } = Astro.props
       "items-center",
     ]}
   >
+  <Link href="/o-nas">
+      <span
+        class:list={[
+          "inline-block",
+          "relative",
+          "uppercase",
+          "text-great-primer",
+          "after:content-['']",
+          "after:absolute",
+          "after:bottom-[-5px]",
+          "after:left-0",
+          "after:w-full",
+          "after:h-[2px]",
+          "after:bg-secondary",
+          "after:scale-x-0",
+          "after:transition-transform",
+          "after:duration-800",
+          "group-hover:after:scale-x-100",
+        ]}
+      >
+        O nas
+      </span>
+    </Link>
     <Link href="/blog">
       <span
         class:list={[
