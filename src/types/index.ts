@@ -18,7 +18,11 @@ export type {
   OfferGroupData,
   Service,
 } from "./offer-types"
-export type { HomePageData, OfferPageData } from "./singleton-types"
+export type {
+  HomePageData,
+  OfferPageData,
+  AboutPageData,
+} from "./singleton-types"
 
 export type {
   SectionValues,

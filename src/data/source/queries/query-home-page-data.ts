@@ -3,6 +3,7 @@ import { getCurrentDate } from "@/src/utils"
 import {
   seoFragment,
   teaserBlogArticleFragment,
+  valuesFragment,
 } from "@/src/data/source/queries/fragments"
 
 export const queryHomePageData = `{
@@ -15,12 +16,7 @@ export const queryHomePageData = `{
   sectionBlog,
   sectionHomeValues {
     decoImage,
-    sectionValues {
-      values[]->{
-        title,
-        icon
-      }
-    }
+    ${valuesFragment}
   },
   ${seoFragment}
 },

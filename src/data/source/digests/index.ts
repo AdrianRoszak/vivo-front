@@ -2,7 +2,7 @@ export { digestBlogArticle } from "./digest-blog-article"
 export { digestMetaData } from "./digest-meta-data"
 export { digestSectionIntro } from "./digest-section-intro"
 export { digestValueTeaser } from "./digest-value-teaser"
-export { digestSectionValues } from "./digest-section-values"
+export { digestSectionValues, digestValues } from "./digest-section-values"
 export { digestHomePageData } from "./digest-home-page-data"
 export {
   digestOfferGroupBase,

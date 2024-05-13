@@ -4,6 +4,10 @@ import type { SectionIntro } from "./common-types"
 import type { SectionHomeOffer } from "./offer-types"
 import type { SectionValues } from "./values-types"
 
+type SingletonBaseType = {
+  metaData: MetaDataType
+}
+
 export type HomePageData = {
   sectionHero: SectionIntro
   sectionValues: SectionValues
@@ -16,4 +20,8 @@ export type HomePageData = {
 export type OfferPageData = {
   offerGroups: SectionHomeOffer["offerGroups"]
   metaData: MetaDataType
+}
+
+export type AboutPageData = SingletonBaseType & {
+  sectionValues: SectionValues
 }

@@ -1,0 +1,28 @@
+---
+import { getAboutPage } from "@/src/data"
+
+import Container from "@/src/components/Container.astro"
+import Layout from "@/src/layouts/Layout.astro"
+
+import type { AboutPageData } from "@/src/types/singleton-types"
+
+const { metaData, sectionValues } = (await getAboutPage()) as AboutPageData
+---
+
+<Layout title={metaData.seoTitle} description={metaData.seoDescription}>
+  <section>
+    <Container>
+      {
+        sectionValues.values.map((section, index) => (
+          <section>
+            <div
+              class="h-32 w-32 fill-secondary"
+              set:html={`${section.icon}`}
+            />
+            <h2>{section.title}</h2>
+          </section>
+        ))
+      }
+    </Container>
+  </section>
+</Layout>
