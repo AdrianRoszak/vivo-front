@@ -14,7 +14,7 @@ const { metaData, sectionValues } = (await getAboutPage()) as AboutPageData
   <section class="mb-24"></section>
   <section>
     <Container>
-      <div class:list={["grid", "grid-cols-3", "gap-8"]}>
+      <div class:list={["grid", "sm:grid-cols-2", "xl:grid-cols-3", "gap-8"]}>
         {
           sectionValues.values.map((section, index) => {
             return (
