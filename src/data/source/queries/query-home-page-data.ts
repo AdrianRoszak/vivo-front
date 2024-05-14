@@ -3,8 +3,8 @@ import { getCurrentDate } from "@/src/utils"
 import {
   seoFragment,
   teaserBlogArticleFragment,
-  valuesFragment,
 } from "@/src/data/source/queries/fragments"
+import { valueFragmentBase } from "./fragments/values-fragment"
 
 export const queryHomePageData = `{
   "singletonHome": *[_type == "singletonHome"][0] {
@@ -16,7 +16,11 @@ export const queryHomePageData = `{
   sectionBlog,
   sectionHomeValues {
     decoImage,
-    ${valuesFragment}
+    sectionValues {
+    values[]->{
+      ${valueFragmentBase}
+    }
+  }
   },
   ${seoFragment}
 },

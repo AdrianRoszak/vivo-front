@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 body {
-  @apply flex min-h-screen flex-col overflow-x-hidden bg-light-50 font-sans text-body-copy font-light text-dark-500;
+  @apply flex min-h-screen flex-col overflow-x-hidden bg-light-50 font-sans text-body-copy font-light text-dark-800;
 }
 
 main {

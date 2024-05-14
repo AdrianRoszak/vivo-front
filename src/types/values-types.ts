@@ -6,6 +6,7 @@ export type ValueTeaser = {
     alt: string
     source: string
   }
+  body: string | null
 }
 
 export type ValueTeaserList = ValueTeaser[]

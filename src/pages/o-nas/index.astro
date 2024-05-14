@@ -3,6 +3,7 @@ import { getAboutPage } from "@/src/data"
 
 import Container from "@/src/components/Container.astro"
 import Layout from "@/src/layouts/Layout.astro"
+import Value from "@/src/components/values/Value.astro"
 
 import type { AboutPageData } from "@/src/types/singleton-types"
 
@@ -10,19 +11,23 @@ const { metaData, sectionValues } = (await getAboutPage()) as AboutPageData
 ---
 
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
+  <section class="mb-24"></section>
   <section>
     <Container>
-      {
-        sectionValues.values.map((section, index) => (
-          <section>
-            <div
-              class="h-32 w-32 fill-secondary"
-              set:html={`${section.icon}`}
-            />
-            <h2>{section.title}</h2>
-          </section>
-        ))
-      }
+      <div class:list={["grid", "grid-cols-3", "gap-8"]}>
+        {
+          sectionValues.values.map((section, index) => {
+            return (
+              <Value
+                icon={section.icon}
+                title={section.title}
+                body={section.body}
+                index={index}
+              />
+            )
+          })
+        }
+      </div>
     </Container>
   </section>
 </Layout>

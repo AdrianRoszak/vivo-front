@@ -1,0 +1,56 @@
+---
+import { toNormalCase } from "@/src/utils"
+import { PortableText } from "astro-portabletext"
+
+const { title, icon, body } = Astro.props
+---
+
+<div
+  class:list={[
+    "flex",
+    "flex-col",
+    "gap-4",
+    "shadow-custom-sm",
+    "p-8",
+    "rounded-md",
+  ]}
+>
+  <div
+    class:list={["w-20", "h-20", "relative", "icon-frame"]}
+    set:html={`${icon}`}
+  />
+  <div>
+    <h2
+      class:list={[
+        "relative",
+        "font-deco",
+        "font-bold",
+        "italic",
+        "text-double-pica",
+        "mb-6",
+        "w-2/3",
+        "h-[calc(2*1.5em)]",
+        "header-deco-line",
+        "flex",
+        "items-end",
+      ]}
+    >
+      {toNormalCase(title)}
+    </h2>
+    {body && <PortableText value={body} class="text-balance" />}
+  </div>
+</div>
+
+<style>
+  .icon-frame::after {
+    content: "";
+    position: absolute;
+    top: -15%;
+    left: -20%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secondary-300);
+    border-radius: 50%;
+    z-index: -1;
+  }
+</style>
