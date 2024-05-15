@@ -1,5 +1,6 @@
 import { digestMetaData } from "./digest-meta-data"
 import { digestOfferGroupBase } from "./digest-offer-group"
+import type { OfferPageData } from "@/src/types"
 
 //@ts-ignore
 export function digestOfferPageData(source): OfferPageData | null {

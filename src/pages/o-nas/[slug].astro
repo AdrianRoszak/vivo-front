@@ -1,8 +1,15 @@
 ---
+import Article from "@/src/components/article/Article.astro"
+import ArticleHeader from "@/src/components/article/ArticleHeader.astro"
 import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
+import Container from "@/src/components/Container.astro"
+import HeadingText from "@/src/components/HeadingText.astro"
 import { getTeamMember, getTeamMemberSlugs } from "@/src/data"
 import type { TeamMemberType } from "@/src/data/get-team-member"
 import Layout from "@/src/layouts/Layout.astro"
+import { urlForImage } from "@/src/utils"
+import { PortableText } from "astro-portabletext"
+import { Image } from "astro:assets"
 
 export async function getStaticPaths() {
   async function obtainTeamMemberSlugs() {
@@ -31,14 +38,61 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const path = Astro.url.pathname
 
-const { name } = (await getTeamMember(slug)) as TeamMemberType
+const { name, image, bio, metaData, short } = (await getTeamMember(
+  slug,
+)) as TeamMemberType
+
 ---
 
-<Layout title="Home" description="">
-  <Breadcrumbs path={path} />
-  <h1>{name}</h1>
-  <p>
-    Astro is a new kind of static site builder that delivers lightning-fast
-    performance with a modern developer experience.
-  </p>
+<Layout title={metaData.seoTitle} description={metaData.seoDescription}>
+  <section>
+    <Container>
+      <Breadcrumbs path={path} />
+      <Article>
+        <ArticleHeader>
+          <div class:list={["mb-4"]}>
+            <div class:list={["", "text-dark-400"]}>
+              {short}
+            </div>
+          </div>
+          <HeadingText
+            as="h1"
+            size={["text-trafalgar", "md:text-canon"]}
+            text={name}
+          />
+        </ArticleHeader>
+        <div>
+          {
+            image && (
+              <div
+                class:list={[
+                  "w-full",
+                  "md:w-1/2",
+                  "image-75",
+                  "relative",
+                  "rounded-md",
+                  "md:float-left",
+                  "mr-12",
+                  "mb-4",
+                ]}
+              >
+                <Image
+                  src={urlForImage(image.source)
+                    .width(900)
+                    .format("webp")
+                    .quality(80)
+                    .url()}
+                  alt={image.alt}
+                  width={900}
+                  height={900}
+                  class:list={["rounded-md", "object-cover"]}
+                />
+              </div>
+            )
+          }
+          {bio && <PortableText value={bio} class:list={["portable-text"]} />}
+        </div>
+      </Article>
+    </Container>
+  </section>
 </Layout>
