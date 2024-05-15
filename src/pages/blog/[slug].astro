@@ -45,6 +45,7 @@ const { slug } = Astro.params
 const path = Astro.url.pathname
 const { published, title, body, mainImage, author, seoTitle } =
   (await getSingleBlogArticle(slug)) as BlogArticleType
+
 ---
 
 <Layout title={seoTitle.title} description={seoTitle.description}>

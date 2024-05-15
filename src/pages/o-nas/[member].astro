@@ -1,0 +1,36 @@
+---
+import { getTeamMemberSlugs } from "@/src/data"
+import Layout from "@/src/layouts/Layout.astro"
+
+export async function getStaticPaths() {
+  async function obtainTeamMemberSlugs() {
+    const slugs = await getTeamMemberSlugs()
+
+    type Slug = {
+      slug: {
+        current: string
+      }
+    }
+
+    return slugs.map((slug: Slug) => {
+      return {
+        params: {
+          slug: slug.slug.current,
+        },
+      }
+    })
+  }
+
+  const slugs = await obtainTeamMemberSlugs()
+
+  return [...slugs]
+}
+---
+
+<Layout title="Home" description="">
+  <h1>Welcome to Astro</h1>
+  <p>
+    Astro is a new kind of static site builder that delivers lightning-fast
+    performance with a modern developer experience.
+  </p>
+</Layout>
