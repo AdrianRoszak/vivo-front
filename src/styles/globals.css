@@ -98,6 +98,10 @@ p.portable-text + h3.portable-text {
   margin-top: 2em;
 }
 
+a.portable-text:hover {
+  color: var(--color-secondary);
+}
+
 /* -------------- */
 .value-tile-icon {
   @apply h-12 w-12 xl:h-20 xl:w-20;

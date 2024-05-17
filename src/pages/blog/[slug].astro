@@ -16,6 +16,7 @@ import type { BlogArticleType } from "@/src/types"
 import { urlForImage } from "@/src/utils"
 import ArticleFooter from "@/src/components/article/ArticleFooter.astro"
 import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
+import CustomImage from "@/src/components/CustomImage.astro"
 
 export async function getStaticPaths() {
   async function obtainBlogArticlesSlugs() {
@@ -46,6 +47,7 @@ const path = Astro.url.pathname
 const { published, title, body, mainImage, author, seoTitle } =
   (await getSingleBlogArticle(slug)) as BlogArticleType
 
+console.log(author.name)
 ---
 
 <Layout title={seoTitle.title} description={seoTitle.description}>
@@ -96,18 +98,8 @@ const { published, title, body, mainImage, author, seoTitle } =
         </div>
         <ArticleFooter>
           {
-            author.image && (
-              <div
-                class:list={[
-                  "w-24",
-                  "image-75",
-                  "relative",
-                  "rounded-md",
-                  "float-left",
-                  "mr-12",
-                  "mb-4",
-                ]}
-              >
+            author.image ? (
+              <div class:list={["w-24", "image-75", "relative", "rounded-md"]}>
                 <Image
                   src={urlForImage(author.image.source)
                     .width(200)
@@ -124,16 +116,37 @@ const { published, title, body, mainImage, author, seoTitle } =
                   ]}
                 />
               </div>
+            ) : (
+              <div class:list={["w-16", "h-16", "relative"]}>
+                <CustomImage
+                  src="/src/assets/vivo-logo.jpg"
+                  alt="Vivo Logo"
+                  width={300}
+                  height={300}
+                  class:list={[
+                    "absolute",
+                    "w-full",
+                    "h-full",
+                    "object-contain",
+                    "rounded-full",
+                    "mix-blend-multiply",
+                  ]}
+                />
+              </div>
             )
           }
           {
-            author && (
+            author && author.name !== "Redakcja Vivo" ? (
               <a href={`/o-nas/${author.slug}`} class:list={["group"]}>
                 <h2 class:list={["text-double-pica", "text-dark-900"]}>
-                  Written by {author.name}
+                  {author.name}
                 </h2>
                 <p class:list={["text-dark-300"]}>{author.description}</p>
               </a>
+            ) : (
+              <h2 class:list={["text-double-pica", "text-dark-900"]}>
+                {author.name}
+              </h2>
             )
           }
         </ArticleFooter>
