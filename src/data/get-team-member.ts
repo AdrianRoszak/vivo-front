@@ -27,17 +27,16 @@ export async function getTeamMember(
 function digestTeamMember(source): TeamMemberType | null {
   if (!source) return null
 
-  const { seoTitle, name, longBio, image, shortDescription } = source
-
-  if (!name || !longBio) return null
-
   return {
-    name,
-    short: shortDescription,
-    bio: longBio,
-    image: image ? secureImage(image) : null,
-    metaData: seoTitle
-      ? digestMetaData(seoTitle)
-      : { seoTitle: "", seoDescription: "" },
+    name: source.name ? source.name : "",
+    short: source.shortDescription,
+    bio: source.longBio,
+    image: source.image ? secureImage(source.image) : null,
+    metaData: source.seoTitle
+      ? digestMetaData(source.seoTitle)
+      : {
+          seoTitle: "Poradnia psychologiczno-pedagogiczna Vivo",
+          seoDescription: "",
+        },
   }
 }
