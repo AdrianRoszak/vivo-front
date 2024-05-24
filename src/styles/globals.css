@@ -47,6 +47,24 @@ a {
   @apply scale-75;
 }
 
+.image-125 {
+  position: relative;
+}
+
+.image-125 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image-125::before {
+  content: "";
+  display: block;
+  padding-top: 125%;
+}
+
 .image-75 {
   position: relative;
 }
