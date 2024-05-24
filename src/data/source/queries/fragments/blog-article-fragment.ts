@@ -7,7 +7,7 @@ export const blogArticleFragment = `
     publishedAt,
     author->{
       name,
-      image,
+      thumbnail,
       slug,
       shortDescription
     },

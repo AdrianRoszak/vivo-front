@@ -46,8 +46,6 @@ const { slug } = Astro.params
 const path = Astro.url.pathname
 const { published, title, body, mainImage, author, seoTitle } =
   (await getSingleBlogArticle(slug)) as BlogArticleType
-
-console.log(author.name)
 ---
 
 <Layout title={seoTitle.title} description={seoTitle.description}>
@@ -99,7 +97,7 @@ console.log(author.name)
         <ArticleFooter>
           {
             author.image ? (
-              <div class:list={["w-24", "image-75", "relative", "rounded-md"]}>
+              <div class:list={["w-24", "h-24", "relative"]}>
                 <Image
                   src={urlForImage(author.image.source)
                     .width(200)
@@ -110,7 +108,7 @@ console.log(author.name)
                   width={200}
                   height={200}
                   class:list={[
-                    "rounded-md",
+                    "rounded-full",
                     "object-cover",
                     "mix-blend-multiply",
                   ]}

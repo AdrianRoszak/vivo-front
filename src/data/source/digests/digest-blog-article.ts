@@ -35,7 +35,7 @@ export function digestBlogArticle(article): BlogArticleType | null {
     author: author
       ? {
           name: author.name,
-          image: secureImage(author.image),
+          image: secureImage(author.thumbnail),
           slug: author.slug.current,
           description: author.shortDescription,
         }
