@@ -9,7 +9,7 @@ import type { TeamMemberType } from "@/src/data/get-team-member"
 import Layout from "@/src/layouts/Layout.astro"
 import { urlForImage } from "@/src/utils"
 import { PortableText } from "astro-portabletext"
-import { Image, Picture } from "astro:assets"
+import { Picture } from "astro:assets"
 
 export async function getStaticPaths() {
   async function obtainTeamMemberSlugs() {
