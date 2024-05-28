@@ -1,8 +1,8 @@
 ---
-const { href } = Astro.props
+const { href, classes } = Astro.props
 ---
 
-<a href={href} class:list={["group"]}>
+<a href={href} class:list={["group", classes && [...classes]]}>
   <span
     class:list={[
       "inline-block",

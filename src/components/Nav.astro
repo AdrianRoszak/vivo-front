@@ -44,7 +44,8 @@ const { contact } = Astro.props
       "flex",
       "flex-col",
       "flex-grow",
-      "px-20",
+      "px-4",
+      "md:px-20",
       "items-center",
       "md:translate-x-0",
       "md:w-auto",
@@ -56,42 +57,45 @@ const { contact } = Astro.props
       "md:bg-transparent",
     ]}
   >
+    <Link href="/" classes={["md:hidden"]}>Strona główna</Link>
     <Link href="/o-nas">O nas</Link>
     <Link href="/terapie">Terapie</Link>
     <Link href="/blog"> Blog </Link>
   </div>
-  <div class:list={["relative", "z-[999]"]}>
-    <a href={`tel:${contact}`} class:list={["button", "button-primary"]}
-      >Umów wizytę</a
+  <div class:list={["flex", "items-center", "gap-4"]}>
+    <div class:list={["relative", "z-[999]"]}>
+      <a href={`tel:${contact}`} class:list={["button", "button-primary"]}
+        >Umów wizytę</a
+      >
+    </div>
+    <button
+      class:list={[
+        "hamburger",
+        "flex",
+        "flex-col",
+        "justify-center",
+        "items-center",
+        "md:hidden",
+      ]}
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="menu"
     >
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <button
-    class:list={[
-      "hamburger",
-      "flex",
-      "flex-col",
-      "justify-center",
-      "items-center",
-      "w-8",
-      "h-8",
-      "md:hidden",
-    ]}
-    aria-label="Menu"
-    aria-expanded="false"
-    aria-controls="menu"
-  >
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
 <script>
   const hamburger = document.querySelector(".hamburger")
   const nav = document.querySelector(".menu")
+  const htmlElement = document.querySelector("html")
 
-  if (hamburger && nav) {
+  if (hamburger && nav && htmlElement) {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active")
       nav.classList.toggle("translate-x-full")
+      htmlElement.classList.toggle("overflow-hidden")
     })
   }
 </script>
@@ -100,7 +104,6 @@ const { contact } = Astro.props
   .hamburger {
     position: relative;
     z-index: 999;
-    background-color: yellow;
     padding: 2rem;
   }
 
@@ -109,9 +112,13 @@ const { contact } = Astro.props
     top: 50%;
     left: 50%;
     transform: translateX(-50%);
+    transform-origin: center;
     width: 30px;
     height: 2px;
     background-color: #000;
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
   }
 
   .hamburger span:nth-child(1) {
@@ -122,7 +129,19 @@ const { contact } = Astro.props
     transform: translate(-50%, 350%);
   }
 
-  .hamburger.active span{
-    transform: rotate(45deg) translate(0, 5px);
+  .hamburger.active span {
+    transform: translate(-50%, -50%);
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
   }
 </style>

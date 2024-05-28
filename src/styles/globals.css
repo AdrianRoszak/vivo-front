@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+html {
+  @apply overflow-x-hidden;
+}
+
 body {
   @apply flex min-h-screen flex-col overflow-x-hidden bg-light-50 font-sans text-body-copy font-light text-dark-800;
 }
