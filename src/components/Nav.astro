@@ -15,7 +15,10 @@ const { contact } = Astro.props
     "mx-auto",
   ]}
 >
-  <a href="/" class:list={["logo", "duration-300", "mix-blend-multiply"]}>
+  <a
+    href="/"
+    class:list={["logo", "duration-300", "mix-blend-multiply", "z-[999]"]}
+  >
     <CustomImage
       src="/src/assets/vivo-logo.jpg"
       alt="Vivo logo"
@@ -26,21 +29,100 @@ const { contact } = Astro.props
   </a>
   <div
     class:list={[
+      "menu",
+      "absolute",
+      "top-0",
+      "left-0",
+      "translate-x-full",
+      "transition-transform",
+      "duration-300",
+      "w-full",
+      "h-screen",
+      "bg-secondary",
+      "pt-60",
+      "gap-8",
+      "flex",
+      "flex-col",
       "flex-grow",
-      "hidden",
-      "md:flex",
       "px-20",
-      "gap-12",
       "items-center",
+      "md:translate-x-0",
+      "md:w-auto",
+      "md:h-auto",
+      "md:gap-12",
+      "md:pt-0",
+      "md:static",
+      "md:flex-row",
+      "md:bg-transparent",
     ]}
   >
     <Link href="/o-nas">O nas</Link>
     <Link href="/terapie">Terapie</Link>
     <Link href="/blog"> Blog </Link>
   </div>
-  <div>
+  <div class:list={["relative", "z-[999]"]}>
     <a href={`tel:${contact}`} class:list={["button", "button-primary"]}
       >Umów wizytę</a
     >
   </div>
+  <button
+    class:list={[
+      "hamburger",
+      "flex",
+      "flex-col",
+      "justify-center",
+      "items-center",
+      "w-8",
+      "h-8",
+      "md:hidden",
+    ]}
+    aria-label="Menu"
+    aria-expanded="false"
+    aria-controls="menu"
+  >
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<script>
+  const hamburger = document.querySelector(".hamburger")
+  const nav = document.querySelector(".menu")
+
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active")
+      nav.classList.toggle("translate-x-full")
+    })
+  }
+</script>
+
+<style>
+  .hamburger {
+    position: relative;
+    z-index: 999;
+    background-color: yellow;
+    padding: 2rem;
+  }
+
+  .hamburger span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background-color: #000;
+  }
+
+  .hamburger span:nth-child(1) {
+    transform: translate(-50%, -350%);
+  }
+
+  .hamburger span:nth-child(3) {
+    transform: translate(-50%, 350%);
+  }
+
+  .hamburger.active span{
+    transform: rotate(45deg) translate(0, 5px);
+  }
+</style>

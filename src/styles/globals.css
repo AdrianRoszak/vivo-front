@@ -15,7 +15,7 @@ a {
 }
 
 .button {
-  @apply inline-block rounded-md px-8 py-4 duration-200 hover:cursor-pointer md:px-11;
+  @apply inline-block rounded-md px-5 py-3 duration-200 hover:cursor-pointer sm:px-8 sm:py-4 md:px-11;
 }
 
 .button-primary {
