@@ -2,6 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "./animations";
+
 html {
   @apply overflow-x-hidden;
 }

@@ -35,16 +35,16 @@ const { contact } = Astro.props
       "left-0",
       "translate-x-full",
       "transition-transform",
-      "duration-300",
       "w-full",
       "h-screen",
-      "bg-secondary",
+      "after:bg-secondary",
       "pt-60",
       "gap-8",
       "flex",
       "flex-col",
       "flex-grow",
       "px-4",
+      "z-10",
       "md:px-20",
       "items-center",
       "md:translate-x-0",
@@ -94,7 +94,7 @@ const { contact } = Astro.props
   if (hamburger && nav && htmlElement) {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active")
-      nav.classList.toggle("translate-x-full")
+      nav.classList.toggle("is-visible")
       htmlElement.classList.toggle("overflow-hidden")
     })
   }
@@ -116,9 +116,7 @@ const { contact } = Astro.props
     width: 30px;
     height: 2px;
     background-color: #000;
-    transition:
-      transform 0.3s,
-      opacity 0.3s;
+    transition: all 0.3s;
   }
 
   .hamburger span:nth-child(1) {
