@@ -6,6 +6,7 @@ const { contact } = Astro.props
 ---
 
 <nav
+  id="nav"
   class:list={[
     "flex",
     "justify-between",
@@ -55,6 +56,10 @@ const { contact } = Astro.props
       "md:static",
       "md:flex-row",
       "md:bg-transparent",
+      "text-4xl",
+      "md:text-great-primer",
+      "uppercase",
+      "text-white",
     ]}
   >
     <Link href="/" classes={["md:hidden"]}>Strona główna</Link>
@@ -64,8 +69,9 @@ const { contact } = Astro.props
   </div>
   <div class:list={["flex", "items-center", "gap-4"]}>
     <div class:list={["relative", "z-[999]"]}>
-      <a href={`tel:${contact}`} class:list={["button", "button-primary"]}
-        >Umów wizytę</a
+      <a
+        href={`tel:${contact}`}
+        class:list={["button", "button-primary", "font-bold"]}>Umów wizytę</a
       >
     </div>
     <button
@@ -90,17 +96,28 @@ const { contact } = Astro.props
   const hamburger = document.querySelector(".hamburger")
   const nav = document.querySelector(".menu")
   const htmlElement = document.querySelector("html")
+  const navElement = document.querySelector("#nav")
 
-  if (hamburger && nav && htmlElement) {
+  if (hamburger && nav && htmlElement && navElement) {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active")
       nav.classList.toggle("is-visible")
       htmlElement.classList.toggle("overflow-hidden")
+      navElement.classList.toggle("open-nav")
     })
   }
 </script>
 
 <style>
+  .open-nav .button-primary {
+    background-color: #fff;
+    color: var(--color-dark);
+  }
+
+  .button-primary {
+    transition: all 0.3s;
+  }
+
   .hamburger {
     position: relative;
     z-index: 999;
@@ -129,6 +146,7 @@ const { contact } = Astro.props
 
   .hamburger.active span {
     transform: translate(-50%, -50%);
+    background-color: #fff;
   }
 
   .hamburger.active span:nth-child(1) {

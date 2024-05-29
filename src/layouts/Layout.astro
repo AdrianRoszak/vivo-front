@@ -42,7 +42,7 @@ const { address, contact, name } = await getGlobalData()
     <main>
       <slot />
     </main>
-    <!-- <Footer>
+    <Footer>
       <div class="text-great-primer">
         <h1 class:list={["uppercase"]}>{name}</h1>
         <address
@@ -58,19 +58,19 @@ const { address, contact, name } = await getGlobalData()
         </address>
         <div class:list={["flex", "flex-col", "my-4", "gap-2"]}>
           <Link href={`tel:${contact.phone}`}>
-            <div class:list={["flex", "gap-4", "items-center"]}>
+            <div class:list={["flex", "gap-2", "items-center"]}>
               <Icon size={30} name="mdi:phone" />
               {contact.phone}
             </div>
           </Link>
           <Link href={`mailto:${contact.email}`}>
-            <div class:list={["flex", "gap-4", "items-center"]}>
+            <div class:list={["flex", "gap-2", "items-center"]}>
               <Icon size={30} name="mdi:email" />
               {contact.email}
             </div>
           </Link>
         </div>
       </div>
-    </Footer> -->
+    </Footer>
   </body>
 </html>

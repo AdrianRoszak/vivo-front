@@ -41,7 +41,6 @@ const path = Astro.url.pathname
 const { name, image, bio, metaData, short } = (await getTeamMember(
   slug,
 )) as TeamMemberType
-
 ---
 
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
@@ -96,3 +95,4 @@ const { name, image, bio, metaData, short } = (await getTeamMember(
     </Container>
   </section>
 </Layout>
+
