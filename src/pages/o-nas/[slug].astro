@@ -38,7 +38,6 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const path = Astro.url.pathname
 
-console.log(Astro)
 
 const { name, image, bio, metaData, short } = (await getTeamMember(
   slug,
