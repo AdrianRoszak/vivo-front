@@ -42,6 +42,8 @@ export function digestBlogArticle(article): BlogArticleType | null {
       : {
           name: "Redakcja Vivo",
           image: null,
+          slug: null,
+          description: null,
         },
     categories: categories.map((category: { title: string }) => category.title),
   }

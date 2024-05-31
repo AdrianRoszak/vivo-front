@@ -5,20 +5,18 @@ export type ImageType = {
   source: string
 }
 
-// type TextBlockType = {
-//   [key: string]: string | number | object | null
-// }
+export type TeamMemberTypeBase = {
+  name: string
+  image: ImageType | null
+  slug: { current: string }
+  description: string
+}
 
 export type BlogArticleType = {
   title: string
   slug: string
   published: string
-  author: {
-    name: string
-    image: ImageType | null
-    slug?: string
-    description?: string
-  }
+  author: TeamMemberTypeBase
   mainImage: ImageType | null
   categories: string[]
   seoTitle: {

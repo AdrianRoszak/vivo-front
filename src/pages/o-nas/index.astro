@@ -7,10 +7,13 @@ import Layout from "@/src/layouts/Layout.astro"
 import Value from "@/src/components/values/Value.astro"
 
 import type { AboutPageData } from "@/src/types/singleton-types"
+import { urlForImage } from "@/src/utils"
+import { Picture } from "astro:assets"
 
 const path = Astro.url.pathname
 
-const { metaData, sectionValues } = (await getAboutPage()) as AboutPageData
+const { metaData, sectionValues, team } =
+  (await getAboutPage()) as AboutPageData
 ---
 
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
@@ -21,7 +24,15 @@ const { metaData, sectionValues } = (await getAboutPage()) as AboutPageData
   </section>
   <section>
     <Container>
-      <div class:list={["grid", "sm:grid-cols-2", "xl:grid-cols-3", "gap-8"]}>
+      <div
+        class:list={[
+          "grid",
+          "sm:grid-cols-2",
+          "xl:grid-cols-3",
+          "gap-8",
+          "mb-40",
+        ]}
+      >
         {
           sectionValues.values.map((section, index) => {
             return (
@@ -37,4 +48,94 @@ const { metaData, sectionValues } = (await getAboutPage()) as AboutPageData
       </div>
     </Container>
   </section>
+  {
+    team && (
+      <section>
+        <Container>
+          <div class:list={["grid", "grid-cols-2", "gap-x-20", "gap-y-20"]}>
+            {Array.isArray(team) &&
+              team.map((member) => (
+                <a
+                  href={`o-nas/${member.slug.current}`}
+                  class:list={["group", "flex"]}
+                >
+                  <article
+                    class:list={[
+                      "flex-grow",
+                      "flex",
+                      "border-t",
+                      "border-t-neutral-100",
+                      "border-r-2",
+                      "border-secondary",
+                      "rounded-lg",
+                      "shadow-md",
+                    ]}
+                  >
+                    <div
+                      class:list={[
+                        "flex-grow",
+                        "flex",
+                        "flex-grow",
+                        "gap-8",
+                        "items-center",
+                        "p-2",
+                      ]}
+                    >
+                      <div
+                        class:list={[
+                          "min-w-[40%]",
+                          "max-w-[40%]",
+                          "mx-auto",
+                          "image-100",
+                          "relative",
+                          "overflow-hidden",
+                        ]}
+                      >
+                        {member.image && (
+                          <Picture
+                            src={urlForImage(member.image.source)
+                              .width(400)
+                              .format("webp")
+                              .quality(80)
+                              .url()}
+                            alt={member.image.alt}
+                            width={400}
+                            height={400}
+                            class:list={[
+                              "rounded-lg",
+                              "object-cover",
+                              "object-top",
+                              "mix-blend-multiply",
+                              "group-hover:scale-110",
+                              "transition-transform",
+                              "duration-500",
+                              "ease-in-out",
+                            ]}
+                          />
+                        )}
+                      </div>
+                      <div class:list={["flex-grow", "p-4"]}>
+                        <h2
+                          class:list={[
+                            "text-double-pica",
+                            "mb-2",
+                            "font-deco",
+                            "italic",
+                          ]}
+                        >
+                          {member.name}
+                        </h2>
+                        <p class:list={["text-dark-500"]}>
+                          {member.description}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </a>
+              ))}
+          </div>
+        </Container>
+      </section>
+    )
+  }
 </Layout>
