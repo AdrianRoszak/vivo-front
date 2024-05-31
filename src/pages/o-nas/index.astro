@@ -1,17 +1,24 @@
 ---
 import { getAboutPage } from "@/src/data"
 
+import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
 import Container from "@/src/components/Container.astro"
 import Layout from "@/src/layouts/Layout.astro"
 import Value from "@/src/components/values/Value.astro"
 
 import type { AboutPageData } from "@/src/types/singleton-types"
 
+const path = Astro.url.pathname
+
 const { metaData, sectionValues } = (await getAboutPage()) as AboutPageData
 ---
 
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
-  <section class="mb-24"></section>
+  <section class="mb-24">
+    <Container>
+      <Breadcrumbs path={path} />
+    </Container>
+  </section>
   <section>
     <Container>
       <div class:list={["grid", "sm:grid-cols-2", "xl:grid-cols-3", "gap-8"]}>

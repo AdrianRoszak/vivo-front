@@ -1,33 +1,56 @@
 ---
 import { Icon } from "astro-icon/components"
-import Link from "./Link.astro"
 
 const { path } = Astro.props
 const segments = path.split("/").filter((segment: string) => segment !== "")
 ---
 
-<ul class:list={["hidden", "flex", "items-center", "gap-4", "py-8"]}>
-  <li>
-    <Link href="/">
+<ul class:list={["flex", "items-center", "gap-2", "py-8"]}>
+  <li class="breadcrumb-item">
+    <a href="/" class="breadcrumb-link">
       <div class:list={["flex", "gap-2", "items-center"]}>
-        <Icon size={30} name="mdi:house" color={"#3300ad"} />
-        HOME
+        <Icon size={30} name="mdi:house" color={"var(--color-text-800)"} />
+        <span>home</span>
       </div>
-    </Link>
+    </a>
   </li>
   {
     segments.map((segment: string, index: number) => {
       if (index === segments.length - 1) {
-        return <li>{segment.toUpperCase()}</li>
+        return <li>{segment.split("-").join(" ")}</li>
       } else {
         return (
-          <li>
-            <Link href={`/${segments.slice(0, index + 1).join("/")}`}>
-              {segment.toUpperCase()}
-            </Link>
+          <li class="breadcrumb-item">
+            <a
+              href={`/${segments.slice(0, index + 1).join("/")}`}
+              class="breadcrumb-link"
+            >
+              {segment}
+            </a>
           </li>
         )
       }
     })
   }
 </ul>
+
+<style>
+  .breadcrumb-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .breadcrumb-item::after {
+    content: ">";
+    color: var(--color-text-800);
+  }
+
+  .breadcrumb-link {
+    color: var(--color-text-800);
+  }
+
+  .breadcrumb-link:hover {
+    color: var(--color-primary);
+  }
+</style>
