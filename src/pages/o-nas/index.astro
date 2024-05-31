@@ -52,7 +52,15 @@ const { metaData, sectionValues, team } =
     team && (
       <section>
         <Container>
-          <div class:list={["grid", "grid-cols-2", "gap-x-20", "gap-y-20"]}>
+          <div
+            class:list={[
+              "grid",
+              "sm:grid-cols-2",
+              "gap-x-20",
+              "gap-y-4",
+              "sm:gap-y-20",
+            ]}
+          >
             {Array.isArray(team) &&
               team.map((member) => (
                 <a
@@ -114,7 +122,7 @@ const { metaData, sectionValues, team } =
                           />
                         )}
                       </div>
-                      <div class:list={["flex-grow", "p-4"]}>
+                      <div class:list={["flex-grow", "p-1", "sm:p-4"]}>
                         <h2
                           class:list={[
                             "text-double-pica",

@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components"
 
 const { path } = Astro.props
 const segments = path.split("/").filter((segment: string) => segment !== "")
+
 ---
 
 <ul class:list={["flex", "items-center", "gap-2", "py-8"]}>
@@ -24,7 +25,7 @@ const segments = path.split("/").filter((segment: string) => segment !== "")
               href={`/${segments.slice(0, index + 1).join("/")}`}
               class="breadcrumb-link"
             >
-              {segment}
+              {segment.split("-").join(" ")}
             </a>
           </li>
         )

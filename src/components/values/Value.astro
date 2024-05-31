@@ -11,12 +11,21 @@ const { title, icon, body } = Astro.props
     "flex-col",
     "gap-4",
     "shadow-custom-sm",
-    "p-8",
+    "p-4",
+    "sm:p-8",
     "rounded-md",
   ]}
 >
   <div
-    class:list={["w-20", "h-20", "relative", "icon-frame"]}
+    class:list={[
+      "w-20",
+      "h-20",
+      "relative",
+      "icon-frame",
+      "ml-4",
+      "mt-4",
+      "sm:m-0",
+    ]}
     set:html={`${icon}`}
   />
   <div>
