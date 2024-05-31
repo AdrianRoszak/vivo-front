@@ -10,14 +10,13 @@ const segments = path.split("/").filter((segment: string) => segment !== "")
     <a href="/" class="breadcrumb-link">
       <div class:list={["flex", "gap-2", "items-center"]}>
         <Icon size={30} name="mdi:house" color={"var(--color-text-800)"} />
-        <span>home</span>
       </div>
     </a>
   </li>
   {
     segments.map((segment: string, index: number) => {
       if (index === segments.length - 1) {
-        return <li>{segment.split("-").join(" ")}</li>
+        return <li class="line-clamp-1">{segment.split("-").join(" ")}</li>
       } else {
         return (
           <li class="breadcrumb-item">
