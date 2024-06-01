@@ -47,6 +47,9 @@ importers:
       astro-portabletext:
         specifier: ^0.9.7
         version: 0.9.7
+      astro-seo:
+        specifier: ^0.8.3
+        version: 0.8.3(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3)
       pollen-css:
         specifier: ^4.6.2
         version: 4.6.2
@@ -2163,6 +2166,9 @@ packages:
 
   astro-portabletext@0.9.7:
     resolution: {integrity: sha512-kU2C0FQ+DE2DkoTkPDNbJXH/+V/9ioDy4udQp2uT3qsGqQaKDhVBbkWcVuCVgxB006cq71SUbj6svEtiFzKLCg==}
+
+  astro-seo@0.8.3:
+    resolution: {integrity: sha512-gQeEh0U2yyVM0iyU8DTORK6hXMy5WH2wufrkUuNOKjI3LnYLniqgDxm1LZPQDuD6b4OHabVOi/5L88A9POCcCQ==}
 
   astro@4.5.12:
     resolution: {integrity: sha512-xIJcFI2hbyV8+h5pWjL7SKD1jIP0K01fYVAH+gdAt0mJaXy+u8Mj+goD0cPlK6sEaykR+7zxQLYGKJ44U4qarg==}
@@ -8249,6 +8255,14 @@ snapshots:
     dependencies:
       '@portabletext/toolkit': 2.0.13
       '@portabletext/types': 2.0.11
+
+  astro-seo@0.8.3(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3):
+    dependencies:
+      '@astrojs/check': 0.5.10(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3)
+    transitivePeerDependencies:
+      - prettier
+      - prettier-plugin-astro
+      - typescript
 
   astro@4.5.12(@types/node@20.11.30)(typescript@5.4.3):
     dependencies:

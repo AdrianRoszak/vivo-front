@@ -1,14 +1,16 @@
 ---
-import Footer from "../components/Footer.astro"
-import Header from "../components/Header.astro"
-import Nav from "../components/Nav.astro"
+import { SEO } from "astro-seo"
+
+import Footer from "@/src/components/Footer.astro"
+import Header from "@/src/components/Header.astro"
+import Nav from "@/src/components/Nav.astro"
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer"
-import { getGlobalData } from "../data"
+import { getGlobalData } from "@/src/data"
 import { Icon } from "astro-icon/components"
 
 import "@/src/styles/globals.css"
 import "@/src/styles/vars.css"
-import Link from "../components/Link.astro"
+import Link from "@/src/components/Link.astro"
 
 interface Props {
   title: string
@@ -22,12 +24,11 @@ const { address, contact, name } = await getGlobalData()
 <!doctype html>
 <html lang="en">
   <head>
+    <SEO title={title} description={description} charset="UTF-8" />
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
     <GoogleFontsOptimizer
       url="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
     />
