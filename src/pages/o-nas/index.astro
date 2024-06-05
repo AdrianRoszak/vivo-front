@@ -27,15 +27,22 @@ const { headline, tagline } = sectionHero
       <Breadcrumbs path={path} />
     </Container>
     <Container>
-      <div class:list={["lg:w-4/5", "my-32"]}>
-        {headline && <HeadingText as="h1" text={headline} />}
-        {tagline && <DecorativeText text={tagline} />}
+      <div class:list={["lg:w-4/5", "mt-16", "mb-64"]}>
+        <div class="mb-16">
+          {headline && <HeadingText as="h1" text={headline} />}
+          {tagline && <DecorativeText text={tagline} />}
+        </div>
+        {
+          sectionAbout && (
+            <div class:list={[]}>
+              <PortableText
+                value={sectionAbout}
+                class:list={["portable-text"]}
+              />
+            </div>
+          )
+        }
       </div>
-      {
-        sectionAbout && (
-          <PortableText value={sectionAbout} class:list={["portable-text"]} />
-        )
-      }
     </Container>
   </section>
   <section>

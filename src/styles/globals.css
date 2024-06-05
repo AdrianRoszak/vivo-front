@@ -123,6 +123,10 @@ ul.portable-text {
   list-style-position: inside;
 }
 
+p.portable-text + h2.portable-text {
+  margin-top: 2em;
+}
+
 h2.portable-text,
 h3.portable-text {
   margin-bottom: 1em;
@@ -137,7 +141,7 @@ h3.portable-text {
   font-size: var(--scale-great-primer);
 }
 
-p.portable-text + h3.portable-text {
+p.portable-text + h2.portable-text {
   margin-top: 2em;
 }
 
