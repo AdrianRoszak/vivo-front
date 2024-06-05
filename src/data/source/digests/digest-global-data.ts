@@ -18,8 +18,8 @@ export function digestGlobalData(source): GlobalData {
     socials: {
       facebook: data.socialMedia.facebook,
       instagram: data.socialMedia.instagram,
-      youtube: data.youtube,
-      linkedin: data.linkedin,
+      youtube: data.socialMedia.youtube,
+      linkedin: data.socialMedia.linkedin,
     },
   }
 }

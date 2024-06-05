@@ -13,21 +13,25 @@
   transition-delay: 0.5s;
 }
 
-.menu > a {
+.menu > a,
+.menu > span > a {
   opacity: 0;
   transform: translateY(1em);
 }
 
-.menu.is-visible > a {
+.menu.is-visible > a,
+.menu.is-visible > span > a {
   opacity: 1;
   transform: translateY(0);
   transition: all var(--item-animation-duration) ease-in-out;
 }
 
-.menu.is-visible > a:nth-child(1) {
+.menu.is-visible > a:nth-child(1),
+.menu.is-visible > span > a:nth-child(1) {
   transition-delay: var(--item-animation-delay-1);
 }
-.menu.is-visible > a:nth-child(2) {
+.menu.is-visible > a:nth-child(2),
+.menu.is-visible > span > a:nth-child(2) {
   transition-delay: var(--item-animation-delay-2);
 }
 

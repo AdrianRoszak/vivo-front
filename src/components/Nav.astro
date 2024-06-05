@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components"
 import CustomImage from "./CustomImage.astro"
 import Link from "./Link.astro"
+import SocialIcon from "./SocialIcon.astro"
 
 const { contact, socials } = Astro.props
 ---
@@ -68,34 +69,76 @@ const { contact, socials } = Astro.props
     <Link href="/o-nas">O nas</Link>
     <Link href="/terapie">Terapie</Link>
     <Link href="/blog"> Blog </Link>
+    {
+      socials && (
+        <span
+          class:list={["sm:hidden", "flex", "mt-12", "gap-4", "items-center"]}
+        >
+          {socials.facebook && (
+            <SocialIcon
+              href={socials.facebook}
+              media={"facebook"}
+              variant="mobile"
+            />
+          )}
+          {socials.instagram && (
+            <SocialIcon
+              href={socials.instagram}
+              media={"instagram"}
+              variant="mobile"
+            />
+          )}
+          {socials.linkedin && (
+            <SocialIcon
+              href={socials.linkedin}
+              media={"linkedin"}
+              variant="mobile"
+            />
+          )}
+          {socials.youtube && (
+            <SocialIcon
+              href={socials.youtube}
+              media={"youtube"}
+              variant="mobile"
+            />
+          )}
+        </span>
+      )
+    }
   </div>
   <div class:list={["flex", "items-center", "gap-4", "relative", "z-[999]"]}>
     {
-      socials.facebook && (
-        <a
-          href={socials.facebook}
-          class:list={["social-icon", "social-icon-primary"]}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div class:list={["flex", "gap-2", "items-center"]}>
-            <Icon size={45} name="mdi:facebook" />
-          </div>
-        </a>
-      )
-    }
-    {
-      socials.instagram && (
-        <a
-          href={socials.instagram}
-          class:list={["social-icon", "social-icon-primary"]}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div class:list={["flex", "gap-2", "items-center"]}>
-            <Icon size={45} name="mdi:instagram" />
-          </div>
-        </a>
+      socials && (
+        <div class:list={["hidden", "gap-4", "sm:flex"]}>
+          {socials.facebook && (
+            <SocialIcon
+              href={socials.facebook}
+              media={"facebook"}
+              variant="header"
+            />
+          )}
+          {socials.instagram && (
+            <SocialIcon
+              href={socials.instagram}
+              media={"instagram"}
+              variant="header"
+            />
+          )}
+          {socials.linkedin && (
+            <SocialIcon
+              href={socials.linkedin}
+              media={"linkedin"}
+              variant="header"
+            />
+          )}
+          {socials.youtube && (
+            <SocialIcon
+              href={socials.youtube}
+              media={"youtube"}
+              variant="header"
+            />
+          )}
+        </div>
       )
     }
     <div class:list={[]}>

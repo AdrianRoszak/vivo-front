@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components"
+
+type SocialIconProps = {
+  href: string
+  media: "facebook" | "instagram" | "linkedin" | "youtube"
+  variant?: "mobile" | "header"
+}
+const { href, media, variant } = Astro.props as SocialIconProps
+const classes =
+  variant === "mobile"
+    ? ["social-icon-light"]
+    : variant === "header"
+      ? ["social-icon-primary"]
+      : []
+---
+
+<a href={href} class:list={classes} target="_blank" rel="noopener noreferrer">
+  <div class:list={["flex", "gap-2", "items-center"]}>
+    <Icon size={45} name={`mdi:${media}`} />
+  </div>
+</a>
