@@ -1,7 +1,11 @@
 import type { AboutPageData } from "../types"
 import type { TeamMemberTypeBase } from "../types/blog-article-types"
 import { fetchAboutPageData } from "./source"
-import { digestMetaData, digestValues } from "./source/digests"
+import {
+  digestMetaData,
+  digestSectionIntro,
+  digestValues,
+} from "./source/digests"
 import { secureImage } from "./source/digests/digest-blog-article"
 
 export async function getAboutPage(): Promise<AboutPageData | null> {
@@ -14,6 +18,8 @@ function digestAboutPageData(source): AboutPageData | null {
   if (!source) return null
 
   return {
+    sectionHero: digestSectionIntro(source.singletonAbout.sectionHero),
+    sectionAbout: source.singletonAbout.sectionAbout,
     sectionValues: digestValues(source.singletonAbout.sectionValues),
     metaData: digestMetaData(source.singletonAbout.seoTitle),
     team:

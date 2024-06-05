@@ -9,17 +9,33 @@ import Value from "@/src/components/values/Value.astro"
 import type { AboutPageData } from "@/src/types/singleton-types"
 import { urlForImage } from "@/src/utils"
 import { Picture } from "astro:assets"
+import HeadingText from "@/src/components/HeadingText.astro"
+import DecorativeText from "@/src/components/DecorativeText.astro"
+import { PortableText } from "astro-portabletext"
 
 const path = Astro.url.pathname
 
-const { metaData, sectionValues, team } =
+const { metaData, sectionValues, team, sectionHero, sectionAbout } =
   (await getAboutPage()) as AboutPageData
+
+const { headline, tagline } = sectionHero
 ---
 
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
   <section class="mb-24">
     <Container>
       <Breadcrumbs path={path} />
+    </Container>
+    <Container>
+      <div class:list={["lg:w-4/5", "my-32"]}>
+        {headline && <HeadingText as="h1" text={headline} />}
+        {tagline && <DecorativeText text={tagline} />}
+      </div>
+      {
+        sectionAbout && (
+          <PortableText value={sectionAbout} class:list={["portable-text"]} />
+        )
+      }
     </Container>
   </section>
   <section>
