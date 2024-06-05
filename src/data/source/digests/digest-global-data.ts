@@ -15,5 +15,11 @@ export function digestGlobalData(source): GlobalData {
       email: data.email,
       phone: data.phone,
     },
+    socials: {
+      facebook: data.socialMedia.facebook,
+      instagram: data.socialMedia.instagram,
+      youtube: data.youtube,
+      linkedin: data.linkedin,
+    },
   }
 }

@@ -1,8 +1,9 @@
-// type Socials = {
-//   facebook: string
-//   instagram: string
-//   twitter: string
-// }
+type Socials = {
+  facebook: string
+  instagram: string
+  youtube: string
+  linkedin: string
+}
 
 type AddressData = {
   street: string
@@ -20,9 +21,5 @@ export type GlobalData = {
   name: string
   address: AddressData
   contact: ContactData
-  // social: {
-  //   facebook: string
-  //   instagram: string
-  //   twitter: string
-  // }
+  socials: Socials
 }

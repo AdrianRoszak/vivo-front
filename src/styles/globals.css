@@ -234,3 +234,13 @@ a.portable-text:hover {
 .offer-tile:has(~ .offer-tile:hover) {
   @apply opacity-35;
 }
+
+/* -------- */
+
+.social-icon-primary {
+  color: var(--color-primary-700);
+}
+
+.social-icon-primary:hover {
+  color: var(--color-primary-800);
+}

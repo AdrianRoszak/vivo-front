@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props
-const { address, contact, name } = await getGlobalData()
+const { address, contact, name, socials } = await getGlobalData()
 ---
 
 <!doctype html>
@@ -38,7 +38,7 @@ const { address, contact, name } = await getGlobalData()
   </head>
   <body>
     <Header>
-      <Nav contact={contact.phone} />
+      <Nav contact={contact.phone} socials={socials} />
     </Header>
     <main>
       <slot />
