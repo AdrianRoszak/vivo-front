@@ -1,0 +1,25 @@
+---
+import Container from "@/src/components/Container.astro"
+import Layout from "@/src/layouts/Layout.astro"
+import { getRegulations } from "../data"
+import { PortableText } from "astro-portabletext"
+
+import type { Regulations } from "@/src/data/get-regulations"
+
+const { title, text } = (await getRegulations()) as Regulations
+---
+
+<Layout title={"Klauzula RODO"} description={"Klauzula RODO"}>
+  <section class:list={["relative", "pt-20", "pb-8"]}>
+    <Container>
+      {
+        title && (
+          <h1 class:list={["text-3xl", "md:text-4xl", "font-bold", "mb-12"]}>
+            {title}
+          </h1>
+        )
+      }
+      {text && <PortableText value={text} class="portable-text" />}
+    </Container>
+  </section>
+</Layout>
