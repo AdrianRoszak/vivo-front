@@ -15,8 +15,14 @@ import { PortableText } from "astro-portabletext"
 
 const path = Astro.url.pathname
 
-const { metaData, sectionValues, team, sectionHero, sectionAbout } =
-  (await getAboutPage()) as AboutPageData
+const {
+  metaData,
+  sectionValues,
+  team,
+  sectionHero,
+  sectionAbout,
+  sectionTeam,
+} = (await getAboutPage()) as AboutPageData
 
 const { headline, tagline } = sectionHero
 ---
@@ -75,6 +81,16 @@ const { headline, tagline } = sectionHero
     team && (
       <section>
         <Container>
+          {sectionTeam && (
+            <div class="mb-16">
+              {sectionTeam.headline && (
+                <HeadingText as="h1" text={sectionTeam.headline} />
+              )}
+              {sectionTeam.tagline && (
+                <DecorativeText text={sectionTeam.tagline} />
+              )}
+            </div>
+          )}
           <div
             class:list={[
               "grid",

@@ -27,5 +27,9 @@ export type AboutPageData = SingletonBaseType & {
   sectionHero: SectionIntro
   sectionAbout: TypedObject
   sectionValues: SectionValues
+  sectionTeam: {
+    headline: string
+    tagline: string
+  }
   team: TeamMemberTypeBase[]
 }

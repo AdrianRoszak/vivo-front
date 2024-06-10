@@ -18,10 +18,14 @@ function digestAboutPageData(source): AboutPageData | null {
   if (!source) return null
 
   return {
+    metaData: digestMetaData(source.singletonAbout.seoTitle),
     sectionHero: digestSectionIntro(source.singletonAbout.sectionHero),
     sectionAbout: source.singletonAbout.sectionAbout,
     sectionValues: digestValues(source.singletonAbout.sectionValues),
-    metaData: digestMetaData(source.singletonAbout.seoTitle),
+    sectionTeam: {
+      headline: source.singletonAbout.sectionTeam.sectionTeamTitle,
+      tagline: source.singletonAbout.sectionTeam.tagline,
+    },
     team:
       source.team && Array.isArray(source.team)
         ? source.team.map(digestTeamMember)

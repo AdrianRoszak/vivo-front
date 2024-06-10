@@ -5,6 +5,10 @@ export const queryAboutPageData = `{
     sectionHero,
     sectionAbout,
     ${valuesFragment},
+    sectionTeam {
+      tagline,
+      sectionTeamTitle
+    },
     ${seoFragment}
   },
   "team": *[_type == "teamMember" && roles.therapist == true && active == true] {
