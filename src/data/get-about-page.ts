@@ -21,7 +21,13 @@ function digestAboutPageData(source): AboutPageData | null {
     metaData: digestMetaData(source.singletonAbout.seoTitle),
     sectionHero: digestSectionIntro(source.singletonAbout.sectionHero),
     sectionAbout: source.singletonAbout.sectionAbout,
-    sectionValues: digestValues(source.singletonAbout.sectionValues),
+    sectionAboutValues: {
+      tagline: source.singletonAbout.sectionAboutValues.tagline,
+      headline: source.singletonAbout.sectionAboutValues.sectionValuesTitle,
+      values: digestValues(
+        source.singletonAbout.sectionAboutValues.sectionValues,
+      ),
+    },
     sectionTeam: {
       headline: source.singletonAbout.sectionTeam.sectionTeamTitle,
       tagline: source.singletonAbout.sectionTeam.tagline,

@@ -17,10 +17,10 @@ const path = Astro.url.pathname
 
 const {
   metaData,
-  sectionValues,
   team,
   sectionHero,
   sectionAbout,
+  sectionAboutValues,
   sectionTeam,
 } = (await getAboutPage()) as AboutPageData
 
@@ -53,6 +53,18 @@ const { headline, tagline } = sectionHero
   </section>
   <section>
     <Container>
+      {
+        sectionAboutValues && (
+          <div class="mb-16">
+            {sectionAboutValues.headline && (
+              <HeadingText as="h1" text={sectionAboutValues.headline} />
+            )}
+            {sectionAboutValues.tagline && (
+              <DecorativeText text={sectionAboutValues.tagline} />
+            )}
+          </div>
+        )
+      }
       <div
         class:list={[
           "grid",
@@ -63,7 +75,7 @@ const { headline, tagline } = sectionHero
         ]}
       >
         {
-          sectionValues.values.map((section, index) => {
+          sectionAboutValues.values.values.map((section, index) => {
             return (
               <Value
                 icon={section.icon}
@@ -79,7 +91,7 @@ const { headline, tagline } = sectionHero
   </section>
   {
     team && (
-      <section>
+      <section class="mb-32">
         <Container>
           {sectionTeam && (
             <div class="mb-16">

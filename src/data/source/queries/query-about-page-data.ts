@@ -4,7 +4,11 @@ export const queryAboutPageData = `{
   "singletonAbout": *[_type == "singletonAbout"][0] {
     sectionHero,
     sectionAbout,
-    ${valuesFragment},
+    sectionAboutValues {
+      tagline,
+      sectionValuesTitle,
+      ${valuesFragment}
+    },
     sectionTeam {
       tagline,
       sectionTeamTitle
