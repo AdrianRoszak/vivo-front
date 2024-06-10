@@ -9,7 +9,8 @@ export const blogArticleFragment = `
       name,
       thumbnail,
       slug,
-      shortDescription
+      shortDescription,
+      active
     },
     categories[]->{
       title

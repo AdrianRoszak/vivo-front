@@ -10,6 +10,7 @@ export type TeamMemberTypeBase = {
   image: ImageType | null
   slug: { current: string }
   description: string
+  active?: boolean
 }
 
 export type BlogArticleType = {

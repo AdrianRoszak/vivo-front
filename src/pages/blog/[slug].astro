@@ -134,7 +134,7 @@ const { published, title, body, mainImage, author, seoTitle } =
             )
           }
           {
-            author && author.name !== "Redakcja Vivo" ? (
+            author && author.active !== false ? (
               <a href={`/o-nas/${author.slug}`} class:list={["group"]}>
                 <h2 class:list={["text-double-pica", "text-dark-900"]}>
                   {author.name}

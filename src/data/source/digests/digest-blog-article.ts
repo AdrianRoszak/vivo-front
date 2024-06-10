@@ -38,12 +38,13 @@ export function digestBlogArticle(article): BlogArticleType | null {
           image: secureImage(author.thumbnail),
           slug: author.slug.current,
           description: author.shortDescription,
+          active: author.active || false,
         }
       : {
           name: "Redakcja Vivo",
           image: null,
-          slug: null,
-          description: null,
+          slug: { current: "" },
+          description: "",
         },
     categories: categories.map((category: { title: string }) => category.title),
   }
