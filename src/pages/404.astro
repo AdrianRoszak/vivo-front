@@ -1,0 +1,25 @@
+---
+import Layout from "@/src/layouts/Layout.astro"
+import Container from "../components/Container.astro"
+---
+
+<Layout title="404" description="Strona o podanym adresie nie istnieje">
+  <Container>
+    <div
+      class:list={[
+        "flex",
+        "flex-col",
+        "items-center",
+        "justify-center",
+        "pt-20",
+      ]}
+    >
+      <h1 class:list={["text-canon", "mb-4"]}>
+        Strona o podanym adresie nie istnieje
+      </h1>
+      <a href="/" class:list={["button", "button-primary", "font-bold"]}
+        >Wróć na stronę główną</a
+      >
+    </div>
+  </Container>
+</Layout>
