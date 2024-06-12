@@ -31,6 +31,19 @@ const canonical = `${Astro.site}${pathname}`
       description={description}
       charset="UTF-8"
       canonical={canonical}
+      openGraph={{
+        basic: {
+          title,
+          type: "website",
+          url: canonical,
+          image: "/src/assets/vivo-logo.jpg",
+        },
+        optional: {
+          description,
+          locale: "pl_PL",
+          siteName: "Poradnia Psychologiczno-Pedagogiczna VIVO",
+        },
+      }}
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
