@@ -1,7 +1,7 @@
 import { fetchTeamMemberData } from "@/src/data/source"
 import type { TypedObject } from "astro-portabletext/types"
 import { secureImage } from "./source/digests/digest-blog-article"
-import type { ImageType } from "../types"
+import type { BlogArticleType, ImageType } from "../types"
 import {
   digestMetaData,
   type MetaDataType,
@@ -13,6 +13,7 @@ export type TeamMemberType = {
   image: ImageType | null
   metaData: MetaDataType
   short: string
+  articles: BlogArticleType[] | null
 }
 
 export async function getTeamMember(
@@ -32,6 +33,7 @@ function digestTeamMember(source): TeamMemberType | null {
     short: source.shortDescription,
     bio: source.longBio,
     image: source.image ? secureImage(source.image) : null,
+    articles: source.articles.length > 0 ? source.articles : null,
     metaData: source.seoTitle
       ? digestMetaData(source.seoTitle)
       : {

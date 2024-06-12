@@ -38,8 +38,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const path = Astro.url.pathname
 
-
-const { name, image, bio, metaData, short } = (await getTeamMember(
+const { name, image, bio, metaData, short, articles } = (await getTeamMember(
   slug,
 )) as TeamMemberType
 ---
@@ -92,6 +91,19 @@ const { name, image, bio, metaData, short } = (await getTeamMember(
           }
           {bio && <PortableText value={bio} class:list={["portable-text"]} />}
         </div>
+        {
+          articles && (
+            <footer>
+              <Container>
+                <h2 class="text-double-pica">Moje artykuły</h2>
+                {Array.isArray(articles) &&
+                  articles.map((article) => {
+                    return <div>{article.title}</div>
+                  })}
+              </Container>
+            </footer>
+          )
+        }
       </Article>
     </Container>
   </section>
