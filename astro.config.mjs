@@ -13,6 +13,7 @@ const {
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://poradniavivo.pl",
   integrations: [
     sanity({
       projectId: PUBLIC_SANITY_PROJECT_ID,

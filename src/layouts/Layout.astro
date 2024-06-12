@@ -4,13 +4,13 @@ import { SEO } from "astro-seo"
 import Footer from "@/src/components/Footer.astro"
 import Header from "@/src/components/Header.astro"
 import Nav from "@/src/components/Nav.astro"
+import Link from "@/src/components/Link.astro"
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer"
 import { getGlobalData } from "@/src/data"
 import { Icon } from "astro-icon/components"
 
 import "@/src/styles/globals.css"
 import "@/src/styles/vars.css"
-import Link from "@/src/components/Link.astro"
 
 interface Props {
   title: string
@@ -19,12 +19,19 @@ interface Props {
 
 const { title, description } = Astro.props
 const { address, contact, name, socials } = await getGlobalData()
+const pathname = Astro.url.pathname.replace(/^\/+/, "")
+const canonical = `${Astro.site}${pathname}`
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
-    <SEO title={title} description={description} charset="UTF-8" />
+    <SEO
+      title={title}
+      description={description}
+      charset="UTF-8"
+      canonical={canonical}
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />

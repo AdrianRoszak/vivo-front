@@ -15,7 +15,13 @@ const classes =
       : []
 ---
 
-<a href={href} class:list={classes} target="_blank" rel="noopener noreferrer">
+<a
+  href={href}
+  class:list={classes}
+  target="_blank"
+  rel="noopener noreferrer"
+  title=`Sprawdź nasze konto na ${media}`
+>
   <div class:list={["flex", "gap-2", "items-center"]}>
     <Icon size={45} name={`mdi:${media}`} />
   </div>
