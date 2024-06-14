@@ -125,7 +125,7 @@ const {
           <div class:list={["flex", "justify-between", "mb-24", "flex-wrap"]}>
             {Array.isArray(team) &&
               team.map((member) => {
-                // if (!member.image) return null
+                if (!member.image) return null
 
                 return (
                   <a href={`/o-nas/${member.slug.current}`} class="w-28">
