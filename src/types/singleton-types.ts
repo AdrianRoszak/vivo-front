@@ -9,10 +9,16 @@ type SingletonBaseType = {
   metaData: MetaDataType
 }
 
+export type SectionAbout = {
+  intro: SectionIntro
+}
+
 export type HomePageData = {
   sectionHero: SectionIntro
   sectionValues: SectionValues
   sectionOffer: SectionHomeOffer | null
+  sectionAbout: SectionAbout
+  team: TeamMemberTypeBase[]
   sectionBlog: SectionIntro
   blogArticles: BlogArticleList
   metaData: MetaDataType

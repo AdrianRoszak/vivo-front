@@ -9,7 +9,7 @@ export type TeamMemberTypeBase = {
   name: string
   image: ImageType | null
   slug: { current: string }
-  description: string
+  description?: string
   active?: boolean
 }
 

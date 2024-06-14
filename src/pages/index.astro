@@ -1,5 +1,6 @@
 ---
 import { getHomePage } from "@/src/data"
+import { urlForImage } from "@/src/utils"
 
 import Container from "@/src/components/Container.astro"
 import DecorativeText from "@/src/components/DecorativeText.astro"
@@ -14,15 +15,18 @@ import leafIcon2 from "@/src/assets/leaf-2.svg?raw"
 import { Icon } from "astro-icon/components"
 import { PortableText } from "astro-portabletext"
 
+import { Image } from "astro:assets"
+
 const {
   sectionHero,
-  sectionBlog,
-  blogArticles,
   sectionValues,
   sectionOffer,
+  sectionAbout,
+  team,
+  sectionBlog,
+  blogArticles,
   metaData,
 } = await getHomePage()
-
 ---
 
 <Layout
@@ -110,6 +114,70 @@ const {
       </section>
     )
   }
+  <section class:list={["mb-64"]}>
+    <Container>
+      <div class:list={["mb-12"]}>
+        <HeadingText as="h1" text={sectionAbout.intro.headline} />
+        <DecorativeText text={sectionAbout.intro.tagline} />
+      </div>
+      {
+        team && (
+          <div class:list={["flex", "justify-between", "mb-24", "flex-wrap"]}>
+            {Array.isArray(team) &&
+              team.map((member) => {
+                // if (!member.image) return null
+
+                return (
+                  <a href={`/o-nas/${member.slug.current}`} class="w-28">
+                    <div
+                      class:list={["flex", "flex-col", "items-center", "gap-2"]}
+                    >
+                      {member.image && (
+                        <div
+                          class:list={[
+                            "w-20",
+                            "h-20",
+                            "relative",
+                            "thumb-image",
+                          ]}
+                        >
+                          <Image
+                            src={urlForImage(member.image.source)
+                              .width(100)
+                              .format("webp")
+                              .quality(80)
+                              .url()}
+                            alt={member.image.alt}
+                            width={100}
+                            height={100}
+                            class:list={[
+                              "absolute",
+                              "w-full",
+                              "h-full",
+                              "object-cover",
+                              "rounded-full",
+                              "object-top",
+                            ]}
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <h3 class="text-center">{member.name}</h3>
+                      </div>
+                    </div>
+                  </a>
+                )
+              })}
+          </div>
+        )
+      }
+      <div class:list={["text-center", "mb-12"]}>
+        <a href="/o-nas" class:list={["button", "button-primary", "font-bold"]}>
+          Więcej
+        </a>
+      </div>
+    </Container>
+  </section>
   <section>
     <Container>
       <div class:list={["text-center", "mb-12"]}>
@@ -126,8 +194,24 @@ const {
         )
       }
       <div class:list={["text-center", "mb-12"]}>
-        <a href="/blog" class:list={["button", "button-primary"]}> Więcej </a>
+        <a href="/blog" class:list={["button", "button-primary", "font-bold"]}>
+          Więcej
+        </a>
       </div>
     </Container>
   </section>
 </Layout>
+
+<style>
+  .thumb-image::after {
+    content: "";
+    position: absolute;
+    top: -5%;
+    left: -10%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secondary-300);
+    border-radius: 50%;
+    z-index: -1;
+  }
+</style>
