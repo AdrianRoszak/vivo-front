@@ -8,6 +8,7 @@ import Link from "@/src/components/Link.astro"
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer"
 import { getGlobalData } from "@/src/data"
 import { Icon } from "astro-icon/components"
+import { getMedfile } from "@/src/data/presentation"
 
 import "@/src/styles/globals.css"
 import "@/src/styles/vars.css"
@@ -19,6 +20,9 @@ interface Props {
 
 const { title, description } = Astro.props
 const { address, contact, name, socials } = await getGlobalData()
+
+const medfile = await getMedfile()
+
 const pathname = Astro.url.pathname.replace(/^\/+/, "")
 const canonical = `${Astro.site}${pathname}`
 ---
@@ -58,7 +62,7 @@ const canonical = `${Astro.site}${pathname}`
   </head>
   <body>
     <Header>
-      <Nav contact={contact.phone} socials={socials} />
+      <Nav socials={socials} registration={medfile} />
     </Header>
     <main>
       <slot />

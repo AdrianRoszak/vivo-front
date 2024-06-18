@@ -2,8 +2,19 @@
 import CustomImage from "./CustomImage.astro"
 import Link from "./Link.astro"
 import SocialIcon from "./SocialIcon.astro"
+import type { IContact } from "@/src/data/domain"
 
-const { contact, socials } = Astro.props
+interface Props {
+  socials: {
+    facebook?: string
+    instagram?: string
+    linkedin?: string
+    youtube?: string
+  }
+  registration: IContact["medfile"]
+}
+
+const { socials, registration } = Astro.props
 ---
 
 <nav
@@ -142,8 +153,9 @@ const { contact, socials } = Astro.props
     }
     <div class:list={[]}>
       <a
-        href={`tel:${contact}`}
+        href={registration.generalLink}
         class:list={["button", "button-primary", "font-bold"]}
+        target="_blank"
       >
         Umów wizytę
       </a>
