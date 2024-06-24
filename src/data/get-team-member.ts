@@ -1,3 +1,4 @@
+import { digestBlogArticle } from "@/src/data/source/digests"
 import { fetchTeamMemberData } from "@/src/data/source"
 import type { TypedObject } from "astro-portabletext/types"
 import { secureImage } from "./source/digests/digest-blog-article"
@@ -33,7 +34,10 @@ function digestTeamMember(source): TeamMemberType | null {
     short: source.shortDescription,
     bio: source.longBio,
     image: source.image ? secureImage(source.image) : null,
-    articles: source.articles.length > 0 ? source.articles : null,
+    articles:
+      source.articles.length > 0
+        ? source.articles.map(digestBlogArticle)
+        : null,
     metaData: source.seoTitle
       ? digestMetaData(source.seoTitle)
       : {

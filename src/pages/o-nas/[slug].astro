@@ -1,5 +1,6 @@
 ---
 import Article from "@/src/components/article/Article.astro"
+import ArticleTeaser from "@/src/components/article/ArticleTeaser.astro"
 import ArticleHeader from "@/src/components/article/ArticleHeader.astro"
 import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
 import Container from "@/src/components/Container.astro"
@@ -93,15 +94,28 @@ const { name, image, bio, metaData, short, articles } = (await getTeamMember(
         </div>
         {
           articles && (
-            <footer>
-              <Container>
-                <h2 class="text-double-pica">Moje artykuły</h2>
-                {Array.isArray(articles) &&
-                  articles.map((article) => {
-                    return <div>{article.title}</div>
+            <div
+              class:list={[
+                "clear-both",
+                "border-t-2",
+                "border-primary",
+                "mt-4",
+                "pt-4",
+              ]}
+            >
+              <h2 class="text-double-pica">Zobacz moje artykłu:</h2>
+              {Array.isArray(articles) && (
+                <div class:list={[" grid", "grid-cols-3"]}>
+                  {articles.map((article, index) => {
+                    return index < 2 ? (
+                      <ArticleTeaser data={article} />
+                    ) : (
+                      <div>See more</div>
+                    )
                   })}
-              </Container>
-            </footer>
+                </div>
+              )}
+            </div>
           )
         }
       </Article>
