@@ -1,0 +1,16 @@
+---
+type Props = {
+  slug: string
+}
+
+const { slug } = Astro.props
+---
+
+<a
+  href={`/blog/${slug}`}
+  class:list={["hover:bg-light-500", "flex", "transition-colors", "rounded-md"]}
+>
+  <article class="flex-grow">
+    <slot />
+  </article>
+</a>

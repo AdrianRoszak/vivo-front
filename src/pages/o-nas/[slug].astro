@@ -1,6 +1,6 @@
 ---
 import Article from "@/src/components/article/Article.astro"
-import ArticleTeaser from "@/src/components/article/ArticleTeaser.astro"
+import ArticleSmall from "@/src/components/article/ArticleSmall.astro"
 import ArticleHeader from "@/src/components/article/ArticleHeader.astro"
 import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
 import Container from "@/src/components/Container.astro"
@@ -100,18 +100,16 @@ const { name, image, bio, metaData, short, articles } = (await getTeamMember(
                 "border-t-2",
                 "border-primary",
                 "mt-4",
-                "pt-4",
+                "pt-8",
               ]}
             >
-              <h2 class="text-double-pica">Zobacz moje artykłu:</h2>
+              <h2 class:list={["text-double-pica", "mb-4"]}>
+                Zobacz moje artykłu:
+              </h2>
               {Array.isArray(articles) && (
-                <div class:list={[" grid", "grid-cols-3"]}>
+                <div class:list={[" grid", "md:grid-cols-2", "gap-4"]}>
                   {articles.map((article, index) => {
-                    return index < 2 ? (
-                      <ArticleTeaser data={article} />
-                    ) : (
-                      <div>See more</div>
-                    )
+                    return index < 2 ? <ArticleSmall data={article} /> : null
                   })}
                 </div>
               )}

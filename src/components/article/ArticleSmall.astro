@@ -1,0 +1,86 @@
+---
+import { urlForImage } from "@/src/utils"
+
+import { Image } from "astro:assets"
+import { PortableText } from "astro-portabletext"
+import ArticleWrapper from "@/src/components/article/partials/ArticleWrapper.astro"
+import Card from "@/src/components/Card.astro"
+
+import type { BlogArticleType } from "@/src/types"
+
+const { slug, mainImage, title, description } = Astro.props
+  .data as BlogArticleType
+const mainImageWidth = 300
+---
+
+<ArticleWrapper slug={slug}>
+  <Card>
+    <div class:list={["flex", "gap-4"]}>
+      <div class:list={["image", "image-100", "rounded-md"]}>
+        {
+          mainImage ? (
+            <Image
+              src={urlForImage(mainImage.source)
+                .width(mainImageWidth)
+                .format("webp")
+                .quality(80)
+                .url()}
+              alt={mainImage.alt}
+              width={mainImageWidth}
+              height={mainImageWidth}
+              class:list={["rounded-md", "object-cover"]}
+            />
+          ) : (
+            <Image
+              src="/src/assets/vivo-logo.jpg"
+              alt="Logo Vivo"
+              width={mainImageWidth}
+              height={mainImageWidth}
+              class:list={[
+                "rounded-md",
+                "object-contain",
+                "mix-blend-multiply",
+              ]}
+            />
+          )
+        }
+      </div>
+      <div class:list={["flex", "flex-col"]}>
+        <h3
+          class:list={[
+            "line-clamp-2",
+            "font-bold",
+            "text-great-primer",
+            "mb-4",
+          ]}
+        >
+          {title}
+        </h3>
+        {
+          description && (
+            <div class:list={["line-clamp-3", "md:line-clamp-4"]}>
+              <PortableText
+                value={description}
+                class:list={["portable-text"]}
+              />
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </Card>
+</ArticleWrapper>
+
+<style>
+  .image {
+    min-width: 40%;
+    max-width: 40%;
+  }
+
+  @media (min-width: 768px) {
+    .image {
+      min-width: 30%;
+      max-width: 30%;
+    }
+  }
+</style>

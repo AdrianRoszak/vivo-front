@@ -5,6 +5,7 @@ import { PortableText } from "astro-portabletext"
 import Card from "@/src/components/Card.astro"
 import Pill from "@/src/components/Pill.astro"
 import ArticleTeaserBody from "@/src/components/article/ArticleTeaserBody.astro"
+import ArticleWrapper from "@/src/components/article/partials/ArticleWrapper.astro"
 
 import { urlForImage } from "@/src/utils"
 import type { BlogArticleType } from "@/src/types"
@@ -13,139 +14,117 @@ import CustomImage from "../CustomImage.astro"
 
 const { title, slug, published, author, mainImage, description, categories } =
   Astro.props.data as BlogArticleType
+
 ---
 
-<a
-  href={`blog/${slug}`}
-  class:list={["hover:bg-light-500", "flex", "transition-colors", "rounded-md"]}
->
-  <article class="flex-grow">
-    <Card>
-      <div class:list={["w-full", "image-75", "relative", "rounded-md"]}>
+<ArticleWrapper slug={slug}>
+  <Card>
+    <div class:list={["w-full", "image-75", "rounded-md"]}>
+      {
+        mainImage ? (
+          <Image
+            src={urlForImage(mainImage.source)
+              .width(400)
+              .format("webp")
+              .quality(80)
+              .url()}
+            alt={mainImage.alt}
+            width={400}
+            height={400}
+            class:list={["rounded-md", "object-cover"]}
+          />
+        ) : (
+          <Image
+            src="/src/assets/vivo-logo.jpg"
+            alt="Logo Vivo"
+            width={400}
+            height={400}
+            class:list={["rounded-md", "object-contain", "mix-blend-multiply"]}
+          />
+        )
+      }
+    </div>
+    <div class:list={["p-4", "flex", "flex-col", "gap-4", "flex-grow"]}>
+      <Date published={published} />
+      <div class:list={["flex", "gap-2", "flex-wrap", "mb-4"]}>
+        {categories.map((category) => <Pill>{category}</Pill>)}
+      </div>
+      <ArticleTeaserBody>
+        <h2
+          class:list={[
+            "text-great-primer",
+            "leading-6",
+            "line-clamp-3",
+            "text-balance",
+            "flex-grow",
+          ]}
+        >
+          {title}
+        </h2>
         {
-          mainImage ? (
-            <Image
-              src={urlForImage(mainImage.source)
-                .width(400)
-                .format("webp")
-                .quality(80)
-                .url()}
-              alt={mainImage.alt}
-              width={400}
-              height={400}
-              class:list={["rounded-md", "object-cover"]}
-            />
-          ) : (
-            <Image
-              src="/src/assets/vivo-logo.jpg"
-              alt="Logo Vivo"
-              width={400}
-              height={400}
-              class:list={[
-                "rounded-md",
-                "object-contain",
-                "mix-blend-multiply",
-              ]}
+          description && (
+            <PortableText
+              value={description}
+              class:list={["line-clamp-5", "text-balance"]}
             />
           )
         }
-      </div>
-      <div class:list={["p-4", "flex", "flex-col", "gap-4", "flex-grow"]}>
-        <Date published={published} />
-        <div class:list={["flex", "gap-2", "flex-wrap", "mb-4"]}>
-          {categories.map((category) => <Pill>{category}</Pill>)}
-        </div>
-        <ArticleTeaserBody>
-          <h2
-            class:list={[
-              "text-great-primer",
-              "leading-6",
-              "line-clamp-3",
-              "text-balance",
-              "flex-grow",
-            ]}
-          >
-            {title}
-          </h2>
-          {
-            description && (
-              <PortableText
-                value={description}
-                class:list={["line-clamp-5", "text-balance"]}
+      </ArticleTeaserBody>
+      <div
+        class:list={[
+          "flex",
+          "items-center",
+          "gap-4",
+          "border-t",
+          "border-secondary-100",
+          "pt-4",
+          "mt-4",
+        ]}
+      >
+        {
+          author.image ? (
+            <div class:list={["w-16", "h-16", "relative"]}>
+              <Image
+                src={urlForImage(author.image.source)
+                  .width(100)
+                  .format("webp")
+                  .quality(80)
+                  .url()}
+                alt={author.image.alt}
+                width={100}
+                height={100}
+                class:list={[
+                  "absolute",
+                  "w-full",
+                  "h-full",
+                  "object-cover",
+                  "rounded-full",
+                  "object-top",
+                  "mix-blend-multiply",
+                ]}
               />
-            )
-          }
-        </ArticleTeaserBody>
-        <div
-          class:list={[
-            "flex",
-            "items-center",
-            "gap-4",
-            "border-t",
-            "border-secondary-100",
-            "pt-4",
-            "mt-4",
-          ]}
-        >
-          {
-            author.image ? (
-              <div class:list={["w-16", "h-16", "relative"]}>
-                <Image
-                  src={urlForImage(author.image.source)
-                    .width(100)
-                    .format("webp")
-                    .quality(80)
-                    .url()}
-                  alt={author.image.alt}
-                  width={100}
-                  height={100}
-                  class:list={[
-                    "absolute",
-                    "w-full",
-                    "h-full",
-                    "object-cover",
-                    "rounded-full",
-                    "object-top",
-                    "mix-blend-multiply",
-                  ]}
-                />
-              </div>
-            ) : (
-              <div class:list={["w-16", "h-16", "relative"]}>
-                <CustomImage
-                  src="/src/assets/vivo-logo.jpg"
-                  alt="Vivo Logo"
-                  width={300}
-                  height={300}
-                  class:list={[
-                    "absolute",
-                    "w-full",
-                    "h-full",
-                    "object-contain",
-                    "rounded-full",
-                    "mix-blend-multiply",
-                  ]}
-                />
-              </div>
-            )
-          }
-          {author.name}
-        </div>
+            </div>
+          ) : (
+            <div class:list={["w-16", "h-16", "relative"]}>
+              <CustomImage
+                src="/src/assets/vivo-logo.jpg"
+                alt="Vivo Logo"
+                width={300}
+                height={300}
+                class:list={[
+                  "absolute",
+                  "w-full",
+                  "h-full",
+                  "object-contain",
+                  "rounded-full",
+                  "mix-blend-multiply",
+                ]}
+              />
+            </div>
+          )
+        }
+        {author.name}
       </div>
-    </Card>
-  </article>
-</a>
-
-<style>
-  .image-75 {
-    overflow: hidden;
-  }
-
-  .image-75 img {
-    transition: transform 0.15s;
-  }
-
-  a:hover .image-75 img {
-    transform: scale(1.1);
-  }
-</style>
+    </div>
+  </Card>
+</ArticleWrapper>

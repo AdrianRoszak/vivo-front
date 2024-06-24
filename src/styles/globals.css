@@ -72,39 +72,41 @@ a {
   padding-top: 125%;
 }
 
-.image-100 {
-  position: relative;
+a:hover .image-75 img,
+a:focus .image-75 img,
+a:hover .image-100 img,
+a:focus .image-100 img {
+  transform: scale(1.1);
 }
 
+.image-75,
+.image-100 {
+  position: relative;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.image-75 img,
 .image-100 img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  transition: transform 0.15s;
 }
 
+.image-75::before,
 .image-100::before {
   content: "";
   display: block;
+}
+
+.image-100::before {
   padding-top: 100%;
 }
 
-.image-75 {
-  position: relative;
-}
-
-.image-75 img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .image-75::before {
-  content: "";
-  display: block;
   padding-top: 75%;
 }
 
