@@ -86,7 +86,11 @@ export default {
       addComponents({
         ".text-deco strong": {
           display: "inline",
-          color: "var(--color-primary)",
+          color: "var(--color-primary-600)",
+        },
+        ".text-deco.white strong": {
+          display: "inline",
+          color: "var(--color-light-50)",
         },
         ".line-clamp-8": {
           display: "-webkit-box",

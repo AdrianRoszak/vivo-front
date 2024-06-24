@@ -9,11 +9,12 @@ type DecorativeTextProps<Tag extends HTMLTag> = Polymorphic<{
   as: Tag
   text: TypedObject | string
   size?: string
+  color?: 'white'
 }>
 
 type Props = DecorativeTextProps<TypographyVariant>
 
-const { as: Tag = "p", text, size = "canon" } = Astro.props
+const { as: Tag = "p", text, size = "canon", color } = Astro.props
 ---
 
 <Tag class:list={["italic", "font-deco", "my-2", serveFontSize(size)]}>
@@ -23,6 +24,7 @@ const { as: Tag = "p", text, size = "canon" } = Astro.props
       "line-clamp-5",
       "text-balance",
       "font-deco",
+      color,
       "italic",
       "text-deco",
       serveFontSize(size),

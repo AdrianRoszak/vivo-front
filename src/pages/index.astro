@@ -114,42 +114,84 @@ const {
       </section>
     )
   }
-  <section class:list={["mb-64"]}>
+  <section
+    class:list={["mb-32", "bg-wow", "py-20", "md:py-32", "text-light-50"]}
+  >
     <Container>
-      <div class:list={["mb-12"]}>
+      <div class:list={["mb-20", "text-center", "text-light-50"]}>
         <HeadingText as="h1" text={sectionAbout.intro.headline} />
-        <DecorativeText text={sectionAbout.intro.tagline} />
+        <DecorativeText text={sectionAbout.intro.tagline} color="white" />
       </div>
+      <ul
+        class:list={[
+          "flex",
+          "flex-wrap",
+          "justify-between",
+          "mb-20",
+          "md:mb-32",
+          "md:mx-20",
+          "gap-6",
+          "md:gap-0",
+        ]}
+      >
+        <li class="features-tab">
+          Certyfikowana niepubliczna placówka na terenie Kobyłki spełniająca
+          wymogi ministerialne.
+        </li>
+        <li class:list={["features-tab", "md:text-right"]}>
+          Kompleksowa oferta terapeutyczna oparta na doświadczeniu specjalistów
+          i dopasowanej infrastrukturze.
+        </li>
+        <li class="features-tab">
+          Wyjątkowe miejsce: przyjazne, nowoczesne i świetnie wyposażone.
+        </li>
+        <li class:list={["features-tab", "md:text-right"]}>
+          Zespół z pasją, doświadczeniem i wszechstronną wiedzą.
+        </li>
+      </ul>
       {
         team && (
-          <div class:list={["flex", "justify-between", "mb-24", "flex-wrap"]}>
+          <div
+            class:list={[
+              "flex",
+              "justify-around",
+              "mb-24",
+              "flex-wrap",
+              "gap-10",
+            ]}
+          >
             {Array.isArray(team) &&
               team.map((member) => {
                 if (!member.image) return null
 
                 return (
-                  <a href={`/o-nas/${member.slug.current}`} class="w-28">
+                  <a
+                    href={`/o-nas/${member.slug.current}`}
+                    class:list={["w-28", "md:w-48", "px-4"]}
+                  >
                     <div
-                      class:list={["flex", "flex-col", "items-center", "gap-2"]}
+                      class:list={["flex", "flex-col", "items-center", "gap-4"]}
                     >
                       {member.image && (
                         <div
                           class:list={[
                             "w-20",
                             "h-20",
+                            "md:w-32",
+                            "md:h-32",
                             "relative",
                             "thumb-image",
                           ]}
                         >
                           <Image
                             src={urlForImage(member.image.source)
-                              .width(100)
+                              .width(140)
                               .format("webp")
                               .quality(80)
                               .url()}
                             alt={member.image.alt}
-                            width={100}
-                            height={100}
+                            width={140}
+                            height={140}
                             class:list={[
                               "absolute",
                               "w-full",
@@ -162,7 +204,9 @@ const {
                         </div>
                       )}
                       <div>
-                        <h3 class="text-center">{member.name}</h3>
+                        <h3 class:list={["text-center", "text-great-primer"]}>
+                          {member.name}
+                        </h3>
                       </div>
                     </div>
                   </a>
@@ -172,7 +216,7 @@ const {
         )
       }
       <div class:list={["text-center", "mb-12"]}>
-        <a href="/o-nas" class:list={["button", "button-primary", "font-bold"]}>
+        <a href="/o-nas" class:list={["button", "button-outline", "font-bold"]}>
           Więcej
         </a>
       </div>
@@ -193,7 +237,7 @@ const {
           </TripleGrid>
         )
       }
-      <div class:list={["text-center", "mb-12"]}>
+      <div class:list={["text-center"]}>
         <a href="/blog" class:list={["button", "button-primary", "font-bold"]}>
           Więcej
         </a>
