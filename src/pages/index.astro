@@ -115,7 +115,14 @@ const {
     )
   }
   <section
-    class:list={["mb-32", "bg-wow", "py-20", "md:py-32", "text-light-50"]}
+    class:list={[
+      "mb-32",
+      "bg-primary-800",
+      "py-20",
+      "md:py-32",
+      "text-light-50",
+    ]}
+    id="about-us"
   >
     <Container>
       <div class:list={["mb-20", "text-center", "text-light-50"]}>
@@ -259,3 +266,86 @@ const {
     z-index: -1;
   }
 </style>
+
+<script>
+  const sectionAbout = document.getElementById("about-us")
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5,
+  }
+  const observer = new IntersectionObserver(checkElementOffset, options)
+  const header = document.querySelector(".header")
+
+  !header || (!sectionAbout && null)
+
+  function checkElementOffset(entries: IntersectionObserverEntry[]): void {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (!header) return console.error("No header")
+        const headerBottom = header.getBoundingClientRect().bottom
+
+        window.addEventListener("scroll", () => {
+          const target = entry.target
+          const targetClientRect = target.getBoundingClientRect()
+          const targetBgColor = window.getComputedStyle(target).background
+          const scrollPosition = window.scrollY
+
+          if (
+            targetClientRect.top < headerBottom &&
+            targetClientRect.bottom > headerBottom
+          ) {
+            header.setAttribute("variant", "primary")
+          } else {
+            header.setAttribute("variant", "none")
+          }
+        })
+      } else {
+        console.log("not intersecting")
+      }
+    })
+  }
+
+  function rgbToHsl(color: string): {
+    hue: number
+    saturation: number
+    lightness: number
+  } {
+    const rgbValues = color.match(/\d+/g)
+    const r = parseInt(rgbValues[0]) / 255
+    const g = parseInt(rgbValues[1]) / 255
+    const b = parseInt(rgbValues[2]) / 255
+
+    const cmin = Math.min(r, g, b)
+    const cmax = Math.max(r, g, b)
+    const delta = cmax - cmin
+
+    let hue = 0
+    if (delta === 0) {
+      hue = 0
+    } else if (cmax === r) {
+      hue = ((g - b) / delta) % 6
+    } else if (cmax === g) {
+      hue = (b - r) / delta + 2
+    } else {
+      hue = (r - g) / delta + 4
+    }
+
+    hue = Math.round(hue * 60)
+
+    if (hue < 0) {
+      hue += 360
+    }
+
+    let lightness = (cmax + cmin) / 2
+
+    let saturation = delta === 0 ? 0 : delta / (1 - Math.abs(2 * lightness - 1))
+
+    lightness = Math.round(lightness * 100)
+    saturation = Math.round(saturation * 100)
+
+    return { hue, saturation, lightness }
+  }
+
+  sectionAbout && observer.observe(sectionAbout)
+</script>

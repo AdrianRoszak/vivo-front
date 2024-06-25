@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo"
+import { ViewTransitions } from "astro:transitions"
 
 import Footer from "@/src/components/Footer.astro"
 import Header from "@/src/components/Header.astro"
@@ -59,6 +60,7 @@ const canonical = `${Astro.site}${pathname}`
     <GoogleFontsOptimizer
       url="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;400&display=swap"
     />
+    <ViewTransitions />
   </head>
   <body>
     <Header>

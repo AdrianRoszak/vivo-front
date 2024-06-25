@@ -19,7 +19,7 @@
 </header>
 
 <script>
-  const header = document.querySelector("header")
+  const header = document.querySelector(".header")
 
   function handleScroll() {
     if (header) {
@@ -33,3 +33,23 @@
 
   window.addEventListener("scroll", handleScroll)
 </script>
+
+<style>
+  .header[variant="primary"] {
+    background-color: var(--color-primary-800);
+
+    .menu {
+      color: var(--color-light-50);
+    }
+
+    .button {
+      border: 1px solid var(--color-light-50);
+      color: var(--color-light-50);
+      background-color: transparent;
+    }
+
+    .social-icon-primary {
+      color: var(--color-light-50);
+    }
+  }
+</style>
