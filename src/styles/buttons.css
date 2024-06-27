@@ -1,0 +1,15 @@
+.button {
+  @apply inline-block rounded-md px-5 py-3 duration-200 hover:cursor-pointer sm:px-8 sm:py-4 md:px-11;
+}
+
+.button-primary {
+  @apply border border-white bg-primary-700 text-light-50 hover:bg-primary-800;
+}
+
+.button-secondary {
+  @apply bg-secondary-500 text-light-50 hover:bg-secondary-200;
+}
+
+.button-outline {
+  @apply border border-light-50 text-light-50 transition-all hover:bg-light-50 hover:text-dark-800;
+}

@@ -28,12 +28,9 @@ const { socials, registration } = Astro.props
     "mx-auto",
   ]}
 >
-  <a
-    href="/"
-    class:list={["logo", "duration-300", "mix-blend-multiply", "z-[999]"]}
-  >
+  <a href="/" class:list={["logo", "duration-300", "z-[999]"]}>
     <CustomImage
-      src="/src/assets/vivo-logo.jpg"
+      src="/src/assets/vivo-logo.png"
       alt="Vivo logo"
       wrapperClasses={["w-20", "md:w-32"]}
       width={300}
@@ -183,13 +180,15 @@ const { socials, registration } = Astro.props
   const nav = document.querySelector(".menu")
   const htmlElement = document.querySelector("html")
   const navElement = document.querySelector("#nav")
+  const logo = document.querySelector(".logo")
 
-  if (hamburger && nav && htmlElement && navElement) {
+  if (hamburger && nav && htmlElement && navElement && logo) {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active")
       nav.classList.toggle("is-visible")
       htmlElement.classList.toggle("overflow-hidden")
       navElement.classList.toggle("open-nav")
+      logo.classList.toggle("active")
     })
   }
 </script>
@@ -198,6 +197,10 @@ const { socials, registration } = Astro.props
   .open-nav .button-primary {
     background-color: #fff;
     color: var(--color-dark);
+  }
+
+  .logo.active {
+    filter: brightness(0) invert(1);
   }
 
   .button-primary {

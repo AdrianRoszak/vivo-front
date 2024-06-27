@@ -46,10 +46,37 @@
       border: 1px solid var(--color-light-50);
       color: var(--color-light-50);
       background-color: transparent;
+
+      &:hover {
+        background-color: var(--color-light-50);
+        color: var(--color-primary-900);
+      }
+    }
+
+    a {
+      span::after {
+        background-color: var(--color-light-50);
+      }
     }
 
     .social-icon-primary {
       color: var(--color-light-50);
+
+      &:hover {
+        color: var(--color-primary-800);
+        stroke: var(--color-light-50);
+        stroke-width: 0.75;
+      }
+    }
+
+    .hamburger {
+      span {
+        background-color: var(--color-light-50);
+      }
+    }
+
+    .logo img {
+      filter: brightness(0) invert(1);
     }
   }
 </style>
