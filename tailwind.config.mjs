@@ -102,7 +102,7 @@ export default {
         ".container": {
           maxWidth: "100%",
           "@screen sm": {
-            maxWidth: "600px",
+            maxWidth: "768px",
           },
           "@screen md": {
             maxWidth: "920px",
