@@ -8,11 +8,12 @@ export default {
     container: {
       center: true,
       padding: "1rem",
-      screens: {
+      maxWidth: {
         sm: "100%",
         md: "100%",
         lg: "1024px",
-        xl: "1280px",
+        xl: "1100px",
+        "2xl": "1100px",
       },
     },
     extend: {
@@ -97,6 +98,24 @@ export default {
           "-webkit-line-clamp": "8",
           "-webkit-box-orient": "vertical",
           overflow: "hidden",
+        },
+        ".container": {
+          maxWidth: "100%",
+          "@screen sm": {
+            maxWidth: "600px",
+          },
+          "@screen md": {
+            maxWidth: "920px",
+          },
+          "@screen lg": {
+            maxWidth: "950px",
+          },
+          "@screen xl": {
+            maxWidth: "1200px",
+          },
+          "@screen 2xl": {
+            maxWidth: "1280px",
+          },
         },
       })
     }),
