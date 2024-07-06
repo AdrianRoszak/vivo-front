@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "ES2018",
     "moduleResolution": "Node",
+    "importHelpers": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "allowArbitraryExtensions": true,
@@ -11,5 +12,6 @@
       "@/src/*": ["./src/*"],
       "@/data/*": ["./src/data/*"]
     }
-  }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro"]
 }
