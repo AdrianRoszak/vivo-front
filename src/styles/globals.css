@@ -115,25 +115,20 @@ ul.portable-text {
 }
 
 p.portable-text + h2.portable-text {
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 h2.portable-text,
 h3.portable-text {
-  margin-bottom: 1em;
+  margin-bottom: 0.25em;
 }
 
 h2.portable-text {
-  margin-bottom: 1em;
   font-size: var(--scale-double-pica);
 }
 
 h3.portable-text {
   font-size: var(--scale-great-primer);
-}
-
-p.portable-text + h2.portable-text {
-  margin-top: 2em;
 }
 
 a.portable-text:hover {

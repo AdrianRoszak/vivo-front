@@ -5,7 +5,10 @@ import Container from "@/src/components/Container.astro"
 import Layout from "@/src/layouts/Layout.astro"
 import DecorativeText from "@/src/components/DecorativeText.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
+import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
+import { PortableText } from "astro-portabletext"
 
+const path = Astro.url.pathname
 const { sectionHero, priceList } = await getPriceList()
 const { headline, tagline } = sectionHero
 ---
@@ -13,7 +16,8 @@ const { headline, tagline } = sectionHero
 <Layout title="Cennik" description="">
   <section>
     <Container>
-      <div class:list={["mx-auto", "w-3/4"]}>
+      <Breadcrumbs path={path} />
+      <div class:list={["mx-auto", "md:w-3/4", "mt-16"]}>
         <div class="mb-16">
           {headline && <HeadingText as="h1" text={headline} />}
           {tagline && <DecorativeText text={tagline} />}
@@ -36,7 +40,11 @@ const { headline, tagline } = sectionHero
                               class:list={["flex", "justify-between", "mb-4"]}
                             >
                               <div class:list={["variant-name"]}>
-                                <h2>{variant.name}</h2>
+                                {typeof variant.name === "string" ? (
+                                  <h2>{variant.name}</h2>
+                                ) : (
+                                  <PortableText value={variant.name} />
+                                )}
                               </div>
                               <p>{variant.price}</p>
                             </div>
@@ -55,8 +63,12 @@ const { headline, tagline } = sectionHero
 
 <style>
   .variant-name {
-    max-width: 50%;
+    max-width: 75%;
     margin-right: 0.5em;
+
+    @media (min-width: 768px) {
+      max-width: 50%;
+    }
   }
 
   p {

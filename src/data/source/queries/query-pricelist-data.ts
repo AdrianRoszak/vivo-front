@@ -7,6 +7,7 @@ export const queryPriceListData = `*[_type == "singletonPrices"] {
       title,
       variants[]-> {
         title,
+        longTitle,
         price
       }
     }

@@ -1,10 +1,12 @@
-import type { SectionIntro } from "../types"
 import { fetchPriceListData } from "./source"
 import { digestMetaData, digestSectionIntro } from "./source/digests"
+
+import type { TypedObject } from "astro-portabletext/types"
+import type { SectionIntro } from "../types"
 import type { MetaDataType } from "./source/digests/digest-meta-data"
 
 type PriceListVariant = {
-  name: string
+  name: string | TypedObject
   price: number
 }
 
@@ -46,7 +48,7 @@ function digestPriceList(source): PriceListItem {
 //@ts-ignore
 function digestPriceListVariant(source) {
   return {
-    name: source.title,
+    name: source.title || source.longTitle,
     price: `${source.price} zł`,
   }
 }
