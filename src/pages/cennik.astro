@@ -18,7 +18,7 @@ const { headline, tagline } = sectionHero
     <Container>
       <Breadcrumbs path={path} />
       <div class:list={["mx-auto", "md:w-3/4", "mt-16"]}>
-        <div class="mb-16">
+        <div class="mb-20">
           {headline && <HeadingText as="h1" text={headline} />}
           {tagline && <DecorativeText text={tagline} />}
         </div>
@@ -29,7 +29,7 @@ const { headline, tagline } = sectionHero
                 const { name, variants } = item
                 return (
                   <div class="mb-8">
-                    <h2 class:list={["text-2xl", "font-bold", "mb-8"]}>
+                    <h2 class:list={["text-2xl", "font-bold", "mb-4"]}>
                       {name}
                     </h2>
                     <div>
