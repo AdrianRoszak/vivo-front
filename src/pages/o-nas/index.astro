@@ -1,17 +1,19 @@
 ---
 import { getAboutPage } from "@/src/data"
+import { urlForImage } from "@/src/utils"
+
+import { PortableText } from "astro-portabletext"
+import { Picture } from "astro:assets"
 
 import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
 import Container from "@/src/components/Container.astro"
-import Layout from "@/src/layouts/Layout.astro"
 import Value from "@/src/components/values/Value.astro"
-
-import type { AboutPageData } from "@/src/types/singleton-types"
-import { urlForImage } from "@/src/utils"
-import { Picture } from "astro:assets"
 import HeadingText from "@/src/components/HeadingText.astro"
 import DecorativeText from "@/src/components/DecorativeText.astro"
-import { PortableText } from "astro-portabletext"
+import DecoLeafs from "@/src/components/DecoLeafs.astro"
+import Layout from "@/src/layouts/Layout.astro"
+
+import type { AboutPageData } from "@/src/types/singleton-types"
 
 const path = Astro.url.pathname
 
@@ -28,7 +30,8 @@ const { headline, tagline } = sectionHero
 ---
 
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
-  <section class="mb-24">
+  <section class:list={["mb-24", "relative"]}>
+    <DecoLeafs />
     <Container>
       <Breadcrumbs path={path} />
     </Container>

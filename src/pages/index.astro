@@ -2,6 +2,10 @@
 import { getHomePage } from "@/src/data"
 import { urlForImage } from "@/src/utils"
 
+import { Icon } from "astro-icon/components"
+import { PortableText } from "astro-portabletext"
+import { Image } from "astro:assets"
+
 import Container from "@/src/components/Container.astro"
 import DecorativeText from "@/src/components/DecorativeText.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
@@ -9,13 +13,9 @@ import Layout from "@/src/layouts/Layout.astro"
 import ArticleTeaser from "@/src/components/article/ArticleTeaser.astro"
 import TripleGrid from "@/src/components/TripleGrid.astro"
 import ValuesGrid from "@/src/components/values/ValuesGrid.astro"
+import DecoLeafs from "@/src/components/DecoLeafs.astro"
 
-import leafIcon from "@/src/assets/leaf-1.svg?raw"
-import leafIcon2 from "@/src/assets/leaf-2.svg?raw"
-import { Icon } from "astro-icon/components"
-import { PortableText } from "astro-portabletext"
 
-import { Image } from "astro:assets"
 
 const {
   sectionHero,
@@ -42,16 +42,7 @@ const {
         </div>
       </div>
     </Container>
-    <div class:list={["absolute", "top-0", "w-full", "h-full", "-z-10"]}>
-      <div
-        class:list={["absolute", "-left-52", "lg:left-[unset]", "lg:right-72"]}
-        set:html={leafIcon}
-      />
-      <div
-        class:list={["hidden", "lg:block", "absolute", "-right-60"]}
-        set:html={leafIcon2}
-      />
-    </div>
+    <DecoLeafs />
   </section>
   {
     sectionValues && (

@@ -8,6 +8,7 @@ import DecorativeText from "@/src/components/DecorativeText.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
 import TripleGrid from "@/src/components/TripleGrid.astro"
 import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
+import DecoLeafs from "@/src/components/DecoLeafs.astro"
 
 const path = Astro.url.pathname
 
@@ -15,7 +16,7 @@ const { blogArticles, sectionIntro, metaData } = await getBlogPage()
 ---
 
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
-  <section>
+  <section class="relative">
     <Container>
       <Breadcrumbs path={path} />
       <div class:list={["text-center", "my-32"]}>
@@ -32,5 +33,6 @@ const { blogArticles, sectionIntro, metaData } = await getBlogPage()
         )
       }
     </Container>
+    <DecoLeafs />
   </section>
 </Layout>

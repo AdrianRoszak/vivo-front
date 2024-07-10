@@ -1,12 +1,14 @@
 ---
 import { getPriceList } from "@/src/data"
 
+import { PortableText } from "astro-portabletext"
+
 import Container from "@/src/components/Container.astro"
-import Layout from "@/src/layouts/Layout.astro"
+import DecoLeafs from "@/src/components/DecoLeafs.astro"
 import DecorativeText from "@/src/components/DecorativeText.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
 import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
-import { PortableText } from "astro-portabletext"
+import Layout from "@/src/layouts/Layout.astro"
 
 const path = Astro.url.pathname
 const { sectionHero, priceList } = await getPriceList()
@@ -14,7 +16,8 @@ const { headline, tagline } = sectionHero
 ---
 
 <Layout title="Cennik" description="">
-  <section>
+  <section class="relative">
+    <DecoLeafs />
     <Container>
       <Breadcrumbs path={path} />
       <div class:list={["mx-auto", "md:w-3/4", "mt-16"]}>

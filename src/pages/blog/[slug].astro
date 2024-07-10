@@ -1,22 +1,23 @@
 ---
-import { PortableText } from "astro-portabletext"
-import { Image } from "astro:assets"
-
+import { urlForImage } from "@/src/utils"
 import { getSingleBlogArticle } from "@/src/data"
 import { getBlogArticlesSlugs } from "@/src/data/get-blog-articles-slugs"
+
+import { PortableText } from "astro-portabletext"
+import { Image } from "astro:assets"
 
 import Article from "@/src/components/article/Article.astro"
 import ArticleHeader from "@/src/components/article/ArticleHeader.astro"
 import Container from "@/src/components/Container.astro"
 import Date from "@/src/components/Date.astro"
 import HeadingText from "@/src/components/HeadingText.astro"
-import Layout from "@/src/layouts/Layout.astro"
-
-import type { BlogArticleType } from "@/src/types"
-import { urlForImage } from "@/src/utils"
+import DecoLeafs from "@/src/components/DecoLeafs.astro"
 import ArticleFooter from "@/src/components/article/ArticleFooter.astro"
 import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
 import CustomImage from "@/src/components/CustomImage.astro"
+import Layout from "@/src/layouts/Layout.astro"
+
+import type { BlogArticleType } from "@/src/types"
 
 export async function getStaticPaths() {
   async function obtainBlogArticlesSlugs() {
@@ -49,7 +50,8 @@ const { published, title, body, mainImage, author, seoTitle } =
 ---
 
 <Layout title={seoTitle.title} description={seoTitle.description}>
-  <section>
+  <section class="relative">
+    <DecoLeafs />
     <Container>
       <Breadcrumbs path={path} />
       <Article>
