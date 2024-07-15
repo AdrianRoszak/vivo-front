@@ -177,21 +177,23 @@ const { socials, registration } = Astro.props
 </nav>
 
 <script>
-  const hamburger = document.querySelector(".hamburger")
-  const nav = document.querySelector(".menu")
-  const htmlElement = document.querySelector("html")
-  const navElement = document.querySelector("#nav")
-  const logo = document.querySelector(".logo")
+  document.addEventListener("astro:page-load", () => {
+    const hamburger = document.querySelector(".hamburger")
+    const nav = document.querySelector(".menu")
+    const htmlElement = document.querySelector("html")
+    const navElement = document.querySelector("#nav")
+    const logo = document.querySelector(".logo")
 
-  if (hamburger && nav && htmlElement && navElement && logo) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active")
-      nav.classList.toggle("is-visible")
-      htmlElement.classList.toggle("overflow-hidden")
-      navElement.classList.toggle("open-nav")
-      logo.classList.toggle("active")
-    })
-  }
+    if (hamburger && nav && htmlElement && navElement && logo) {
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active")
+        nav.classList.toggle("is-visible")
+        htmlElement.classList.toggle("overflow-hidden")
+        navElement.classList.toggle("open-nav")
+        logo.classList.toggle("active")
+      })
+    }
+  })
 </script>
 
 <style>

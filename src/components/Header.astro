@@ -18,20 +18,35 @@
   <slot />
 </header>
 
-<script>
-  const header = document.querySelector(".header")
+<script >
+  document.addEventListener("astro:page-load", () => {
+    const header = document.querySelector(".header")
 
-  function handleScroll() {
-    if (header) {
-      if (window.scrollY > 5) {
-        header.classList.add("header--scrolled")
-      } else {
-        header.classList.remove("header--scrolled")
+    function handleScroll() {
+      if (header) {
+        if (window.scrollY > 5) {
+          header.classList.add("header--scrolled")
+        } else {
+          header.classList.remove("header--scrolled")
+        }
       }
     }
-  }
 
-  window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll)
+  })
+  // const header = document.querySelector(".header")
+
+  // function handleScroll() {
+  //   if (header) {
+  //     if (window.scrollY > 5) {
+  //       header.classList.add("header--scrolled")
+  //     } else {
+  //       header.classList.remove("header--scrolled")
+  //     }
+  //   }
+  // }
+
+  // window.addEventListener("scroll", handleScroll)
 </script>
 
 <style>
