@@ -1,6 +1,6 @@
 ---
 import { SEO } from "astro-seo"
-// import { ViewTransitions } from "astro:transitions"
+import { ViewTransitions } from "astro:transitions"
 
 import Footer from "@/src/components/Footer.astro"
 import Header from "@/src/components/Header.astro"
@@ -10,6 +10,7 @@ import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer"
 import { getGlobalData } from "@/src/data"
 import { Icon } from "astro-icon/components"
 import { getMedfile } from "@/src/data/presentation"
+import Overlay from "@/src/components/Overlay.astro"
 
 import "@/src/styles/globals.css"
 import "@/src/styles/vars.css"
@@ -61,9 +62,10 @@ const canonical = `${Astro.site}${pathname}`
       url="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;400&display=swap"
     />
     <!-- TODO -->
-    <!-- <ViewTransitions /> -->
+    <ViewTransitions />
   </head>
   <body>
+    <Overlay />
     <Header>
       <Nav socials={socials} registration={medfile} />
     </Header>
