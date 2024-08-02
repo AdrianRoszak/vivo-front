@@ -114,9 +114,11 @@ const { services } = Astro.props
 </style>
 
 <script>
-  const radioInputs = document.querySelectorAll("input[type=radio]")
+  const radioInputs = document.querySelectorAll(
+    "input[type=radio]",
+  ) as NodeListOf<HTMLInputElement>
 
-  function handleClick(element) {
+  function handleClick(element: HTMLInputElement) {
     const elementChecked = element.getAttribute("data-checked")
 
     if (elementChecked === "true") {
