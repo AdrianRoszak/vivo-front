@@ -9,6 +9,8 @@ export async function fetchOfferGroup(slug: string) {
       serviceName,
       serviceDescription,
       serviceShortDescription,
+      serviceYouth,
+      serviceAdult
     }
   }`
   const params = { slug }

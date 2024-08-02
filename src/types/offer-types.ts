@@ -11,6 +11,8 @@ export type Service = {
   name: string
   shortDescription: string
   description: TypedObject
+  subgroup: string | null
+  workshops: boolean | null
 }
 
 export type OfferGroupData = OfferGroupBase & {

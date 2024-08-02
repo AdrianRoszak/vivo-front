@@ -1,0 +1,139 @@
+---
+import { PortableText } from "astro-portabletext"
+import HeadingText from "./HeadingText.astro"
+import type { Service } from "../types"
+
+type Props = {
+  services: Service[]
+}
+
+const { services } = Astro.props
+---
+
+<div class="accordion accordion--radio">
+  {
+    services.map((service, index: number) => {
+      return (
+        <div class="tab">
+          <input
+            type="radio"
+            name="accordion-2"
+            id={service.name}
+            data-checked={false}
+          />
+          <label
+            for={service.name}
+            class:list={["tab__label", "group", "relative"]}
+          >
+            <span
+              class:list={[
+                "absolute",
+                "text-2xl",
+                "sm:text-4xl",
+                "font-deco",
+                "right-0",
+                "top-2",
+                "text-primary",
+                "-z-10",
+              ]}
+            >
+              {index < 9 ? `0${index + 1}` : index + 1}
+            </span>
+            <div class:list={["offer-tab", "flex", "py-6", "sm:py-12"]}>
+              <div class:list={["flex", "items-center"]}>
+                <HeadingText
+                  as="h3"
+                  size="text-double-pica"
+                  text={service.name}
+                  uppercase={false}
+                />
+              </div>
+            </div>
+            <div class:list={["flex", "items-center"]}>
+              <HeadingText
+                as="h4"
+                text={service.shortDescription}
+                uppercase={false}
+              />
+            </div>
+            <div class="tab__content">
+              <PortableText value={service.description} class="content" />
+            </div>
+          </label>
+        </div>
+      )
+    })
+  }
+</div>
+
+<style>
+  .tab input {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
+  .tab__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.7s;
+    grid-column-start: 2;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+
+  .tab input:checked ~ label .tab__content {
+    max-height: 1000px;
+  }
+
+  .accordion {
+    overflow: hidden;
+    padding: 1rem 0;
+  }
+
+  .tab__label {
+    display: block;
+    cursor: pointer;
+    gap: 0 5rem;
+    padding: 1rem;
+  }
+
+  .tab input:checked + .tab__label::after {
+    transform: rotate(270deg);
+  }
+
+  @media (min-width: 768px) {
+    .tab__label {
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      cursor: pointer;
+      padding: 1rem 2rem;
+    }
+  }
+</style>
+
+<script>
+  const radioInputs = document.querySelectorAll("input[type=radio]")
+
+  function handleClick(element) {
+    const elementChecked = element.getAttribute("data-checked")
+
+    if (elementChecked === "true") {
+      element.checked = false
+      element.setAttribute("data-checked", "false")
+    } else {
+      element.setAttribute("data-checked", "true")
+      radioInputs.forEach((input) => {
+        if (input !== element) {
+          input.checked = false
+          input.setAttribute("data-checked", "false")
+        }
+      })
+    }
+  }
+
+  radioInputs.forEach((input) => {
+    input.addEventListener("click", () => handleClick(input))
+  })
+</script>

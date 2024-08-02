@@ -25,5 +25,7 @@ export function digestService(source): Service {
     name: source.serviceName,
     shortDescription: source.serviceShortDescription,
     description: source.serviceDescription,
+    subgroup: source.serviceYouth || null,
+    workshops: source.serviceAdult ? source.serviceAdult.workshops : null,
   }
 }
