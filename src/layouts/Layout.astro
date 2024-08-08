@@ -108,16 +108,34 @@ const canonical = `${Astro.site}${pathname}`
 
       gsap.registerPlugin(ScrollTrigger)
 
-      gsap.to(".animate-fade-in", {
+      const animationItems = gsap.utils.toArray(".animate-fade-in")
+
+      animationItems.forEach((item) => {
+        gsap.to(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top 90%",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.2,
+          ease: "power1.out",
+        })
+      })
+
+
+      gsap.to(".animate-thumb", {
         scrollTrigger: {
-          trigger: ".animate-fade-in",
-          start: "top 80%",
+          trigger: ".animate-thumb",
+          start: "top 90%",
         },
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.2,
-        ease: "back.out",
+        scale: 1,
+        stagger: {
+          each: 0.1,
+          from: "center",
+          grid: "auto",
+        },
       })
     </script>
   </body>

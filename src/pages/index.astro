@@ -130,8 +130,12 @@ const {
   >
     <Container>
       <div class:list={["mb-20", "text-center", "text-light-50"]}>
-        <HeadingText as="h1" text={sectionAbout.intro.headline} />
-        <DecorativeText text={sectionAbout.intro.tagline} color="white" />
+        <div class="animate-fade-in">
+          <HeadingText as="h1" text={sectionAbout.intro.headline} />
+        </div>
+        <div class="animate-fade-in">
+          <DecorativeText text={sectionAbout.intro.tagline} color="white" />
+        </div>
       </div>
       <ul
         class:list={[
@@ -178,7 +182,13 @@ const {
                 return (
                   <a
                     href={`/o-nas/${member.slug.current}`}
-                    class:list={["w-28", "md:w-48", "px-4"]}
+                    class:list={[
+                      "animate-thumb",
+                      "thumb-link",
+                      "w-28",
+                      "md:w-48",
+                      "px-4",
+                    ]}
                   >
                     <div
                       class:list={["flex", "flex-col", "items-center", "gap-4"]}
@@ -236,8 +246,12 @@ const {
   <section>
     <Container>
       <div class:list={["text-center", "mb-12"]}>
-        <HeadingText as="h1" text={sectionBlog.headline} />
-        <DecorativeText text={sectionBlog.tagline} />
+        <div class="animate-fade-in">
+          <HeadingText as="h1" text={sectionBlog.headline} />
+        </div>
+        <div class="animate-fade-in">
+          <DecorativeText text={sectionBlog.tagline} />
+        </div>
       </div>
       {
         blogArticles && (
@@ -258,6 +272,13 @@ const {
 </Layout>
 
 <style>
+  .thumb-link:hover {
+    .thumb-image::after {
+      top: 0;
+      left: 0;
+    }
+  }
+
   .thumb-image::after {
     content: "";
     position: absolute;
@@ -268,6 +289,7 @@ const {
     background-color: var(--color-secondary-300);
     border-radius: 50%;
     z-index: -1;
+    transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 </style>
 
