@@ -15,8 +15,6 @@ import TripleGrid from "@/src/components/TripleGrid.astro"
 import ValuesGrid from "@/src/components/values/ValuesGrid.astro"
 import DecoLeafs from "@/src/components/DecoLeafs.astro"
 
-
-
 const {
   sectionHero,
   sectionValues,
@@ -37,8 +35,14 @@ const {
     <Container>
       <div class:list={["h-[80vh]", "max-h-[750px]", "flex", "items-center"]}>
         <div class:list={["lg:w-4/5", "-mt-32"]}>
-          <HeadingText as="h1" text={sectionHero.headline} />
-          <DecorativeText text={sectionHero.tagline} />
+          <div data-weirdo="animation-container">
+            <div class="animate-fade-in-on-load">
+              <HeadingText as="h1" text={sectionHero.headline} />
+            </div>
+            <div class="animate-fade-in-on-load">
+              <DecorativeText text={sectionHero.tagline} />
+            </div>
+          </div>
         </div>
       </div>
     </Container>
@@ -57,45 +61,54 @@ const {
         class:list={["sm:h-screen", "flex", "items-center", "mb-20", "sm:mb-0"]}
       >
         <Container>
-          <div class:list={["sm:grid", "grid-cols-5", "-mt-32"]}>
+          <div
+            class:list={["sm:grid", "grid-cols-5", "-mt-32"]}
+            data-weirdo="animation-container"
+          >
             {sectionOffer.intro && (
               <div
                 class:list={["text-balance", "col-span-2", "mb-12", "sm:mb-0"]}
               >
-                <HeadingText as="h1" text={sectionOffer.intro.headline} />
-                <DecorativeText text={sectionOffer.intro.tagline} />
+                <div class="animate-fade-in">
+                  <HeadingText as="h1" text={sectionOffer.intro.headline} />
+                </div>
+                <div class="animate-fade-in">
+                  <DecorativeText text={sectionOffer.intro.tagline} />
+                </div>
               </div>
             )}
             {sectionOffer.offerGroups && (
               <div class:list={["col-span-3", "sm:pl-32"]}>
                 {Array.isArray(sectionOffer.offerGroups) &&
                   sectionOffer.offerGroups.map((group) => (
-                    <a
-                      href={`/terapie/${group.slug}`}
-                      class:list={[
-                        "group",
-                        "relative",
-                        "block",
-                        "py-6",
-                        "sm:p-12",
-                      ]}
-                    >
-                      <div class="offer-tab">
-                        <div class:list={["flex", "gap-4", "items-center"]}>
-                          <h2 class:list={["text-paragon"]}>{group.title}</h2>
-                          <Icon
-                            size={30}
-                            name="mdi:share"
-                            class:list={[
-                              "group-hover:text-primary",
-                              "group-hover:scale-110",
-                              "transition-all",
-                            ]}
-                          />
+                    <div class="animate-fade-in">
+                      <a
+                        href={`/terapie/${group.slug}`}
+                        class:list={[
+                          "group",
+                          "relative",
+                          "block",
+                          "py-6",
+                          "sm:p-12",
+                        ]}
+                      >
+                        <div class="offer-tab">
+                          <div class:list={["flex", "gap-4", "items-center"]}>
+                            <h2 class:list={["text-paragon"]}>{group.title}</h2>
+                            <Icon
+                              size={30}
+                              name="mdi:share"
+                              class:list={[
+                                "group-hover:text-primary",
+                                "group-hover:scale-110",
+                                "transition-all",
+                              ]}
+                            />
+                          </div>
+                          <PortableText value={group.description} />
                         </div>
-                        <PortableText value={group.description} />
-                      </div>
-                    </a>
+                      </a>
+                    </div>
                   ))}
                 <div />
               </div>

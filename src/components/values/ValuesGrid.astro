@@ -11,7 +11,15 @@ const { values, decoImage } = Astro.props
 <div class:list={["grid", "grid-cols-5", "gap-1", "mb-64"]}>
   {
     decoImage && (
-      <div class:list={["relative", "hidden", "md:block", "col-span-2"]}>
+      <div
+        class:list={[
+          "value-tile",
+          "relative",
+          "hidden",
+          "md:block",
+          "col-span-2",
+        ]}
+      >
         <Image
           src={urlForImage(decoImage.source)
             .width(900)
@@ -42,3 +50,29 @@ const { values, decoImage } = Astro.props
     {Array.isArray(values) && values.map((value) => <ValueTile {...value} />)}
   </div>
 </div>
+
+<script>
+  import { gsap } from "gsap"
+  import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  gsap.to(".value-tile", {
+    scrollTrigger: {
+      trigger: ".value-tile",
+      start: "top bottom",
+    },
+    scale: 1,
+    duration: 0.8,
+    stagger: 0.3,
+    ease: "power1.out",
+    onStart: () => {
+      gsap.to(".value-tile-content", {
+        opacity: 1,
+        duration: 0.2,
+        stagger: 0.1,
+        delay: 2
+      })
+    },
+  })
+</script>

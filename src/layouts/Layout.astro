@@ -102,5 +102,23 @@ const canonical = `${Astro.site}${pathname}`
         </div>
       </div>
     </Footer>
+    <script>
+      import { gsap } from "gsap"
+      import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+      gsap.registerPlugin(ScrollTrigger)
+
+      gsap.to(".animate-fade-in", {
+        scrollTrigger: {
+          trigger: ".animate-fade-in",
+          start: "top 80%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.2,
+        ease: "back.out",
+      })
+    </script>
   </body>
 </html>

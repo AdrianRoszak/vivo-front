@@ -1,1 +1,19 @@
 @import "./mobile-menu-anim.css";
+
+.animate-fade-in,
+.animate-fade-in-on-load {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.header {
+  transform: translateY(-100%);
+}
+
+.value-tile {
+  transform: scale(0);
+
+  .value-tile-content {
+    opacity: 0;
+  }
+}

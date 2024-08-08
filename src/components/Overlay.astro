@@ -63,6 +63,8 @@
 </style>
 
 <script>
+  import { gsap } from "gsap"
+
   document.addEventListener("astro:page-load", () => {
     window.scrollTo(0, 0)
 
@@ -78,10 +80,35 @@
       overlay.classList.remove("show")
 
       const bars = overlay.querySelectorAll(".bar")
+      const middleBar = bars[Math.floor(bars.length / 2)]
       const lastBar = bars[bars.length - 1]
 
       lastBar.addEventListener("transitionend", () => {
         overlay.style.display = "none"
+      })
+
+      middleBar.addEventListener("transitionend", () => {
+        animateOnLoad()
+        showHeader()
+      })
+    }
+
+    function animateOnLoad() {
+      gsap.to(".animate-fade-in-on-load", {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.2,
+        ease: "power1.out",
+      })
+    }
+
+    function showHeader() {
+      gsap.to(".header", {
+        y: 0,
+        duration: 0.5,
+        delay: 0.3,
+        ease: "power1.out",
       })
     }
   })
