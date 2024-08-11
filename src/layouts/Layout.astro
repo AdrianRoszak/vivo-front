@@ -108,7 +108,7 @@ const canonical = `${Astro.site}${pathname}`
 
       gsap.registerPlugin(ScrollTrigger)
 
-      const animationItems = gsap.utils.toArray(".animate-fade-in")
+      const animationItems = gsap.utils.toArray<HTMLElement>(".animate-fade-in")
 
       animationItems.forEach((item) => {
         gsap.to(item, {
