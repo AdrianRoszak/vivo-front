@@ -6,6 +6,7 @@ import {
   digestTeamMember,
   digestValues,
 } from "./source/digests"
+import { secureImage } from "./source/digests/digest-blog-article"
 
 export async function getAboutPage(): Promise<AboutPageData | null> {
   const data = digestAboutPageData(await fetchAboutPageData())
@@ -31,6 +32,7 @@ function digestAboutPageData(source): AboutPageData | null {
       headline: source.singletonAbout.sectionTeam.sectionTeamTitle,
       tagline: source.singletonAbout.sectionTeam.tagline,
     },
+    decoImage: secureImage(source.singletonAbout.image),
     team:
       source.team && Array.isArray(source.team)
         ? source.team.map(digestTeamMember)

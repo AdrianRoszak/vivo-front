@@ -21,6 +21,7 @@ const {
   metaData,
   team,
   sectionHero,
+  decoImage,
   sectionAbout,
   sectionAboutValues,
   sectionTeam,
@@ -36,7 +37,7 @@ const { headline, tagline } = sectionHero
       <Breadcrumbs path={path} />
     </Container>
     <Container>
-      <div class:list={["lg:w-4/5", "mt-16", "mb-32", "sm:mb-64"]}>
+      <div class:list={["lg:w-4/5", "mt-16", "mb-12", "md:mb-32"]}>
         <div class="mb-16">
           {headline && <HeadingText as="h1" text={headline} />}
           {tagline && <DecorativeText text={tagline} />}
@@ -53,6 +54,23 @@ const { headline, tagline } = sectionHero
         }
       </div>
     </Container>
+    <div>
+      {
+        decoImage && (
+          <Picture
+            src={urlForImage(decoImage.source)
+              .width(1920)
+              .format("webp")
+              .quality(80)
+              .url()}
+            alt={decoImage.alt}
+            width={1920}
+            height={600}
+            class:list={["rounded-lg", "object-cover"]}
+          />
+        )
+      }
+    </div>
   </section>
   <section>
     <Container>

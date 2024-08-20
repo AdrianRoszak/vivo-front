@@ -13,6 +13,7 @@ export const queryAboutPageData = `{
       tagline,
       sectionTeamTitle
     },
+    image,
     ${seoFragment}
   },
   "team": *[_type == "teamMember" && roles.therapist == true && active == true] {
