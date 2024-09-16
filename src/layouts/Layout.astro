@@ -118,8 +118,11 @@ const siteUrl = `${Astro.site}${pathname}`
     <script>
       import { gsap } from "gsap"
       import { ScrollTrigger } from "gsap/ScrollTrigger"
-
       gsap.registerPlugin(ScrollTrigger)
+
+      window.addEventListener("astro:before-swap", () => {
+        ScrollTrigger.refresh()
+      })
 
       const animationItems = gsap.utils.toArray<HTMLElement>(".animate-fade-in")
 
@@ -174,8 +177,8 @@ const siteUrl = `${Astro.site}${pathname}`
     <style>
       .scroll-to-top-icon {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 30px;
+        right: 30px;
         cursor: pointer;
         z-index: 1000;
         filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
