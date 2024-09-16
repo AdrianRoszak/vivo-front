@@ -70,7 +70,11 @@ const siteUrl = `${Astro.site}${pathname}`
     <Overlay />
     <FallingLeafs />
     <Header>
-      <Nav socials={socials} registration={medfile} />
+      <Nav
+        socials={socials}
+        registration={medfile}
+        contact={{ email: contact.email, phone: contact.phone }}
+      />
     </Header>
     <main>
       <slot />
@@ -92,13 +96,13 @@ const siteUrl = `${Astro.site}${pathname}`
         <div class:list={["flex", "flex-col", "my-4", "gap-2"]}>
           <Link href={`tel:${contact.phone}`}>
             <div class:list={["flex", "gap-2", "items-center"]}>
-              <Icon size={30} name="mdi:phone" />
+              <Icon size={30} name="f7:phone-fill" />
               {contact.phone}
             </div>
           </Link>
           <Link href={`mailto:${contact.email}`}>
             <div class:list={["flex", "gap-2", "items-center"]}>
-              <Icon size={30} name="mdi:email" />
+              <Icon size={30} name="f7:envelope-fill" />
               {contact.email}
             </div>
           </Link>

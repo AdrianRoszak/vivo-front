@@ -3,6 +3,7 @@ import CustomImage from "./CustomImage.astro"
 import Link from "./Link.astro"
 import SocialIcon from "./SocialIcon.astro"
 import type { IContact } from "@/src/data/domain"
+import { Icon } from "astro-icon/components"
 
 interface Props {
   socials: {
@@ -12,9 +13,13 @@ interface Props {
     youtube?: string
   }
   registration: IContact["medfile"]
+  contact: {
+    email: string
+    phone: string
+  }
 }
 
-const { socials, registration } = Astro.props
+const { socials, registration, contact } = Astro.props
 ---
 
 <nav
@@ -114,10 +119,38 @@ const { socials, registration } = Astro.props
       )
     }
   </div>
-  <div class:list={["flex", "items-center", "gap-4", "relative", "z-[999]"]}>
+  <div class:list={["flex", "items-center", "gap-2", "relative", "z-[999]"]}>
+    {
+      contact && (
+        <div class:list={["hidden", "sm:flex", "gap-2", "items-center"]}>
+          <a
+            href={`tel:${contact.phone}`}
+            class:list={[
+              "flex",
+              "gap-2",
+              "items-center",
+              "social-icon-primary",
+            ]}
+          >
+            <Icon size={45} name="f7:phone-circle-fill" />
+          </a>
+          <a
+            href={`mailto:${contact.email}`}
+            class:list={[
+              "flex",
+              "gap-2",
+              "items-center",
+              "social-icon-primary",
+            ]}
+          >
+            <Icon size={45} name="f7:envelope-circle-fill" />
+          </a>
+        </div>
+      )
+    }
     {
       socials && (
-        <div class:list={["hidden", "gap-4", "sm:flex"]}>
+        <div class:list={["hidden", "gap-2", "sm:flex"]}>
           {socials.facebook && (
             <SocialIcon
               href={socials.facebook}
@@ -149,7 +182,24 @@ const { socials, registration } = Astro.props
         </div>
       )
     }
-    <div class:list={[]}>
+    <div class:list={["flex", "gap-2"]}>
+      {
+        contact.phone && (
+          <a
+            href={`tel:${contact.phone}`}
+            class:list={[
+              "phone-icon",
+              "flex",
+              "gap-2",
+              "items-center",
+              "social-icon-primary",
+              "sm:hidden",
+            ]}
+          >
+            <Icon size={50} name="f7:phone-circle-fill" />
+          </a>
+        )
+      }
       <a
         href={registration.generalLink}
         class:list={["button", "button-primary", "font-bold"]}
@@ -183,14 +233,16 @@ const { socials, registration } = Astro.props
     const htmlElement = document.querySelector("html")
     const navElement = document.querySelector("#nav")
     const logo = document.querySelector(".logo")
+    const phoneIcon = document.querySelector(".phone-icon")
 
-    if (hamburger && nav && htmlElement && navElement && logo) {
+    if (hamburger && nav && htmlElement && navElement && logo && phoneIcon) {
       hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active")
         nav.classList.toggle("is-visible")
         htmlElement.classList.toggle("overflow-hidden")
         navElement.classList.toggle("open-nav")
         logo.classList.toggle("active")
+        phoneIcon.classList.toggle("active")
       })
     }
   })
@@ -202,7 +254,12 @@ const { socials, registration } = Astro.props
     color: var(--color-dark);
   }
 
-  .logo.active {
+  .phone-icon {
+    transition: all 0.3s;
+  }
+
+  .logo.active,
+  .phone-icon.active {
     filter: brightness(0) invert(1);
   }
 

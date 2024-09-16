@@ -36,6 +36,7 @@
     "typescript": "^5.4.3"
   },
   "devDependencies": {
+    "@iconify-json/f7": "^1.2.0",
     "@iconify-json/mdi": "^1.1.66",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "commitizen": "^4.3.0",
