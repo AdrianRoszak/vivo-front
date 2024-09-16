@@ -67,6 +67,12 @@ const siteUrl = `${Astro.site}${pathname}`
     <ViewTransitions />
   </head>
   <body>
+    <button
+      weirdo-data-scroll="scroll-to-top"
+      class:list={["scroll-to-top-icon", "social-icon-primary", "hidden"]}
+    >
+      <Icon size={50} name="f7:arrow-up-circle-fill" />
+    </button>
     <Overlay />
     <FallingLeafs />
     <Header>
@@ -144,5 +150,36 @@ const siteUrl = `${Astro.site}${pathname}`
         },
       })
     </script>
+    <script>
+      const scrollToTopButton = document.querySelector(
+        "[weirdo-data-scroll='scroll-to-top']",
+      )
+
+      if (scrollToTopButton) {
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 500) {
+            scrollToTopButton.classList.remove("hidden")
+          } else {
+            scrollToTopButton.classList.add("hidden")
+          }
+        })
+        scrollToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          })
+        })
+      }
+    </script>
+    <style>
+      .scroll-to-top-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 1000;
+        filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+      }
+    </style>
   </body>
 </html>
