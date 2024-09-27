@@ -43,8 +43,18 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const path = Astro.url.pathname
 
-const { name, image, bio, metaData, short, articles, experience } =
-  (await getTeamMember(slug)) as TeamMemberType
+const {
+  name,
+  image,
+  bio,
+  metaData,
+  short,
+  articles,
+  experience,
+  education,
+  specialization,
+  fieldsOfInterest,
+} = (await getTeamMember(slug)) as TeamMemberType
 ---
 
 <Layout title={metaData.seoTitle} description={metaData.seoDescription}>
@@ -97,8 +107,28 @@ const { name, image, bio, metaData, short, articles, experience } =
           <div class:list={["col-span-2", "md:pl-8"]}>
             {bio && <PortableText value={bio} class:list={["portable-text"]} />}
             {
+              education && (
+                <div class:list={["my-8"]}>
+                  <h2 class:list={["text-double-pica", "font-bold", "mb-1"]}>
+                    Wykształcenie:
+                  </h2>
+                  <ul class:list={["list-disc", "pl-4"]}>
+                    {education.map((item) => (
+                      <li class:list={["mb-2", "marker:text-secondary-500"]}>
+                        <p>
+                          <strong>{item.school}</strong>
+                        </p>
+                        <p>{item.degree}</p>
+                        <p>kierunek: {item.fieldOfStudy}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            }
+            {
               experience && (
-                <>
+                <div class="mb-8">
                   <h2 class:list={["text-double-pica", "font-bold", "mb-1"]}>
                     Doświadczenie zawodowe:
                   </h2>
@@ -106,7 +136,7 @@ const { name, image, bio, metaData, short, articles, experience } =
                     {experience.map((item) => (
                       <li class:list={["mb-2", "marker:text-secondary-500"]}>
                         <p>
-                          <strong>{item.name}:</strong>
+                          <strong>{item.name}</strong>
                         </p>
                         <div class:list={["flex", "leading-4"]}>
                           <time>
@@ -116,7 +146,41 @@ const { name, image, bio, metaData, short, articles, experience } =
                       </li>
                     ))}
                   </ul>
-                </>
+                </div>
+              )
+            }
+            {
+              specialization && (
+                <div class:list={["mb-8"]}>
+                  <h2 class:list={["text-double-pica", "font-bold", "mb-1"]}>
+                    {specialization.length > 1
+                      ? "Specjalizacje:"
+                      : "Specjalizacja:"}
+                  </h2>
+                  <ul class:list={["list-disc", "pl-4"]}>
+                    {specialization.map((item) => (
+                      <li class:list={["mb-2", "marker:text-secondary-500"]}>
+                        <p>{item.specialization}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            }
+            {
+              fieldsOfInterest && (
+                <div class:list={["mb-8"]}>
+                  <h2 class:list={["text-double-pica", "font-bold", "mb-1"]}>
+                    Obszary zainteresowań:
+                  </h2>
+                  <ul class:list={["list-disc", "pl-4"]}>
+                    {fieldsOfInterest.map((item) => (
+                      <li class:list={["mb-2", "marker:text-secondary-500"]}>
+                        <p>{item.interest}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )
             }
           </div>

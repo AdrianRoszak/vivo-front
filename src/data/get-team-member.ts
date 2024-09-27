@@ -14,6 +14,20 @@ type ExperienceType = {
   endDate: string
 }
 
+type EducationType = {
+  school: string
+  fieldOfStudy: string
+  degree: string
+}
+
+type FieldsOfInterestType = {
+  interest: string
+}
+
+type SpecializationType = {
+  specialization: string[]
+}
+
 export type TeamMemberType = {
   name: string
   bio: TypedObject
@@ -21,6 +35,9 @@ export type TeamMemberType = {
   metaData: MetaDataType
   short: string
   experience?: ExperienceType[]
+  education?: EducationType[]
+  fieldsOfInterest?: FieldsOfInterestType[]
+  specialization?: SpecializationType[]
   articles: BlogArticleType[] | null
 }
 
@@ -30,6 +47,35 @@ export async function getTeamMember(
   const arr = await fetchTeamMemberData(slug)
   const data = digestTeamMember(arr[0])
   return data
+}
+
+//@ts-ignore
+function digestFieldsOfInterest(source): FieldsOfInterestType | null {
+  if (!source) return null
+
+  return {
+    interest: source.interest,
+  }
+}
+
+//@ts-ignore
+function digestSpecialization(source): SpecializationType | null {
+  if (!source) return null
+
+  return {
+    specialization: source.specialization,
+  }
+}
+
+//@ts-ignore
+function digestEducation(source): EducationType | null {
+  if (!source) return null
+
+  return {
+    school: source.school,
+    fieldOfStudy: source.fieldOfStudy,
+    degree: source.degree,
+  }
 }
 
 //@ts-ignore
@@ -61,6 +107,13 @@ function digestTeamMember(source): TeamMemberType | null {
     image: source.image ? secureImage(source.image) : null,
     experience:
       (source.experience && source.experience.map(digestExperience)) || null,
+    education:
+      (source.education && source.education.map(digestEducation)) || null,
+    fieldsOfInterest:
+      source.fieldsOfInterest &&
+      source.fieldsOfInterest.map(digestFieldsOfInterest),
+    specialization:
+      source.specialization && source.specialization.map(digestSpecialization),
     articles:
       source.articles.length > 0
         ? source.articles.map(digestBlogArticle)
