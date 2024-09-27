@@ -8,12 +8,19 @@ import {
   type MetaDataType,
 } from "./source/digests/digest-meta-data"
 
+type ExperienceType = {
+  name: string
+  startDate: string
+  endDate: string
+}
+
 export type TeamMemberType = {
   name: string
   bio: TypedObject
   image: ImageType | null
   metaData: MetaDataType
   short: string
+  experience?: ExperienceType[]
   articles: BlogArticleType[] | null
 }
 
@@ -26,6 +33,24 @@ export async function getTeamMember(
 }
 
 //@ts-ignore
+function digestExperience(source): ExperienceType | null {
+  if (!source) return null
+
+  // @ts-ignore
+  return {
+    name: source.name,
+    startDate: new Date(source.startDate).toLocaleDateString("pl-PL", {
+      year: "numeric",
+    }),
+    endDate: source.endDate
+      ? new Date(source.endDate).toLocaleDateString("pl-PL", {
+          year: "numeric",
+        })
+      : "obecnie",
+  }
+}
+
+//@ts-ignore
 function digestTeamMember(source): TeamMemberType | null {
   if (!source) return null
 
@@ -34,6 +59,8 @@ function digestTeamMember(source): TeamMemberType | null {
     short: source.shortDescription,
     bio: source.longBio,
     image: source.image ? secureImage(source.image) : null,
+    experience:
+      (source.experience && source.experience.map(digestExperience)) || null,
     articles:
       source.articles.length > 0
         ? source.articles.map(digestBlogArticle)

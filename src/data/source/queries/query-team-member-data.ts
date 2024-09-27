@@ -7,6 +7,22 @@ export const queryTeamMemberData = `*[_type == "teamMember" && slug.current == $
   image,
   longBio,
   shortDescription,
+  experience[]->{
+    name,
+    startDate,
+    endDate
+  },
+  education[]-> {
+    school,
+    fieldOfStudy,
+    degree
+  },
+  fieldsOfInterest[]-> {
+    interest
+  },
+  specialization[]-> {
+    specialization
+  },
   ${seoFragment}
   "articles": *[_type == "blogArticle" && references(^._id) && publishedAt < "${getCurrentDate()}"] | order(publishedAt desc) [0..2]{
     ${teaserBlogArticleFragment}
