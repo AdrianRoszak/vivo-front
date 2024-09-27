@@ -28,7 +28,6 @@ const { socials, registration, contact } = Astro.props
     "flex",
     "justify-between",
     "items-center",
-    // "bg-light-50",
     "max-w-[1680px]",
     "mx-auto",
   ]}
@@ -37,7 +36,7 @@ const { socials, registration, contact } = Astro.props
     <CustomImage
       src="/src/assets/vivo-logo.png"
       alt="Vivo logo"
-      wrapperClasses={["w-20", "md:w-32"]}
+      wrapperClasses={["w-20", "xl:w-32"]}
       width={300}
       height={300}
     />
@@ -60,24 +59,24 @@ const { socials, registration, contact } = Astro.props
       "flex-grow",
       "px-4",
       "z-10",
-      "md:px-20",
+      "xl:px-20",
       "items-center",
-      "md:translate-x-0",
-      "md:w-auto",
-      "md:h-auto",
-      "md:gap-12",
-      "md:pt-0",
-      "md:static",
-      "md:flex-row",
-      "md:bg-transparent",
+      "xl:translate-x-0",
+      "xl:w-auto",
+      "xl:h-auto",
+      "xl:gap-12",
+      "xl:pt-0",
+      "xl:static",
+      "xl:flex-row",
+      "xl:bg-transparent",
       "text-4xl",
-      "md:text-great-primer",
+      "xl:text-great-primer",
       "uppercase",
       "text-light-50",
-      "md:text-dark-800",
+      "xl:text-dark-800",
     ]}
   >
-    <Link href="/" classes={["md:hidden"]}>Strona główna</Link>
+    <Link href="/" classes={["xl:hidden"]}>Strona główna</Link>
     <Link href="/o-nas">O nas</Link>
     <Link href="/terapie">Terapie</Link>
     <Link href="/blog"> Blog </Link>
@@ -85,7 +84,7 @@ const { socials, registration, contact } = Astro.props
     {
       socials && (
         <span
-          class:list={["sm:hidden", "flex", "mt-12", "gap-4", "items-center"]}
+          class:list={["xl:hidden", "flex", "mt-12", "gap-4", "items-center"]}
         >
           {socials.facebook && (
             <SocialIcon
@@ -122,7 +121,7 @@ const { socials, registration, contact } = Astro.props
   <div class:list={["flex", "items-center", "gap-2", "relative", "z-[999]"]}>
     {
       contact && (
-        <div class:list={["hidden", "sm:flex", "gap-2", "items-center"]}>
+        <div class:list={["hidden", "xl:flex", "gap-2", "items-center"]}>
           <a
             href={`tel:${contact.phone}`}
             class:list={[
@@ -150,7 +149,7 @@ const { socials, registration, contact } = Astro.props
     }
     {
       socials && (
-        <div class:list={["hidden", "gap-2", "sm:flex"]}>
+        <div class:list={["hidden", "gap-2", "xl:flex"]}>
           {socials.facebook && (
             <SocialIcon
               href={socials.facebook}
@@ -193,7 +192,7 @@ const { socials, registration, contact } = Astro.props
               "gap-2",
               "items-center",
               "social-icon-primary",
-              "sm:hidden",
+              "xl:hidden",
             ]}
           >
             <Icon size={50} name="f7:phone-circle-fill" />
@@ -215,7 +214,7 @@ const { socials, registration, contact } = Astro.props
         "flex-col",
         "justify-center",
         "items-center",
-        "md:hidden",
+        "xl:hidden",
       ]}
       aria-label="Menu"
       aria-expanded="false"
