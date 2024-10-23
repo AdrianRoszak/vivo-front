@@ -20,8 +20,12 @@ const { blogArticles, sectionIntro, metaData } = await getBlogPage()
     <Container>
       <Breadcrumbs path={path} />
       <div class:list={["text-center", "my-32"]}>
-        <HeadingText as="h1" text={sectionIntro.headline} />
-        <DecorativeText as="h2" text={sectionIntro.tagline} />
+        <div class="animate-fade-in-on-load">
+          <HeadingText as="h1" text={sectionIntro.headline} />
+        </div>
+        <div class="animate-fade-in-on-load">
+          <DecorativeText as="h2" text={sectionIntro.tagline} />
+        </div>
       </div>
       {
         blogArticles && (

@@ -3,10 +3,17 @@ import { Icon } from "astro-icon/components"
 
 const { path } = Astro.props
 const segments = path.split("/").filter((segment: string) => segment !== "")
-
 ---
 
-<ul class:list={["flex", "items-center", "gap-2", "py-8"]}>
+<ul
+  class:list={[
+    "flex",
+    "items-center",
+    "gap-2",
+    "py-8",
+    "animate-fade-in-on-load",
+  ]}
+>
   <li class="breadcrumb-item">
     <a href="/" class="breadcrumb-link">
       <div class:list={["flex", "gap-2", "items-center"]}>

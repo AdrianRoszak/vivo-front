@@ -50,29 +50,3 @@ const { values, decoImage } = Astro.props
     {Array.isArray(values) && values.map((value) => <ValueTile {...value} />)}
   </div>
 </div>
-
-<script>
-  import { gsap } from "gsap"
-  import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-  gsap.registerPlugin(ScrollTrigger)
-
-  gsap.to(".value-tile", {
-    scrollTrigger: {
-      trigger: ".value-tile",
-      start: "top 95%",
-    },
-    scale: 1,
-    duration: 0.75,
-    stagger: 0.3,
-    ease: "power1.out",
-    onStart: () => {
-      gsap.to(".value-tile-content", {
-        opacity: 1,
-        duration: 0.2,
-        stagger: 0.1,
-        delay: 1.8
-      })
-    },
-  })
-</script>

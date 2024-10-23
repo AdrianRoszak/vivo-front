@@ -120,44 +120,130 @@ const siteUrl = `${Astro.site}${pathname}`
       import { ScrollTrigger } from "gsap/ScrollTrigger"
       gsap.registerPlugin(ScrollTrigger)
 
-      window.addEventListener("astro:before-swap", () => {
-        ScrollTrigger.refresh()
-      })
+      // Function to kill existing animations and reinitialize GSAP animations
+      const initAnimations = () => {
+        // Kill any existing ScrollTriggers or animations to avoid duplication
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+        gsap.killTweensOf(".animate-fade-in, .animate-thumb")
 
-      const animationItems = gsap.utils.toArray<HTMLElement>(".animate-fade-in")
+        const animationItems =
+          gsap.utils.toArray<HTMLElement>(".animate-fade-in")
 
-      animationItems.forEach((item) => {
-        gsap.to(item, {
+        animationItems.forEach((item) => {
+          gsap.to(item, {
+            scrollTrigger: {
+              trigger: item,
+              start: "top 90%",
+              refreshPriority: 1,
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.2,
+            ease: "power1.out",
+          })
+        })
+
+        gsap.to(".value-tile", {
           scrollTrigger: {
-            trigger: item,
-            start: "top 90%",
+            trigger: ".value-tile",
+            start: "top 95%",
           },
-          opacity: 1,
-          y: 0,
+          scale: 1,
           duration: 0.5,
           stagger: 0.2,
           ease: "power1.out",
+          onStart: () => {
+            gsap.to(".value-tile-content", {
+              opacity: 1,
+              duration: 0.2,
+              stagger: 0.1,
+              delay: 1.5,
+            })
+          },
         })
+
+        gsap.to(".animate-thumb", {
+          scrollTrigger: {
+            trigger: ".animate-thumb",
+            start: "top 90%",
+          },
+          scale: 1,
+          stagger: {
+            each: 0.1,
+            from: "center",
+            grid: "auto",
+          },
+        })
+
+        // Select all elements with the class `.animate-article`
+        const articleItems = gsap.utils.toArray<HTMLElement>(".animate-article")
+        const isHome = window.location.pathname === "/"
+        const isMobile = window.innerWidth <= 768 // Adjust based on mobile breakpoint
+
+        if (isMobile) {
+          // Mobile layout (1-column), animate each item individually
+          articleItems.forEach((item, index) => {
+            gsap.fromTo(
+              item,
+              { opacity: 0, y: 50 }, // Starting state
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                delay: index === 0 ? 1.5 : 0, // Add 1.5s delay for the first item only
+                scrollTrigger: {
+                  trigger: item, // Trigger animation when the item comes into view
+                  start: "top 90%",
+                  toggleActions: "play none none reverse", // Play/reverse on enter/leave
+                  once: true, // Animation plays only once
+                },
+              },
+            )
+          })
+        } else {
+          // Desktop layout (3-column grid), animate items in rows of 3
+          const rows: HTMLElement[][] = []
+          for (let i = 0; i < articleItems.length; i += 3) {
+            rows.push(articleItems.slice(i, i + 3))
+          }
+
+          rows.forEach((row, index) => {
+            gsap.fromTo(
+              row,
+              { opacity: 0, y: 50 }, // Starting state for items in the row
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                stagger: 0.2, // Stagger between items in the row
+                delay: index === 0 && !isHome ? 1.5 : 0, // Add 1.5s delay for the first row only
+                scrollTrigger: {
+                  trigger: row[0], // Use the first item in the row as the trigger
+                  start: "top 90%", // Start the animation when the first item enters the view
+                  toggleActions: "play none none reverse", // Reverse the animation when scrolling back up
+                  once: true, // Animation plays only once
+                },
+              },
+            )
+          })
+        }
+
+        // Refresh ScrollTrigger to ensure proper setup after animations are reinitialized
+        ScrollTrigger.refresh()
+      }
+
+      // Event listener for page load
+      document.addEventListener("astro:page-load", () => {
+        initAnimations()
       })
 
-      gsap.to(".animate-thumb", {
-        scrollTrigger: {
-          trigger: ".animate-thumb",
-          start: "top 90%",
-        },
-        scale: 1,
-        stagger: {
-          each: 0.1,
-          from: "center",
-          grid: "auto",
-        },
-      })
-    </script>
-    <script>
+      // Scroll to top button logic remains unchanged
       const scrollToTopButton = document.querySelector(
         "[weirdo-data-scroll='scroll-to-top']",
       )
-
       if (scrollToTopButton) {
         window.addEventListener("scroll", () => {
           if (window.scrollY > 500) {
