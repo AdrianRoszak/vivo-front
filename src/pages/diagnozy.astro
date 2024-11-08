@@ -1,5 +1,4 @@
 ---
-import { getdata, getdatasSlugs } from "@/src/data"
 
 import { PortableText } from "astro-portabletext"
 
@@ -11,30 +10,7 @@ import Layout from "@/src/layouts/Layout.astro"
 import Accordion from "@/src/components/Accordion.astro"
 import { getDiagnosisPage } from "../data/get-diagnosis-page"
 import type { DiagnosisPageData } from "../data/source/digests/digest-diagnosis-page-data"
-
-export async function getStaticPaths() {
-  async function obtaindatasSlugs() {
-    const slugs = await getdatasSlugs()
-
-    type Slug = {
-      slug: {
-        current: string
-      }
-    }
-
-    return slugs.map((slug: Slug) => {
-      return {
-        params: {
-          slug: slug.slug.current,
-        },
-      }
-    })
-  }
-
-  const slugs = await obtaindatasSlugs()
-
-  return [...slugs]
-}
+import type { TypedObject } from "astro-portabletext/types"
 
 const path = Astro.url.pathname
 const data = (await getDiagnosisPage()) as DiagnosisPageData
@@ -55,7 +31,7 @@ const data = (await getDiagnosisPage()) as DiagnosisPageData
         />
         <PortableText
           class="text-great-primer"
-          value={data.sectionHero.tagline}
+          value={data.sectionHero.tagline as TypedObject}
         />
       </div>
       {

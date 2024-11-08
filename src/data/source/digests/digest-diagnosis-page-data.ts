@@ -1,11 +1,12 @@
 import { digestMetaData, type MetaDataType } from "./digest-meta-data"
 import type { SectionIntro } from "@/src/types"
 import { digestSectionIntro } from "./digest-section-intro"
+import type { TypedObject } from "astro-portabletext/types"
 
 export type DiagnosisItem = {
   name: string
   shortDescription: string
-  description: string
+  description: TypedObject
 }
 
 export interface DiagnosisPageData {
