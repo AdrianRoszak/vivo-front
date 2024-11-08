@@ -12,3 +12,4 @@ export {
 export { digestOfferPageData } from "./digest-offer-page-data"
 export { digestGlobalData } from "./digest-global-data"
 export { digestTeamMember } from "./digest-team-member"
+export { digestDiagnosisPageData } from "./digest-diagnosis-page-data"

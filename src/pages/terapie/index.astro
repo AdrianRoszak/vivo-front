@@ -20,14 +20,7 @@ const { metaData, offerGroups } = (await getOfferPage()) as OfferPageData
   <section class:list={["relative", "pb-40"]}>
     <Container>
       <Breadcrumbs path={path} />
-      <div
-        class:list={[
-          "sm:grid",
-          "w-full",
-          "grid-cols-3",
-          "pt-20",
-        ]}
-      >
+      <div class:list={["sm:grid", "w-full", "grid-cols-3", "pt-20"]}>
         {
           offerGroups.map((group) => {
             return (

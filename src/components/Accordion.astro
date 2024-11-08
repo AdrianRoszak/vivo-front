@@ -2,9 +2,10 @@
 import { PortableText } from "astro-portabletext"
 import HeadingText from "./HeadingText.astro"
 import type { Service } from "../types"
+import type { DiagnosisItem } from "../data/source/digests/digest-diagnosis-page-data"
 
 type Props = {
-  services: Service[]
+  services: Service[] | DiagnosisItem[]
 }
 
 const { services } = Astro.props

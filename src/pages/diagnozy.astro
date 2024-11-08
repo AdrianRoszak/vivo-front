@@ -1,0 +1,80 @@
+---
+import { getdata, getdatasSlugs } from "@/src/data"
+
+import { PortableText } from "astro-portabletext"
+
+import Container from "@/src/components/Container.astro"
+import HeadingText from "@/src/components/HeadingText.astro"
+import Breadcrumbs from "@/src/components/Breadcrumbs.astro"
+import DecoLeafs from "@/src/components/DecoLeafs.astro"
+import Layout from "@/src/layouts/Layout.astro"
+import Accordion from "@/src/components/Accordion.astro"
+import { getDiagnosisPage } from "../data/get-diagnosis-page"
+import type { DiagnosisPageData } from "../data/source/digests/digest-diagnosis-page-data"
+
+export async function getStaticPaths() {
+  async function obtaindatasSlugs() {
+    const slugs = await getdatasSlugs()
+
+    type Slug = {
+      slug: {
+        current: string
+      }
+    }
+
+    return slugs.map((slug: Slug) => {
+      return {
+        params: {
+          slug: slug.slug.current,
+        },
+      }
+    })
+  }
+
+  const slugs = await obtaindatasSlugs()
+
+  return [...slugs]
+}
+
+const path = Astro.url.pathname
+const data = (await getDiagnosisPage()) as DiagnosisPageData
+---
+
+<Layout
+  title={data.metaData.seoTitle}
+  description={data.metaData.seoDescription}
+>
+  <section class:list={["relative"]}>
+    <Container>
+      <Breadcrumbs path={path} />
+      <div class:list={["lg:w-4/5", "mx-auto", "text-center", "m-32"]}>
+        <HeadingText
+          as="h1"
+          text={data.sectionHero.headline}
+          size={["text-trafalgar", "md:text-canon"]}
+        />
+        <PortableText
+          class="text-great-primer"
+          value={data.sectionHero.tagline}
+        />
+      </div>
+      {
+        data.services.length > 0 && (
+          <section class="mb-8">
+            <HeadingText as="h2" text="Diagnozy" size="text-double-pica" />
+            <Accordion services={data.services} />
+          </section>
+        )
+      }
+    </Container>
+    <DecoLeafs />
+  </section>
+</Layout>
+
+<style>
+  section {
+    h2 {
+      font-weight: 700;
+    }
+  }
+</style>
