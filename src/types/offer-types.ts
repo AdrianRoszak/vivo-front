@@ -11,6 +11,7 @@ export type Service = {
   name: string
   shortDescription: string
   description: TypedObject
+  therapists: string[]
   subgroup: string | null
   workshops: boolean | null
 }

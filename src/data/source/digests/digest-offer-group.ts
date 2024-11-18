@@ -25,6 +25,9 @@ export function digestService(source): Service {
     name: source.serviceName,
     shortDescription: source.serviceShortDescription,
     description: source.serviceDescription,
+    therapists:
+      // @ts-ignore
+      source.Therapists && source.Therapists.map((therapist) => therapist.name),
     subgroup: source.serviceYouth || null,
     workshops: source.serviceAdult ? source.serviceAdult.workshops : null,
   }

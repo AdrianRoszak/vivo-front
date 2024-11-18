@@ -7,6 +7,9 @@ export const queryDiagnosisPageData = `{
       serviceName,
       serviceDescription,
       serviceShortDescription,
+      Therapists[]-> {
+        name
+      } 
     },
   ${seoFragment}
   },

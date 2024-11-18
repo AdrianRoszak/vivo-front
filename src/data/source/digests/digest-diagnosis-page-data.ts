@@ -7,6 +7,7 @@ export type DiagnosisItem = {
   name: string
   shortDescription: string
   description: TypedObject
+  therapists: string[]
 }
 
 export interface DiagnosisPageData {
@@ -31,5 +32,8 @@ export function digestDiagnosisItem(source): DiagnosisItem {
     name: source.serviceName,
     shortDescription: source.serviceShortDescription,
     description: source.serviceDescription,
+    therapists:
+      // @ts-ignore
+      source.Therapists && source.Therapists.map((therapist) => therapist.name),
   }
 }

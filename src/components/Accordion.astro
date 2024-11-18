@@ -59,6 +59,16 @@ const { services } = Astro.props
             </div>
             <div class="tab__content">
               <PortableText value={service.description} class="content" />
+              {service.therapists && (
+                <div class="mt-8">
+                  <h4>
+                    <strong>Osoby prowadzące:</strong>
+                  </h4>
+                  {service.therapists.map((therapist) => (
+                    <p>{therapist}</p>
+                  ))}
+                </div>
+              )}
             </div>
           </label>
         </div>
