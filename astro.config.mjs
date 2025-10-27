@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config"
 import sanity from "@sanity/astro"
 import { loadEnv } from "vite"
 import tailwind from "@astrojs/tailwind"
-import vercel from "@astrojs/vercel/serverless"
+import vercel from "@astrojs/vercel"
 import icon from "astro-icon"
 import sitemap from "@astrojs/sitemap"
 const {
@@ -26,6 +26,9 @@ export default defineConfig({
     sitemap(),
   ],
   prefetch: true,
-  output: "hybrid",
+  // In modern Astro versions prefer explicit `static` or `server`.
+  // This project fetches data at build-time and has no server routes,
+  // so static output is appropriate for Vercel CDN deployment.
+  output: "static",
   adapter: vercel(),
 })
