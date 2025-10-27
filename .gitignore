@@ -13,6 +13,8 @@
 
 # Astro build output
 /.vercel
+/.astro
+/dist
 
 # Logs
 /logs
