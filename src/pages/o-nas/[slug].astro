@@ -54,6 +54,7 @@ const {
   education,
   specialization,
   fieldsOfInterest,
+  courses,
 } = (await getTeamMember(slug)) as TeamMemberType
 ---
 
@@ -161,6 +162,22 @@ const {
                     {specialization.map((item) => (
                       <li class:list={["mb-2", "marker:text-secondary-500"]}>
                         <p>{item.specialization}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            }
+            {
+              courses && (
+                <div class:list={["mb-8"]}>
+                  <h2 class:list={["text-double-pica", "font-bold", "mb-1"]}>
+                    Ukończone kursy:
+                  </h2>
+                  <ul class:list={["list-disc", "pl-4"]}>
+                    {courses.map((item) => (
+                      <li class:list={["mb-2", "marker:text-secondary-500"]}>
+                        <p>{item.course}</p>
                       </li>
                     ))}
                   </ul>

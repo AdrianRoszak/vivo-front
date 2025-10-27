@@ -28,6 +28,10 @@ type SpecializationType = {
   specialization: string[]
 }
 
+type CoursesType = {
+  course: string
+}
+
 export type TeamMemberType = {
   name: string
   bio: TypedObject
@@ -38,6 +42,7 @@ export type TeamMemberType = {
   education?: EducationType[]
   fieldsOfInterest?: FieldsOfInterestType[]
   specialization?: SpecializationType[]
+  courses: CoursesType[]
   articles: BlogArticleType[] | null
 }
 
@@ -97,6 +102,15 @@ function digestExperience(source): ExperienceType | null {
 }
 
 //@ts-ignore
+function digestCourses(source): CoursesType | null {
+  if (!source) return null
+
+  return {
+    course: source.course,
+  }
+}
+
+//@ts-ignore
 function digestTeamMember(source): TeamMemberType | null {
   if (!source) return null
 
@@ -114,6 +128,7 @@ function digestTeamMember(source): TeamMemberType | null {
       source.fieldsOfInterest.map(digestFieldsOfInterest),
     specialization:
       source.specialization && source.specialization.map(digestSpecialization),
+    courses: source.courses && source.courses.map(digestCourses),
     articles:
       source.articles.length > 0
         ? source.articles.map(digestBlogArticle)

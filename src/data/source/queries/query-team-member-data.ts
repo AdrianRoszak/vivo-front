@@ -23,6 +23,9 @@ export const queryTeamMemberData = `*[_type == "teamMember" && slug.current == $
   specialization[]-> {
     specialization
   },
+  courses[]-> {
+    course
+  },
   ${seoFragment}
   "articles": *[_type == "blogArticle" && references(^._id) && publishedAt < "${getCurrentDate()}"] | order(publishedAt desc) [0..2]{
     ${teaserBlogArticleFragment}
